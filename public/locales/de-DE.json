@@ -1,0 +1,23 @@
+{
+  "trialID": "Studienkennung",
+  "protocolNumber": "Protokollnummer",
+  "productName": "Produktname",
+  "identifierCode": "Kennungscode",
+  "batchNumber": "Chargennummer",
+  "expiryDate": "Verfallsdatum",
+  "sponsorName": "Sponsorname",
+  "kitNumber": "Kit-Nummer",
+  "AdditionalInformation": "Zusätzliche Informationen",
+  "customFields": {
+    "dosage": "Dosierung",
+    "warning": "Warnhinweis",
+    "manufacturing": "Herstellung",
+    "WebSite1": "Webseite",
+    "WebSite": "Webseite",
+    "adverseReactions": "Nebenwirkungen",
+    "storageConditions": "Lagerbedingungen",
+    "AdministrationInstructions": "Verabreichungshinweise",
+    "labelRequirement": "Etikettierungsanforderungen",
+    "childrenStatement": "Hinweis zum Schutz von Kindern"
+  }
+}

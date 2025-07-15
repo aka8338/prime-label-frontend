@@ -1,0 +1,23 @@
+{
+  "trialID": "試験識別子",
+  "protocolNumber": "プロトコル番号",
+  "productName": "製品名",
+  "identifierCode": "識別コード",
+  "batchNumber": "製造番号",
+  "expiryDate": "有効期限",
+  "sponsorName": "スポンサー名",
+  "kitNumber": "キット番号",
+  "AdditionalInformation": "追加情報",
+  "customFields": {
+    "dosage": "用量",
+    "warning": "警告",
+    "manufacturing": "製造",
+    "WebSite1": "ウェブサイト",
+    "WebSite": "ウェブサイト",
+    "adverseReactions": "副作用",
+    "storageConditions": "保管条件",
+    "AdministrationInstructions": "投与方法の指示",
+    "labelRequirement": "ラベル要件",
+    "childrenStatement": "小児の手の届かないところに保管してください"
+  }
+}

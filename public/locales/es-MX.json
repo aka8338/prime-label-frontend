@@ -1,0 +1,23 @@
+{
+  "trialID": "Identificador del estudio",
+  "protocolNumber": "Número de protocolo",
+  "productName": "Nombre del producto",
+  "identifierCode": "Código identificador",
+  "batchNumber": "Número de lote",
+  "expiryDate": "Fecha de caducidad",
+  "sponsorName": "Nombre del patrocinador",
+  "kitNumber": "Número de kit",
+  "AdditionalInformation": "Información adicional",
+  "customFields": {
+    "dosage": "Dosis",
+    "warning": "Advertencia",
+    "manufacturing": "Fabricación",
+    "WebSite1": "Sitio web",
+    "WebSite": "Sitio web",
+    "adverseReactions": "Reacciones adversas",
+    "storageConditions": "Condiciones de almacenamiento",
+    "AdministrationInstructions": "Instrucciones de administración",
+    "labelRequirement": "Requisitos de la etiqueta",
+    "childrenStatement": "Mantener fuera del alcance de los niños"
+  }
+}

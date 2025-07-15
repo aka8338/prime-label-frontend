@@ -1,0 +1,23 @@
+{
+  "trialID": "Trial Identifier",
+  "protocolNumber": "Protocol Number",
+  "productName": "Product Name",
+  "identifierCode": "Identifier Code",
+  "batchNumber": "Batch Number",
+  "expiryDate": "Expiry Date",
+  "sponsorName": "Sponsor Name",
+  "kitNumber": "Kit Number",
+  "AdditionalInformation": "Additional Information",
+  "customFields": {
+    "dosage": "Dosage",
+    "warning": "Warning",
+    "manufacturing": "Manufacturing",
+    "WebSite1": "Web Site",
+    "WebSite": "Web Site",
+    "adverseReactions": "Adverse Reactions",
+    "storageConditions": "Storage Conditions",
+    "AdministrationInstructions": "Administration Instructions",
+    "labelRequirement": "Label Requirements",
+    "childrenStatement": "Children Statement"
+  }
+}

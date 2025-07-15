@@ -1,0 +1,23 @@
+{
+  "trialID": "Tutkimustunniste",
+  "protocolNumber": "Protokollanumero",
+  "productName": "Tuotteen nimi",
+  "identifierCode": "Tunnistekoodi",
+  "batchNumber": "Eränumero",
+  "expiryDate": "Viimeinen käyttöpäivä",
+  "sponsorName": "Sponsorin nimi",
+  "kitNumber": "Pakkauksen numero",
+  "AdditionalInformation": "Lisätiedot",
+  "customFields": {
+    "dosage": "Annostus",
+    "warning": "Varoitus",
+    "manufacturing": "Valmistus",
+    "WebSite1": "Verkkosivusto",
+    "WebSite": "Verkkosivusto",
+    "adverseReactions": "Haittavaikutukset",
+    "storageConditions": "Säilytysolosuhteet",
+    "AdministrationInstructions": "Anto-ohjeet",
+    "labelRequirement": "Merkintävaatimukset",
+    "childrenStatement": "Pidettävä poissa lasten ulottuvilta"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "trialID": "Identifiant de l’essai",
+  "protocolNumber": "Numéro du protocole",
+  "productName": "Nom du produit",
+  "identifierCode": "Code d’identification",
+  "batchNumber": "Numéro de lot",
+  "expiryDate": "Date de péremption",
+  "sponsorName": "Nom du promoteur",
+  "kitNumber": "Numéro du kit",
+  "AdditionalInformation": "Informations supplémentaires",
+  "customFields": {
+    "dosage": "Dosage",
+    "warning": "Avertissement",
+    "manufacturing": "Fabrication",
+    "WebSite1": "Site web",
+    "WebSite": "Site web",
+    "adverseReactions": "Effets indésirables",
+    "storageConditions": "Conditions de conservation",
+    "AdministrationInstructions": "Instructions d’administration",
+    "labelRequirement": "Exigences d’étiquetage",
+    "childrenStatement": "Tenir hors de la portée des enfants"
+  }
+}

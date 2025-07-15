@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>clinicalLabel.io</title>
+    <link rel="stylesheet" href="/website/assets/styles.css" />
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div class="header-content">
+          <div class="logo">clinical Label.io</div>
+          <nav>
+            <ul>
+              <li><a href="#home" class="nav-link active">Home</a></li>
+              <li><a href="#about" class="nav-link">About</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <div class="container">
+      <main>
+        <!-- Home Page Content -->
+        <div id="home" class="page active">
+          <div class="hero">
+            <h1>The industry standard for eLabels</h1>
+            <p>your solution for elabels</p>
+          </div>
+
+          <h2>Our Vision - For the Patient</h2>
+          <p>
+            At the heart of our mission is a simple belief: clinical trial labels should serve patients first. Too often, medication labeling is treated as a regulatory checkbox or a logistical
+            necessity for warehouses and sites. But for the person who actually takes the medication — the patient — labels can be confusing, outdated, or hard to access. We think that's unacceptable.
+          </p>
+          <p>
+            Today's clinical trial participants are digitally connected. They carry smartphones, expect real-time information, and deserve clarity, confidence, and support in their treatment journey.
+            That's why we design eLabels with the patient in mind — clear, intuitive, and accessible from anywhere, anytime.
+          </p>
+          <p>
+            We're bringing world-class technology to a space that needs it most. By modernizing how patients access medication information, we're not only improving clinical trial experiences — we're
+            setting a new standard for care, empathy, and trust in the clinical supply chain.
+          </p>
+
+          <h2>Our Vision - For the Industry</h2>
+          <p>
+            eLabelling has been part of the conversation in clinical trials for nearly two decades. It’s discussed at every major conference and cited as a clear step forward for trial efficiency and
+            patient engagement. And yet — for most sponsors — it remains out of reach.
+          </p>
+          <p>
+            The barriers have been technical, operational, and regulatory. But more than that, they’ve been structural. The industry has made eLabelling feel like a special project instead of a
+            standard capability. Sponsors face unnecessary friction, inconsistent requirements, and fragmented delivery models that make scale nearly impossible.
+          </p>
+          <p>We're here to change that</p>
+          <p>
+            Our vision is to make eLabelling as routine, reliable, and expected as RTSM, EDC, or eConsent. We bring together modern technology, deep clinical expertise, and relentless execution to
+            remove the complexity and unlock the full potential of digital labeling — not in the future, but now.
+          </p>
+          <p>
+            The clinical research world deserves tools that are fast, scalable, and built for today’s trials. Our mission is to help the industry move forward — with confidence, with clarity, and
+            without compromise.
+          </p>
+          <h2>Get In Touch</h2>
+          <p>generalEnquiry@clinicalLabel.io</p>
+          <h2>Try it</h2>
+          <p>
+            <a href="/">Go to eLabel App</a>
+          </p>
+        </div>
+
+        <!-- About Page Content -->
+        <div id="about" class="page" style="display: none">
+          <h2>About us</h2>
+          <p>We are a young startup with a bold mission — to make eLabelling standard, scalable, and seamless for every clinical trial.</p>
+          <p>
+            While our company may be new, our team brings together hundreds of years of combined experience across clinical supply chain, labeling, technology, and clinical operations. We've worked on
+            dozens of global studies, and we know firsthand the gaps, delays, and frustrations that have held back the promise of digital labeling for far too long.
+          </p>
+          <h2>Now is the time to change that</h2>
+          <p>
+            We've built a modern, industry-grade platform dedicated entirely to eLabelling. This isn't a side project. It's not a bolt-on. It's our core focus — and we're building it to integrate
+            effortlessly with the systems, workflows, and expectations of today’s trials.
+          </p>
+          <p>
+            We are independent by design. We are not affiliated with any CRO or CMO. That means we can partner broadly, work flexibly, and move fast — always putting sponsors and patients at the
+            center of what we do.
+          </p>
+          <p>
+            Founded and based in the United States, we collaborate closely with partners across the U.S. and Europe, supporting global studies with scalable, compliant technology that works across
+            borders.
+          </p>
+          <p>
+            We are ambitious, collaborative, and laser-focused on the future. While we specialize in eLabelling, we believe in a connected eClinical ecosystem — and we actively partner with other
+            vendors, sponsors, and stakeholders who share our vision of a smarter, more patient-friendly clinical trial experience.
+          </p>
+          <h2>How Can we help you?</h2>
+          <p>
+            With the rise of cloud computing, AI, cybersecurity threats, and digital transformation, businesses must continuously refine their IT strategies. An adaptive, forward-thinking approach
+            ensures long-term success.
+          </p>
+
+          <h2>Get In Touch</h2>
+          <p>generalEnquiry@clinicalLabel.io</p>
+        </div>
+      </main>
+    </div>
+
+    <footer>
+      <div class="container">
+        <p>&copy; 2025 clinicalLabel.io. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      // Simple page navigation
+      const navLinks = document.querySelectorAll('.nav-link');
+      const pages = document.querySelectorAll('.page');
+
+      navLinks.forEach((link) => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+
+          // Remove active class from all links and pages
+          navLinks.forEach((l) => l.classList.remove('active'));
+          pages.forEach((p) => {
+            p.style.display = 'none';
+            p.classList.remove('active');
+          });
+
+          // Add active class to clicked link
+          link.classList.add('active');
+
+          // Show corresponding page
+          const targetPage = link.getAttribute('href').substring(1);
+          const targetElement = document.getElementById(targetPage);
+          if (targetElement) {
+            targetElement.style.display = 'block';
+            targetElement.classList.add('active');
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

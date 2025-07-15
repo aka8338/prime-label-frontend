@@ -1,0 +1,23 @@
+{
+  "trialID": "परीक्षण पहचानकर्ता",
+  "protocolNumber": "प्रोटोकॉल नंबर",
+  "productName": "उत्पाद का नाम",
+  "identifierCode": "पहचान कोड",
+  "batchNumber": "बैच नंबर",
+  "expiryDate": "समाप्ति तिथि",
+  "sponsorName": "प्रायोजक का नाम",
+  "kitNumber": "किट नंबर",
+  "AdditionalInformation": "अतिरिक्त जानकारी",
+  "customFields": {
+    "dosage": "खुराक",
+    "warning": "चेतावनी",
+    "manufacturing": "निर्माण",
+    "WebSite1": "वेबसाइट",
+    "WebSite": "वेबसाइट",
+    "adverseReactions": "प्रतिकूल प्रतिक्रियाएं",
+    "storageConditions": "भंडारण की शर्तें",
+    "AdministrationInstructions": "प्रशासन निर्देश",
+    "labelRequirement": "लेबल आवश्यकताएं",
+    "childrenStatement": "बच्चों की पहुंच से दूर रखें"
+  }
+}
