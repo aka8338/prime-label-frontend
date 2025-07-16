@@ -1,10 +1,8 @@
-import React, { useState, useEffect, Fragment } from 'react';
-import { type FC } from 'react';
+import { Fragment, useEffect, useState, type FC } from 'react';
 import { useTranslation } from 'react-i18next';
-import ReactTextToSpeech from 'react-text-to-speech';
-import { Card, CardHeader, CardTitle, CardContent } from '../components/ui/card';
-import type { Label } from '../types/label';
 import { Button } from '../components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
+import type { Label } from '../types/label';
 import LanguageSelectorFlag from './LanguageSelectorFlag';
 //import CountryFlagDisplay from './CountryFlagDisplay';
 
@@ -25,9 +23,6 @@ const LabelDisplay: FC<LabelDisplayProps> = ({ label, showControls = true }) => 
   const [selectedLanguage, setSelectedLanguage] = useState<string>('en'); // Set the default language to 'en'
 
   const [isSpeaking, setIsSpeaking] = useState(false);
-  const [voices, setVoices] = useState<SpeechSynthesisVoice[]>([]);
-  const [selectedVoiceURI, setSelectedVoiceURI] = useState<string | null>(null); // Store selected voiceURI
-  const [voicesLoaded, setVoicesLoaded] = useState(false); // Track if voices are loaded
 
   const langs =
     Array.isArray(label.languages) && label.languages.length
@@ -45,8 +40,13 @@ const LabelDisplay: FC<LabelDisplayProps> = ({ label, showControls = true }) => 
     setSelectedLanguage(language); // Update the selected language in state
     i18n.changeLanguage(language); // Change the language in i18next
 
-    // Force voice load whenever the language changes
-    loadVoice(language);
+    // Log available voices for this language (helpful for debugging)
+    const availableVoices = speechSynthesis.getVoices();
+    const languageVoices = availableVoices.filter((voice) => voice.lang.startsWith(language));
+    console.log(
+      `Available voices for ${language}:`,
+      languageVoices.map((v) => `${v.name} (${v.lang})`),
+    );
   };
 
   //core information that will be displayed for each label
@@ -79,45 +79,6 @@ const LabelDisplay: FC<LabelDisplayProps> = ({ label, showControls = true }) => 
 
   const coreFields = generateCoreFields(label, langs);
 
-  // // Ensure languages are unique and sorted - Effect Hook to Populate Voices:
-  // useEffect(() => {
-  //   const populateVoices = () => {
-  //     const availableVoices = speechSynthesis.getVoices();
-  //     setVoices(availableVoices);
-
-  //     // Automatically select the voice matching the selected language
-  //     const selectedVoice = availableVoices.find((v) => v.lang === selectedLanguage);
-  //     setSelectedVoiceURI(selectedVoice?.voiceURI || null); // Set selected voice or fallback to null
-
-  //     setVoicesLoaded(true); // Set voices as loaded
-  //   };
-
-  //   populateVoices();
-  //   speechSynthesis.onvoiceschanged = populateVoices;
-
-  //   return () => {
-  //     speechSynthesis.onvoiceschanged = null;
-  //   };
-  // }, [selectedLanguage]); // Re-run whenever the selected language changes
-
-  // Force voice load on language change
-  const loadVoice = (language: string) => {
-    const populateVoices = () => {
-      const availableVoices = speechSynthesis.getVoices();
-      setVoices(availableVoices);
-
-      // Automatically select the voice matching the selected language
-      const selectedVoice = availableVoices.find((v) => v.lang === language);
-      setSelectedVoiceURI(selectedVoice?.voiceURI || null); // Set selected voice or fallback to null
-
-      setVoicesLoaded(true); // Set voices as loaded
-    };
-
-    // Call the function to populate voices when the language changes
-    populateVoices();
-    speechSynthesis.onvoiceschanged = populateVoices;
-  };
-
   // dynamically generates the text that will be read aloud by the text-to-speech component.
   const buildSpeechText = (lang: string): string => {
     const customText = generateCustomFields(label, lang);
@@ -131,15 +92,43 @@ const LabelDisplay: FC<LabelDisplayProps> = ({ label, showControls = true }) => 
     `;
   };
 
-  const startReading = () => {
-    // Wait for voices to be loaded before starting TTS
-    if (voicesLoaded && selectedVoiceURI) {
-      console.log('Starting TTS with selected voice:', selectedVoiceURI);
-      setIsSpeaking(true);
-    } else {
-      // Optionally, handle the case where voices are not loaded
-      console.error('Voices are not yet loaded');
+  const handleStartReading = () => {
+    if (isSpeaking) return;
+
+    const text = buildSpeechText(selectedLanguage);
+    const utterance = new SpeechSynthesisUtterance(text);
+
+    // Find and set the voice for the selected language with preference for female voices
+    const availableVoices = speechSynthesis.getVoices();
+    const languageVoices = availableVoices.filter((voice) => voice.lang.startsWith(selectedLanguage));
+
+    // Prefer female voices, then any voice for the language
+    const selectedVoice =
+      languageVoices.find((voice) => voice.name.toLowerCase().includes('female')) ||
+      languageVoices.find((voice) => voice.name.toLowerCase().includes('woman')) ||
+      languageVoices.find((voice) => voice.name.toLowerCase().includes('maria')) ||
+      languageVoices.find((voice) => voice.name.toLowerCase().includes('anna')) ||
+      languageVoices.find((voice) => voice.name.toLowerCase().includes('susan')) ||
+      languageVoices[0]; // Fallback to first available voice
+
+    if (selectedVoice) {
+      utterance.voice = selectedVoice;
+      console.log(`Selected voice: ${selectedVoice.name} (${selectedVoice.lang})`);
     }
+
+    utterance.onstart = () => setIsSpeaking(true);
+    utterance.onend = () => setIsSpeaking(false);
+    utterance.onerror = (error) => {
+      console.error('TTS Error:', error);
+      setIsSpeaking(false);
+    };
+
+    speechSynthesis.speak(utterance);
+  };
+
+  const handleStopReading = () => {
+    speechSynthesis.cancel();
+    setIsSpeaking(false);
   };
 
   return (
@@ -188,31 +177,15 @@ const LabelDisplay: FC<LabelDisplayProps> = ({ label, showControls = true }) => 
           {showControls && (
             <>
               <hr />
-              <ReactTextToSpeech
-                text={buildSpeechText(selectedLanguage)}
-                pitch={1}
-                rate={1}
-                volume={1}
-                voiceURI={selectedVoiceURI ?? undefined}
-                onStart={() => startReading()} // Start reading when the button is clicked
-                onStop={() => setIsSpeaking(false)}
-                onError={(error) => {
-                  console.error('TTS Error:', error);
-                  alert(error.message);
-                }}
-                highlightText={true}
-                startBtn={
-                  <Button variant="default" disabled={isSpeaking} aria-label="Read Label Aloud" aria-live="polite">
-                    {isSpeaking ? 'Reading...' : 'Read Label Aloud'}
-                  </Button>
-                }
-                stopBtn={
-                  <Button variant="default" disabled={!isSpeaking} aria-label="Stop Reading" aria-live="polite">
-                    Stop Reading
-                  </Button>
-                }
-              />
-              <p className="text-sm text-gray-500">{isSpeaking ? t('Reading aloud...') : t('Click the button to read the label aloud.')}</p>
+              <div className="flex gap-2 items-center mt-4">
+                <Button variant="primary" disabled={isSpeaking} onClick={handleStartReading} aria-label="Read Label Aloud">
+                  {isSpeaking ? 'Reading...' : 'Read Label Aloud'}
+                </Button>
+                <Button variant="primary" disabled={!isSpeaking} onClick={handleStopReading} aria-label="Stop Reading">
+                  Stop Reading
+                </Button>
+              </div>
+              <p className="text-sm text-gray-500 mt-2">{isSpeaking ? t('Reading aloud...') : t('Click the button to read the label aloud.')}</p>
             </>
           )}
         </CardContent>
