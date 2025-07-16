@@ -1,13 +1,12 @@
 // src/pages/LabelLookup.tsx
-import { useState, useCallback } from 'react';
-import axios from 'axios';
-import { Card, CardHeader, CardTitle, CardContent } from '../components/ui/card';
-import { Input } from '../components/ui/input';
-import { Button } from '../components/ui/button';
-import { RadioGroup, RadioGroupItem } from '../components/ui/radio-group';
-import LabelDisplay from '../components/LabelDisplay';
-import type { Label as LabelType } from '../types/label';
 import LabelDisplayWrapper from '@/components/LabelDisplayWrapper';
+import axios from 'axios';
+import { useCallback, useState } from 'react';
+import { Button } from '../components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
+import { Input } from '../components/ui/input';
+import { RadioGroup, RadioGroupItem } from '../components/ui/radio-group';
+import type { Label as LabelType } from '../types/label';
 
 const API = import.meta.env.VITE_API_URL;
 
@@ -106,7 +105,7 @@ export default function LabelLookup() {
       <div className="text-center text-sm text-gray-500 mt-4">
         <p>
           Issues? Contact{' '}
-          <a href={`mailto:${import.meta.env.VITE_SUPPORT_EMAIL}`} className="text-blue-600 underline">
+          <a href={`mailto:${import.meta.env.VITE_SUPPORT_EMAIL || 'help@clinicallabel.io'}`} className="text-blue-600 underline">
             support
           </a>
         </p>
