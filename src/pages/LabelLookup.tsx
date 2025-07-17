@@ -122,7 +122,7 @@ export default function LabelLookup() {
           )}
 
           <Button type="submit" variant="primary" className="h-12 text-lg font-semibold" style={{ width: '100%' }} disabled={loading}>
-            {loading ? 'Looking up…' : 'Show Label'}
+            {loading ? 'loading' : 'Show Label'}
           </Button>
         </form>
 

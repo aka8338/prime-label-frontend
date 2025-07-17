@@ -1,10 +1,10 @@
 // src/App.tsx
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import Footer from './components/Footer';
-import LabelPageLoader from './components/LabelPageLoader';
 import Navbar from './components/Navbar';
 import DemoPage from './pages/demo';
 import LabelLookup from './pages/LabelLookup';
+import LabelPage from './pages/LabelPage';
 
 export default function App() {
   const baseUrl = import.meta.env.VITE_FRONT_END;
@@ -26,9 +26,9 @@ export default function App() {
           <Routes>
             <Route path="/" element={<LabelLookup />} />
             <Route path="lookup" element={<LabelLookup />} />
-            <Route path=":identifierCode" element={<LabelPageLoader />} />
-            <Route path=":sponsorName/:trialIdentifier/batch/:batchNumber" element={<LabelPageLoader />} />
-            <Route path=":sponsorName/:trialIdentifier/kit/:kitNumber" element={<LabelPageLoader />} />
+            <Route path=":identifierCode" element={<LabelPage />} />
+            <Route path=":sponsorName/:trialIdentifier/batch/:batchNumber" element={<LabelPage />} />
+            <Route path=":sponsorName/:trialIdentifier/kit/:kitNumber" element={<LabelPage />} />
             <Route path="demo" element={<DemoPage />} />
           </Routes>
         </main>
