@@ -1,10 +1,9 @@
-import { Fragment, useEffect, useState, type FC } from 'react';
+import { useEffect, useState, type FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button } from '../components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import type { Label } from '../types/label';
+import styles from './LabelDisplay.module.css';
 import LanguageSelectorFlag from './LanguageSelectorFlag';
-//import CountryFlagDisplay from './CountryFlagDisplay';
 
 interface LabelDisplayProps {
   label: Label;
@@ -19,77 +18,80 @@ const dateFormatOptions: Intl.DateTimeFormatOptions = {
 };
 
 const LabelDisplay: FC<LabelDisplayProps> = ({ label, showControls = true }) => {
-  const { t, i18n } = useTranslation(); // Access the translation function from react-i18next
-  const [selectedLanguage, setSelectedLanguage] = useState<string>('en'); // Set the default language to 'en'
-
+  const { t, i18n } = useTranslation();
+  const [selectedLanguage, setSelectedLanguage] = useState<string>('en');
   const [isSpeaking, setIsSpeaking] = useState(false);
+  const [voices, setVoices] = useState<SpeechSynthesisVoice[]>([]);
 
-  const langs =
-    Array.isArray(label.languages) && label.languages.length
-      ? [...new Set(label.languages)].sort() // Remove duplicates and sort
-      : ['en']; // Default to 'en' if languages is empty or undefined
+  const langs = Array.isArray(label.languages) && label.languages.length ? [...new Set(label.languages)].sort() : ['en'];
+
+  // Load voices when component mounts and when they become available
+  useEffect(() => {
+    const loadVoices = () => {
+      const availableVoices = speechSynthesis.getVoices();
+      setVoices(availableVoices);
+    };
+
+    loadVoices();
+    speechSynthesis.onvoiceschanged = loadVoices;
+
+    return () => {
+      speechSynthesis.onvoiceschanged = null;
+    };
+  }, []);
 
   // Sync selectedLanguage with i18next's language on initial load
   useEffect(() => {
-    const initialLanguage = i18n.language || 'en'; // Default to 'en' if no language detected
-    setSelectedLanguage(initialLanguage); // Set initial language based on i18next's language
-  }, [i18n.language]); // Run this effect when i18next's language changes
+    if (i18n.language && langs.includes(i18n.language)) {
+      setSelectedLanguage(i18n.language);
+    }
+  }, [i18n.language, langs]);
 
-  // Handle language change
   const handleLanguageChange = (language: string) => {
-    setSelectedLanguage(language); // Update the selected language in state
-    i18n.changeLanguage(language); // Change the language in i18next
-
-    // Log available voices for this language (helpful for debugging)
-    const availableVoices = speechSynthesis.getVoices();
-    const languageVoices = availableVoices.filter((voice) => voice.lang.startsWith(language));
-    console.log(
-      `Available voices for ${language}:`,
-      languageVoices.map((v) => `${v.name} (${v.lang})`),
-    );
+    setSelectedLanguage(language);
+    i18n.changeLanguage(language);
   };
 
-  //core information that will be displayed for each label
-  const generateCoreFields = (label: Label, langs: string[]) => {
-    return [
-      { title: t('trialID'), value: label.trialIdentifier },
-      ...(label.sponsorName ? [{ title: t('sponsorName'), value: label.sponsorName }] : []),
-      { title: t('protocolNumber'), value: label.protocolNumber },
-      { title: t('productName'), value: label.productName },
-      { title: t('identifierCode'), value: label.identifierCode },
-      { title: t('batchNumber'), value: label.batchNumber },
-      {
-        title: t('expiryDate'),
-        value: label.expiryDate ? new Date(label.expiryDate).toLocaleDateString(selectedLanguage, dateFormatOptions) : '—',
-      },
-      ...(label.kitNumber ? [{ title: t('kitNumber'), value: label.kitNumber }] : []),
-    ];
-  };
+  // Core fields that will appear in the left column
+  const coreFields = [
+    {
+      label: t('trialID') || 'Trial Identifier',
+      value: label.trialIdentifier || label.protocolNumber || '—',
+    },
+    {
+      label: t('sponsorName') || 'Sponsor Name',
+      value: label.sponsorName || '—',
+    },
+    {
+      label: t('protocolNumber') || 'Protocol Number',
+      value: label.protocolNumber || '—',
+    },
+    {
+      label: t('productName') || 'Product Name',
+      value: label.productName || '—',
+    },
+    {
+      label: t('batchNumber') || 'Batch Number',
+      value: label.batchNumber || '—',
+    },
+    {
+      label: t('expiryDate') || 'Expiry Date',
+      value: label.expiryDate ? new Date(label.expiryDate).toLocaleDateString(selectedLanguage, dateFormatOptions) : '—',
+    },
+  ];
 
-  // Generates custom fields based on the label's customFields property
-  // It formats each custom field with its key and the corresponding translation for the specified language.
-  const generateCustomFields = (label: Label, lang: string) => {
-    return Object.entries(label.customFields)
-      .map(([key, translations]) => {
-        const val = translations?.[lang] ?? '—';
-        return `${key.charAt(0).toUpperCase() + key.slice(1)}: ${val}.`;
-      })
-      .join(' ');
-  };
+  // Additional fields from custom fields
+  const additionalFields = Object.entries(label.customFields || {}).map(([key, translations]) => ({
+    label: t(`customFields.${key}`) || key,
+    value: translations?.[selectedLanguage] || '—',
+  }));
 
-  const coreFields = generateCoreFields(label, langs);
-
-  // dynamically generates the text that will be read aloud by the text-to-speech component.
   const buildSpeechText = (lang: string): string => {
-    const customText = generateCustomFields(label, lang);
+    const coreText = coreFields.map((field) => `${field.label}: ${field.value}`).join('. ');
 
-    return `
-      ${t('protocolNumber')}: ${label.protocolNumber}.
-      ${t('productName')}: ${label.productName}.
-      ${t('batchNumber')}: ${label.batchNumber}.
-      ${t('expiryDate')}: ${label.expiryDate ? new Date(label.expiryDate).toLocaleDateString(lang, dateFormatOptions) : '—'}.
-      ${customText}
-    `;
+    const additionalText = additionalFields.map((field) => `${field.label}: ${field.value}`).join('. ');
+
+    return `${coreText}. ${additionalText}`;
   };
 
   const handleStartReading = () => {
@@ -98,31 +100,24 @@ const LabelDisplay: FC<LabelDisplayProps> = ({ label, showControls = true }) => 
     const text = buildSpeechText(selectedLanguage);
     const utterance = new SpeechSynthesisUtterance(text);
 
-    // Find and set the voice for the selected language with preference for female voices
-    const availableVoices = speechSynthesis.getVoices();
-    const languageVoices = availableVoices.filter((voice) => voice.lang.startsWith(selectedLanguage));
+    const languageCode = selectedLanguage.toLowerCase();
+    const formattedLang = languageCode.includes('-') ? languageCode : `${languageCode}-${languageCode.toUpperCase()}`;
+    utterance.lang = formattedLang;
 
-    // Prefer female voices, then any voice for the language
-    const selectedVoice =
-      languageVoices.find((voice) => voice.name.toLowerCase().includes('female')) ||
-      languageVoices.find((voice) => voice.name.toLowerCase().includes('woman')) ||
-      languageVoices.find((voice) => voice.name.toLowerCase().includes('maria')) ||
-      languageVoices.find((voice) => voice.name.toLowerCase().includes('anna')) ||
-      languageVoices.find((voice) => voice.name.toLowerCase().includes('susan')) ||
-      languageVoices[0]; // Fallback to first available voice
+    const exactMatch = voices.find((voice) => voice.lang.toLowerCase() === formattedLang);
+    const languageMatch = voices.find((voice) => voice.lang.toLowerCase().startsWith(languageCode));
 
-    if (selectedVoice) {
-      utterance.voice = selectedVoice;
-      console.log(`Selected voice: ${selectedVoice.name} (${selectedVoice.lang})`);
+    if (exactMatch) {
+      utterance.voice = exactMatch;
+    } else if (languageMatch) {
+      utterance.voice = languageMatch;
     }
 
     utterance.onstart = () => setIsSpeaking(true);
     utterance.onend = () => setIsSpeaking(false);
-    utterance.onerror = (error) => {
-      console.error('TTS Error:', error);
-      setIsSpeaking(false);
-    };
+    utterance.onerror = () => setIsSpeaking(false);
 
+    speechSynthesis.cancel();
     speechSynthesis.speak(utterance);
   };
 
@@ -132,64 +127,78 @@ const LabelDisplay: FC<LabelDisplayProps> = ({ label, showControls = true }) => 
   };
 
   return (
-    <div className="space-y-6">
-      {/* Language Selector Component */}
-      <LanguageSelectorFlag
-        languages={langs}
-        selectedLanguage={selectedLanguage}
-        onLanguageChange={handleLanguageChange} // Pass the handler to update the language
-      />
-      {/* Display the currently selected language */}
-      <h3 className="font-semibold">Currently selected language: {selectedLanguage}</h3>
+    <div className={styles.labelContainer}>
+      {/* Header with controls */}
+      <div className={styles.header}>
+        <LanguageSelectorFlag languages={langs} selectedLanguage={selectedLanguage} onLanguageChange={handleLanguageChange} />
 
-      {/* Display the label information in the selected language */}
-      <Card key={selectedLanguage}>
-        <CardHeader>
-          <CardTitle className="text-2xl">{selectedLanguage}</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4 text-lg">
-          {/* Core Fields */}
-          <dl className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {coreFields.map(({ title, value }) => (
-              <Fragment key={title}>
-                <dt className="font-semibold">{t(title)}:</dt>
-                <dd>{value}</dd>
-              </Fragment>
-            ))}
-          </dl>
-
-          {/* Custom Fields */}
-          <div className="pt-4">
-            <h3 className="font-semibold underline">{t('AdditionalInformation')}</h3>
-            <dl className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {Object.entries(label.customFields).map(([key, translations]) => (
-                <Fragment key={key}>
-                  <dt className="font-semibold">{t(`customFields.${key}`)}:</dt>
-                  <dd>{translations?.[selectedLanguage] ?? '—'}</dd>
-                </Fragment>
-              ))}
-            </dl>
+        {showControls && (
+          <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+            <Button
+              variant="primary"
+              disabled={isSpeaking}
+              onClick={handleStartReading}
+              style={{
+                backgroundColor: isSpeaking ? '#6b7280' : '#3b82f6',
+                color: 'white',
+                padding: '0.5rem 1rem',
+                borderRadius: '0.375rem',
+                border: 'none',
+                cursor: isSpeaking ? 'not-allowed' : 'pointer',
+              }}
+            >
+              {isSpeaking ? 'Reading...' : 'Read Aloud'}
+            </Button>
+            {isSpeaking && (
+              <Button
+                variant="secondary"
+                onClick={handleStopReading}
+                style={{
+                  backgroundColor: '#ef4444',
+                  color: 'white',
+                  padding: '0.5rem 1rem',
+                  borderRadius: '0.375rem',
+                  border: 'none',
+                  cursor: 'pointer',
+                }}
+              >
+                Stop
+              </Button>
+            )}
           </div>
+        )}
+      </div>
 
-          <hr />
+      {/* Two-column layout */}
+      <div className={styles.twoColumnGrid}>
+        {/* Core Information Column */}
+        <div className={styles.column}>
+          <h2 className={styles.title}>{t('coreInformation') || 'Core Information'}</h2>
+          {coreFields.map((field, index) => (
+            <div key={index} className={styles.infoCard}>
+              <div className={styles.label}>{field.label}</div>
+              <div className={styles.value}>{field.value}</div>
+            </div>
+          ))}
+        </div>
 
-          {/* TTS Controls */}
-          {showControls && (
-            <>
-              <hr />
-              <div className="flex gap-2 items-center mt-4">
-                <Button variant="primary" disabled={isSpeaking} onClick={handleStartReading} aria-label="Read Label Aloud">
-                  {isSpeaking ? 'Reading...' : 'Read Label Aloud'}
-                </Button>
-                <Button variant="primary" disabled={!isSpeaking} onClick={handleStopReading} aria-label="Stop Reading">
-                  Stop Reading
-                </Button>
+        {/* Additional Information Column */}
+        <div className={styles.column}>
+          <h2 className={styles.title}>{t('AdditionalInformation') || 'Additional Information'}</h2>
+          {additionalFields.length > 0 ? (
+            additionalFields.map((field, index) => (
+              <div key={index} className={styles.infoCard}>
+                <div className={styles.label}>{field.label}</div>
+                <div className={styles.value}>{field.value}</div>
               </div>
-              <p className="text-sm text-gray-500 mt-2">{isSpeaking ? t('Reading aloud...') : t('Click the button to read the label aloud.')}</p>
-            </>
+            ))
+          ) : (
+            <div className={styles.infoCard}>
+              <div className={styles.value}>{t('noAdditionalInfo') || 'No additional information available'}</div>
+            </div>
           )}
-        </CardContent>
-      </Card>
+        </div>
+      </div>
     </div>
   );
 };

@@ -1,43 +1,40 @@
 // src/App.tsx
-import { Link, Route, BrowserRouter as Router, Routes } from 'react-router-dom';
-
-import LabelLookup from './pages/LabelLookup';
-import LabelPage from './pages/LabelPage';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import Footer from './components/Footer';
+import LabelPageLoader from './components/LabelPageLoader';
+import Navbar from './components/Navbar';
 import DemoPage from './pages/demo';
+import LabelLookup from './pages/LabelLookup';
 
 export default function App() {
   const baseUrl = import.meta.env.VITE_FRONT_END;
-  // Use absolute URLs to avoid React Router interference
   const marketingSite = baseUrl + '/website/index.html';
 
   return (
     <Router>
-      <div className="p-4">
-        <nav className="p-4 bg-gray-100 flex space-x-4">
-          <Link to="/lookup" className="text-blue-600">
-            Label Finder |
-          </Link>
+      <div className="bg-gray-50" style={{ minHeight: '100vh' }}>
+        <Navbar marketingSite={marketingSite} />
 
-          <Link to="/demo" className="text-blue-600">
-            Demo |
-          </Link>
-
-          {/* Absolute link back to your marketing site */}
-          <a href={marketingSite} className="text-blue-600">
-            Web Site
-          </a>
-        </nav>
-
-        <Routes>
-          {/* SPA Routes under /app */}
-          <Route path="/" element={<LabelLookup />} />
-          <Route path="lookup" element={<LabelLookup />} />
-          <Route path=":identifierCode" element={<LabelPage />} />
-          <Route path=":sponsorName/:trialIdentifier/batch/:batchNumber" element={<LabelPage />} />
-          <Route path=":sponsorName/:trialIdentifier/kit/:kitNumber" element={<LabelPage />} />
-          <Route path="demo" element={<DemoPage />} />
-        </Routes>
+        <main
+          className="bg-gray-50"
+          style={{
+            paddingTop: '64px',
+            paddingBottom: '120px',
+            minHeight: 'calc(100vh - 64px)',
+          }}
+        >
+          <Routes>
+            <Route path="/" element={<LabelLookup />} />
+            <Route path="lookup" element={<LabelLookup />} />
+            <Route path=":identifierCode" element={<LabelPageLoader />} />
+            <Route path=":sponsorName/:trialIdentifier/batch/:batchNumber" element={<LabelPageLoader />} />
+            <Route path=":sponsorName/:trialIdentifier/kit/:kitNumber" element={<LabelPageLoader />} />
+            <Route path="demo" element={<DemoPage />} />
+          </Routes>
+        </main>
       </div>
+
+      <Footer />
     </Router>
   );
 }

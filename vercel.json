@@ -40,7 +40,7 @@
         { "key": "X-XSS-Protection", "value": "1; mode=block" },
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; connect-src 'self' https://prime-label-api.vercel.app https://prime-label-api.onrender.com;"
+          "value": "default-src 'self'; connect-src 'self' https://*.vercel.app https://*.onrender.com; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:;"
         },
         {
           "key": "Strict-Transport-Security",
