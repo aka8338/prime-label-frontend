@@ -1,10 +1,9 @@
-import { useEffect, useState, type FC } from 'react';
+import { useEffect, useState, useMemo, useCallback, type FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button } from '../components/ui/button';
 import type { Label } from '../types/label';
 import styles from './LabelDisplay.module.css';
 import LanguageSelectorFlag from './LanguageSelectorFlag';
-
 interface LabelDisplayProps {
   label: Label;
   showControls?: boolean;
@@ -17,6 +16,22 @@ const dateFormatOptions: Intl.DateTimeFormatOptions = {
   day: '2-digit',
 };
 
+// Optimized language mapping cache
+const LANGUAGE_MAPPING: Record<string, string> = {
+  hi: 'hi-IN',
+  'hi-in': 'hi-IN',
+  en: 'en-US',
+  'en-us': 'en-US',
+  es: 'es-ES',
+  'es-es': 'es-ES',
+  fr: 'fr-FR',
+  de: 'de-DE',
+  'de-de': 'de-DE',
+  ja: 'ja-JP',
+  fi: 'fi-FI',
+  'fi-fi': 'fi-FI',
+};
+
 const LabelDisplay: FC<LabelDisplayProps> = ({ label, showControls = true }) => {
   const { t, i18n } = useTranslation();
   const [selectedLanguage, setSelectedLanguage] = useState<string>('en');
@@ -24,6 +39,79 @@ const LabelDisplay: FC<LabelDisplayProps> = ({ label, showControls = true }) => 
   const [voices, setVoices] = useState<SpeechSynthesisVoice[]>([]);
 
   const langs = Array.isArray(label.languages) && label.languages.length ? [...new Set(label.languages)].sort() : ['en'];
+
+  // Memoized core fields computation
+  const coreFields = useMemo(
+    () => [
+      {
+        label: t('trialID') || 'Trial Identifier',
+        value: label.trialIdentifier || label.protocolNumber || '—',
+      },
+      {
+        label: t('sponsorName') || 'Sponsor Name',
+        value: label.sponsorName || '—',
+      },
+      {
+        label: t('protocolNumber') || 'Protocol Number',
+        value: label.protocolNumber || '—',
+      },
+      {
+        label: t('productName') || 'Product Name',
+        value: label.productName || '—',
+      },
+      {
+        label: t('batchNumber') || 'Batch Number',
+        value: label.batchNumber || '—',
+      },
+      {
+        label: t('expiryDate') || 'Expiry Date',
+        value: label.expiryDate ? new Date(label.expiryDate).toLocaleDateString(selectedLanguage, dateFormatOptions) : '—',
+      },
+    ],
+    [t, label, selectedLanguage],
+  );
+
+  // Memoized additional fields computation
+  const additionalFields = useMemo(
+    () =>
+      Object.entries(label.customFields || {}).map(([key, translations]: [string, Record<string, string>]) => ({
+        label: t(`customFields.${key}`) || key,
+        value: translations?.[selectedLanguage] || '—',
+      })),
+    [label.customFields, selectedLanguage, t],
+  );
+
+  // Memoized speech text - only rebuilds when language or fields change
+  const speechText = useMemo(() => {
+    const coreText = coreFields.map((field) => `${field.label}: ${field.value}`).join('. ');
+    const additionalText = additionalFields.map((field) => `${field.label}: ${field.value}`).join('. ');
+    return `${coreText}. ${additionalText}`;
+  }, [coreFields, additionalFields]);
+
+  // Memoized language formatting
+  const formattedLanguage = useMemo(() => {
+    const languageCode = selectedLanguage.toLowerCase();
+    return LANGUAGE_MAPPING[languageCode] || (languageCode.includes('-') ? languageCode : `${languageCode}-${languageCode.toUpperCase()}`);
+  }, [selectedLanguage]);
+
+  // Memoized voice selection
+  const selectedVoice = useMemo(() => {
+    if (voices.length === 0) return null;
+
+    const languageCode = selectedLanguage.toLowerCase().split('-')[0];
+
+    // Try exact match first
+    const exactMatch = voices.find((voice) => voice.lang.toLowerCase() === formattedLanguage.toLowerCase());
+    if (exactMatch) return exactMatch;
+
+    // Try language match
+    const languageMatch = voices.find((voice) => voice.lang.toLowerCase().startsWith(languageCode));
+    if (languageMatch) return languageMatch;
+
+    // Try fallback match
+    const fallbackMatch = voices.find((voice) => voice.lang.toLowerCase().includes(languageCode));
+    return fallbackMatch || null;
+  }, [voices, formattedLanguage, selectedLanguage]);
 
   // Load voices when component mounts and when they become available
   useEffect(() => {
@@ -47,84 +135,41 @@ const LabelDisplay: FC<LabelDisplayProps> = ({ label, showControls = true }) => 
     }
   }, [i18n.language, langs]);
 
-  const handleLanguageChange = (language: string) => {
-    setSelectedLanguage(language);
-    i18n.changeLanguage(language);
-  };
-
-  // Core fields that will appear in the left column
-  const coreFields = [
-    {
-      label: t('trialID') || 'Trial Identifier',
-      value: label.trialIdentifier || label.protocolNumber || '—',
+  // Optimized language change handler
+  const handleLanguageChange = useCallback(
+    (language: string) => {
+      setSelectedLanguage(language);
+      i18n.changeLanguage(language);
     },
-    {
-      label: t('sponsorName') || 'Sponsor Name',
-      value: label.sponsorName || '—',
-    },
-    {
-      label: t('protocolNumber') || 'Protocol Number',
-      value: label.protocolNumber || '—',
-    },
-    {
-      label: t('productName') || 'Product Name',
-      value: label.productName || '—',
-    },
-    {
-      label: t('batchNumber') || 'Batch Number',
-      value: label.batchNumber || '—',
-    },
-    {
-      label: t('expiryDate') || 'Expiry Date',
-      value: label.expiryDate ? new Date(label.expiryDate).toLocaleDateString(selectedLanguage, dateFormatOptions) : '—',
-    },
-  ];
+    [i18n],
+  );
 
-  // Additional fields from custom fields
-  const additionalFields = Object.entries(label.customFields || {}).map(([key, translations]) => ({
-    label: t(`customFields.${key}`) || key,
-    value: translations?.[selectedLanguage] || '—',
-  }));
-
-  const buildSpeechText = (lang: string): string => {
-    const coreText = coreFields.map((field) => `${field.label}: ${field.value}`).join('. ');
-
-    const additionalText = additionalFields.map((field) => `${field.label}: ${field.value}`).join('. ');
-
-    return `${coreText}. ${additionalText}`;
-  };
-
-  const handleStartReading = () => {
+  // Optimized speech handlers with useCallback
+  const handleStartReading = useCallback(() => {
     if (isSpeaking) return;
 
-    const text = buildSpeechText(selectedLanguage);
-    const utterance = new SpeechSynthesisUtterance(text);
+    // Cancel any existing speech
+    speechSynthesis.cancel();
 
-    const languageCode = selectedLanguage.toLowerCase();
-    const formattedLang = languageCode.includes('-') ? languageCode : `${languageCode}-${languageCode.toUpperCase()}`;
-    utterance.lang = formattedLang;
+    const utterance = new SpeechSynthesisUtterance(speechText);
+    utterance.lang = formattedLanguage;
 
-    const exactMatch = voices.find((voice) => voice.lang.toLowerCase() === formattedLang);
-    const languageMatch = voices.find((voice) => voice.lang.toLowerCase().startsWith(languageCode));
-
-    if (exactMatch) {
-      utterance.voice = exactMatch;
-    } else if (languageMatch) {
-      utterance.voice = languageMatch;
+    if (selectedVoice) {
+      utterance.voice = selectedVoice;
     }
 
+    // Optimized event handlers
     utterance.onstart = () => setIsSpeaking(true);
     utterance.onend = () => setIsSpeaking(false);
     utterance.onerror = () => setIsSpeaking(false);
 
-    speechSynthesis.cancel();
     speechSynthesis.speak(utterance);
-  };
+  }, [isSpeaking, speechText, formattedLanguage, selectedVoice]);
 
-  const handleStopReading = () => {
+  const handleStopReading = useCallback(() => {
     speechSynthesis.cancel();
     setIsSpeaking(false);
-  };
+  }, []);
 
   return (
     <div className={styles.labelContainer}>
@@ -145,9 +190,10 @@ const LabelDisplay: FC<LabelDisplayProps> = ({ label, showControls = true }) => 
                 borderRadius: '0.375rem',
                 border: 'none',
                 cursor: isSpeaking ? 'not-allowed' : 'pointer',
+                transition: 'background-color 0.2s ease',
               }}
             >
-              {isSpeaking ? 'Reading...' : 'Read Aloud'}
+              {isSpeaking ? t('reading') || 'Reading...' : t('readAloud') || 'Read Aloud'}
             </Button>
             {isSpeaking && (
               <Button
@@ -160,9 +206,10 @@ const LabelDisplay: FC<LabelDisplayProps> = ({ label, showControls = true }) => 
                   borderRadius: '0.375rem',
                   border: 'none',
                   cursor: 'pointer',
+                  transition: 'background-color 0.2s ease',
                 }}
               >
-                Stop
+                {t('stop') || 'Stop'}
               </Button>
             )}
           </div>
