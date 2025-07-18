@@ -12,38 +12,20 @@ const getCountryCode = (languageCode: string) => {
   return languageCode.split('-')[1] || languageCode; // Split by hyphen and get the second part (country code)
 };
 
-// Map country code back to language code
+// Map country code back to language code (e.g., 'US' -> 'en-US')
 const getLanguageCode = (countryCode: string, languages: string[]) => {
-  // First, try to find exact match with country code
-  const exactMatch = languages.find((lang) => lang.split('-')[1] === countryCode);
-  if (exactMatch) return exactMatch;
-
-  // Then try to find language by mapping country back to language
-  const countryToLanguageMap: Record<string, string> = {
-    US: 'en',
-    ES: 'es',
-    FR: 'fr',
-    DE: 'de',
-    JP: 'ja',
-    IN: 'hi',
-    FI: 'fi',
-  };
-
-  const languageCode = countryToLanguageMap[countryCode];
-  return languages.find((lang) => lang === languageCode || lang.startsWith(languageCode + '-')) || languages[0];
+  return languages.find((lang) => lang.split('-')[1] === countryCode) || ''; // Find matching language code by country code
 };
 
 const LanguageSelectorFlag: React.FC<LanguageSelectorFlagProps> = ({ languages, selectedLanguage, onLanguageChange }) => {
   // Handle flag change by setting the language when the flag is selected
   const handleFlagChange = (countryCode: string) => {
     const languageCode = getLanguageCode(countryCode, languages); // Convert country code back to language code
-    if (languageCode) {
-      onLanguageChange(languageCode); // Update language state with correct language code
-    }
+    onLanguageChange(languageCode); // Update language state with full language code (e.g., 'en-US')
   };
 
   // Map over languages and convert them to country codes
-  const countryCodes = [...new Set(languages.map((lang) => getCountryCode(lang)))];
+  const countryCodes = languages.map((lang) => getCountryCode(lang));
 
   return (
     <div className="language-selector-flag">

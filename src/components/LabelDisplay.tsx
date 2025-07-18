@@ -100,49 +100,18 @@ const LabelDisplay: FC<LabelDisplayProps> = ({ label, showControls = true }) => 
     const text = buildSpeechText(selectedLanguage);
     const utterance = new SpeechSynthesisUtterance(text);
 
-    // Enhanced language mapping for better voice selection
     const languageCode = selectedLanguage.toLowerCase();
-    let formattedLang = languageCode;
-
-    // Special mapping for languages that need specific country codes
-    const languageMapping: Record<string, string> = {
-      hi: 'hi-IN', // Hindi - India
-      'hi-in': 'hi-IN',
-      en: 'en-US', // English - US
-      'en-us': 'en-US',
-      es: 'es-ES', // Spanish - Spain
-      'es-es': 'es-ES',
-      fr: 'fr-FR', // French - France
-      de: 'de-DE', // German - Germany
-      'de-de': 'de-DE',
-      ja: 'ja-JP', // Japanese - Japan
-      fi: 'fi-FI', // Finnish - Finland
-      'fi-fi': 'fi-FI',
-    };
-
-    // Use mapping if available, otherwise use the original format
-    formattedLang = languageMapping[languageCode] || (languageCode.includes('-') ? languageCode : `${languageCode}-${languageCode.toUpperCase()}`);
-
+    const formattedLang = languageCode.includes('-') ? languageCode : `${languageCode}-${languageCode.toUpperCase()}`;
     utterance.lang = formattedLang;
 
-    // Try to find the best voice match
-    const exactMatch = voices.find((voice) => voice.lang.toLowerCase() === formattedLang.toLowerCase());
-    const languageMatch = voices.find((voice) => voice.lang.toLowerCase().startsWith(languageCode.split('-')[0]));
-    const fallbackMatch = voices.find((voice) => voice.lang.toLowerCase().includes(languageCode.split('-')[0]));
+    const exactMatch = voices.find((voice) => voice.lang.toLowerCase() === formattedLang);
+    const languageMatch = voices.find((voice) => voice.lang.toLowerCase().startsWith(languageCode));
 
     if (exactMatch) {
       utterance.voice = exactMatch;
     } else if (languageMatch) {
       utterance.voice = languageMatch;
-    } else if (fallbackMatch) {
-      utterance.voice = fallbackMatch;
     }
-
-    // For debugging - log available voices for the language
-    console.log(
-      `Available voices for ${formattedLang}:`,
-      voices.filter((voice) => voice.lang.toLowerCase().includes(languageCode.split('-')[0])),
-    );
 
     utterance.onstart = () => setIsSpeaking(true);
     utterance.onend = () => setIsSpeaking(false);
@@ -178,7 +147,7 @@ const LabelDisplay: FC<LabelDisplayProps> = ({ label, showControls = true }) => 
                 cursor: isSpeaking ? 'not-allowed' : 'pointer',
               }}
             >
-              {isSpeaking ? t('reading') || 'Reading...' : t('readAloud') || 'Read Aloud'}
+              {isSpeaking ? 'Reading...' : 'Read Aloud'}
             </Button>
             {isSpeaking && (
               <Button
@@ -193,7 +162,7 @@ const LabelDisplay: FC<LabelDisplayProps> = ({ label, showControls = true }) => 
                   cursor: 'pointer',
                 }}
               >
-                {t('stop') || 'Stop'}
+                Stop
               </Button>
             )}
           </div>
