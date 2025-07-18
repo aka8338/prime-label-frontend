@@ -46,12 +46,14 @@ export default function LabelLookup() {
     setError('');
     try {
       let res;
+      const axiosConfig = { timeout: 15000 }; // 15 seconds timeout for Heroku sleeping apps
+
       if (searchType === 'identifier') {
-        res = await axios.get<LabelType>(`${API}/api/labels/identifier/${identifierCode.trim()}`);
+        res = await axios.get<LabelType>(`${API}/api/labels/identifier/${identifierCode.trim()}`, axiosConfig);
       } else if (searchType === 'batch') {
-        res = await axios.get<LabelType>(`${API}/api/labels/${sponsorName.trim()}/${trialIdentifier.trim()}/batch/${batchNumber.trim()}`);
+        res = await axios.get<LabelType>(`${API}/api/labels/${sponsorName.trim()}/${trialIdentifier.trim()}/batch/${batchNumber.trim()}`, axiosConfig);
       } else {
-        res = await axios.get<LabelType>(`${API}/api/labels/${sponsorName.trim()}/${trialIdentifier.trim()}/kit/${kitNumber.trim()}`);
+        res = await axios.get<LabelType>(`${API}/api/labels/${sponsorName.trim()}/${trialIdentifier.trim()}/kit/${kitNumber.trim()}`, axiosConfig);
       }
       setLabel(res.data);
     } catch (err: any) {

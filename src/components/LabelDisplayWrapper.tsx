@@ -1,5 +1,6 @@
 import { Minus, Plus, RotateCcw } from 'lucide-react';
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import type { Label } from '../types/label';
 import LabelDisplay from './LabelDisplay';
 import { Button } from './ui/button';
@@ -9,6 +10,7 @@ interface LabelDisplayWrapperProps {
 }
 
 const LabelDisplayWrapper: React.FC<LabelDisplayWrapperProps> = ({ label }) => {
+  const { t } = useTranslation();
   const [fontSize, setFontSize] = useState(16);
   const DEFAULT_FONT_SIZE = 16;
   const MIN_FONT_SIZE = 12;
@@ -43,7 +45,7 @@ const LabelDisplayWrapper: React.FC<LabelDisplayWrapperProps> = ({ label }) => {
             onClick={decreaseFontSize}
             disabled={fontSize <= MIN_FONT_SIZE}
             className="bg-gray-600 hover:bg-gray-700 text-white w-12 h-12 rounded-lg p-0 shadow-lg disabled:opacity-50 transition-all duration-200"
-            title="Zoom Out"
+            title={t('zoomOut') || 'Zoom Out'}
           >
             <Minus className="h-6 w-6" />
           </Button>
@@ -51,7 +53,7 @@ const LabelDisplayWrapper: React.FC<LabelDisplayWrapperProps> = ({ label }) => {
           {/* Font Size Display */}
           <div className="flex items-center gap-3 min-w-[140px] justify-center px-4">
             <span className="font-medium text-gray-600" style={{ fontSize: `${Math.max(12, fontSize * 0.75)}px` }}>
-              Font Size:
+              {t('fontSize') || 'Font Size'}:
             </span>
             <span className="font-bold text-gray-800" style={{ fontSize: `${Math.max(14, fontSize * 0.9)}px` }}>
               {fontSize}px
@@ -65,7 +67,7 @@ const LabelDisplayWrapper: React.FC<LabelDisplayWrapperProps> = ({ label }) => {
             onClick={increaseFontSize}
             disabled={fontSize >= MAX_FONT_SIZE}
             className="bg-gray-600 hover:bg-gray-700 text-white w-12 h-12 rounded-lg p-0 shadow-lg disabled:opacity-50 transition-all duration-200"
-            title="Zoom In"
+            title={t('zoomIn') || 'Zoom In'}
           >
             <Plus className="h-6 w-6" />
           </Button>
@@ -80,7 +82,7 @@ const LabelDisplayWrapper: React.FC<LabelDisplayWrapperProps> = ({ label }) => {
             onClick={resetFontSize}
             disabled={fontSize === DEFAULT_FONT_SIZE}
             className="bg-blue-500 hover:bg-blue-600 text-white w-12 h-12 rounded-lg p-0 shadow-lg disabled:opacity-50 transition-all duration-200"
-            title="Reset to Default Size"
+            title={t('resetFontSize') || 'Reset to Default Size'}
           >
             <RotateCcw className="h-5 w-5" />
           </Button>

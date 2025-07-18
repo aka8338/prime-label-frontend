@@ -55,7 +55,9 @@ const LabelPage = ({ preloadedLabel }: LabelPageProps) => {
           return;
         }
 
-        const response = await axios.get<Label>(url);
+        const response = await axios.get<Label>(url, {
+          timeout: 15000, // 15 seconds timeout for Heroku sleeping apps
+        });
         setLabel(response.data);
         setIsLoaded(true);
       } catch (err: any) {
