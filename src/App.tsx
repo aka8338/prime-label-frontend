@@ -8,6 +8,7 @@ import LabelLookup from './pages/LabelLookup';
 import LabelPage from './pages/LabelPage';
 import LandingPage from './pages/LandingPage';
 import Login from './pages/Login';
+import OAuthCallback from './pages/OAuthCallback';
 import Signup from './pages/Signup';
 
 export default function App() {
@@ -30,13 +31,14 @@ export default function App() {
           >
             <Routes>
               <Route path="/" element={<LandingPage />} />
-              <Route path="lookup" element={<LabelLookup />} />
-              <Route path="login" element={<Login />} />
-              <Route path="signup" element={<Signup />} />
-              <Route path=":identifierCode" element={<LabelPage />} />
-              <Route path=":sponsorName/:trialIdentifier/batch/:batchNumber" element={<LabelPage />} />
-              <Route path=":sponsorName/:trialIdentifier/kit/:kitNumber" element={<LabelPage />} />
-              <Route path="demo" element={<DemoPage />} />
+              <Route path="/lookup" element={<LabelLookup />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/oauth-callback" element={<OAuthCallback />} />
+              <Route path="/demo" element={<DemoPage />} />
+              <Route path="/:identifierCode" element={<LabelPage />} />
+              <Route path="/:sponsorName/:trialIdentifier/batch/:batchNumber" element={<LabelPage />} />
+              <Route path="/:sponsorName/:trialIdentifier/kit/:kitNumber" element={<LabelPage />} />
             </Routes>
           </main>
 
