@@ -2,6 +2,7 @@
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
+import { AuthProvider } from './context/AuthContext';
 import DemoPage from './pages/demo';
 import LabelLookup from './pages/LabelLookup';
 import LabelPage from './pages/LabelPage';
@@ -15,31 +16,33 @@ export default function App() {
 
   return (
     <Router>
-      <div className="bg-gray-50" style={{ minHeight: '100vh' }}>
-        <Navbar marketingSite={marketingSite} />
+      <AuthProvider>
+        <div style={{ backgroundColor: '#f3f4f6', minHeight: '100vh' }}>
+          <Navbar marketingSite={marketingSite} />
 
-        <main
-          className="bg-gray-50"
-          style={{
-            paddingTop: '64px',
-            paddingBottom: '120px',
-            minHeight: 'calc(100vh - 64px)',
-          }}
-        >
-          <Routes>
-            <Route path="/" element={<LandingPage />} />
-            <Route path="lookup" element={<LabelLookup />} />
-            <Route path="login" element={<Login />} />
-            <Route path="signup" element={<Signup />} />
-            <Route path=":identifierCode" element={<LabelPage />} />
-            <Route path=":sponsorName/:trialIdentifier/batch/:batchNumber" element={<LabelPage />} />
-            <Route path=":sponsorName/:trialIdentifier/kit/:kitNumber" element={<LabelPage />} />
-            <Route path="demo" element={<DemoPage />} />
-          </Routes>
-        </main>
-      </div>
+          <main
+            style={{
+              paddingTop: '64px',
+              paddingBottom: '64px',
+              minHeight: 'calc(100vh - 64px)',
+              backgroundColor: '#f3f4f6',
+            }}
+          >
+            <Routes>
+              <Route path="/" element={<LandingPage />} />
+              <Route path="lookup" element={<LabelLookup />} />
+              <Route path="login" element={<Login />} />
+              <Route path="signup" element={<Signup />} />
+              <Route path=":identifierCode" element={<LabelPage />} />
+              <Route path=":sponsorName/:trialIdentifier/batch/:batchNumber" element={<LabelPage />} />
+              <Route path=":sponsorName/:trialIdentifier/kit/:kitNumber" element={<LabelPage />} />
+              <Route path="demo" element={<DemoPage />} />
+            </Routes>
+          </main>
 
-      <Footer />
+          <Footer />
+        </div>
+      </AuthProvider>
     </Router>
   );
 }
