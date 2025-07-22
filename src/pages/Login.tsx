@@ -38,6 +38,32 @@ export default function Login() {
     }
   };
 
+  const handleGoogleLogin = async () => {
+    const currentUrl = window.location.origin;
+
+    // Try both backend URLs
+    const backendUrls = ['https://prime-label-api.onrender.com', 'https://elabel-api-9d597d4b4feb.herokuapp.com'];
+
+    // Check which backend is available
+    let workingBackendUrl = null;
+    for (const url of backendUrls) {
+      try {
+        const response = await fetch(`${url}/health`);
+        if (response.ok) {
+          workingBackendUrl = url;
+          break;
+        }
+      } catch (error) {
+        continue;
+      }
+    }
+
+    // Use the working backend URL or default to the first one
+    const apiUrl = workingBackendUrl || backendUrls[0];
+
+    window.location.href = `${apiUrl}/api/auth/google?redirect=${encodeURIComponent(currentUrl)}`;
+  };
+
   return (
     <div
       style={{
