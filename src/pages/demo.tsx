@@ -5,33 +5,32 @@ const baseUrl = import.meta.env.VITE_FRONT_END;
 
 let demoUrls: string[];
 
-// if (import.meta.env.MODE === 'development') {
-//   // In development, use the local server URL
-//   demoUrls = [
-//     `${baseUrl}/ENLIGHTEN-2025-101496`,
-//     `${baseUrl}/MidPharma Inc./MPX-2025-001/batch/LOT_09AV`,
-//     `${baseUrl}/MidPharma Inc./MPX-2025-001/kit/101899`,
-//     `${baseUrl}/CO45 Pharmaceuticals/CO45-2025-001/batch/LOT_06RS`,
-//   ];
-// } else {
-//   // In production, use the configured front-end URL
-//   demoUrls = [
-//     `${baseUrl}/ENLIGHTEN-2025-101496`,
-//     `${baseUrl}/MidPharma Inc./MPX-2025-001/batch/LOT_09AV`,
-//     `${baseUrl}/MidPharma Inc./MPX-2025-001/kit/101899`,
-//     // `${baseUrl}/CO92/CO92-2025-001/batch/LOT_01CV`,
-//     `${baseUrl}/CO45 Pharmaceuticals/CO45-2025-001/batch/LOT_06RS`,
-//   ];
-// }
-
- demoUrls = [
-    `${baseUrl}/ENLIGHTEN-2025x-102201`,
-    `${baseUrl}/MidPharma Inc./MPX-2025-002/batch/LOT_07AV`,
-    `${baseUrl}/MidPharma Inc./MPX-2025-002/kit/102201`,
-    `${baseUrl}/CO92/CO92-2025-001/batch/LOT_01CV`,
+if (import.meta.env.MODE === 'development') {
+  // In development, use the local server URL
+  demoUrls = [
+    `${baseUrl}/ENLIGHTEN-2025-101496`,
+    `${baseUrl}/MidPharma Inc./MPX-2025-001/batch/LOT_09AV`,
+    `${baseUrl}/MidPharma Inc./MPX-2025-001/kit/101899`,
     `${baseUrl}/CO45 Pharmaceuticals/CO45-2025-001/batch/LOT_06RS`,
   ];
+} else {
+  // In production, use the configured front-end URL
+  demoUrls = [
+    `${baseUrl}/ENLIGHTEN-2025-101496`,
+    `${baseUrl}/MidPharma Inc./MPX-2025-001/batch/LOT_09AV`,
+    `${baseUrl}/MidPharma Inc./MPX-2025-001/kit/101899`,
+    // `${baseUrl}/CO92/CO92-2025-001/batch/LOT_01CV`,
+    `${baseUrl}/CO45 Pharmaceuticals/CO45-2025-001/batch/LOT_06RS`,
+  ];
+}
 
+// demoUrls = [
+//   `${baseUrl}/ENLIGHTEN-2025x-102201`,
+//   `${baseUrl}/MidPharma Inc./MPX-2025-002/batch/LOT_07AV`,
+//   `${baseUrl}/MidPharma Inc./MPX-2025-002/kit/102201`,
+//   `${baseUrl}/CO92/CO92-2025-001/batch/LOT_01CV`,
+//   `${baseUrl}/CO45 Pharmaceuticals/CO45-2025-001/batch/LOT_06RS`,
+// ];
 
 const DemoPage: React.FC = () => {
   return (
