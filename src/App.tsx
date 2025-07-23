@@ -24,6 +24,7 @@ export default function App() {
           }}
         >
           <Routes>
+            <Route path="/" element={<LabelLookup />} />
             <Route path="/lookup" element={<LabelLookup />} />
             <Route path="/demo" element={<DemoPage />} />
             <Route path="/:identifierCode" element={<LabelPage />} />
