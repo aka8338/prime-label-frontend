@@ -3,7 +3,6 @@ import LabelDisplayWrapper from '@/components/LabelDisplayWrapper';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import medbackImage from '../assets/medback.png';
 import type { Label } from '../types/label';
 
 interface LabelPageProps {
@@ -23,12 +22,8 @@ const LabelPage = ({ preloadedLabel }: LabelPageProps) => {
   const [label, setLabel] = useState<Label | null>(preloadedLabel || null);
   const [isLoaded, setIsLoaded] = useState(!!preloadedLabel);
 
-  const backgroundStyle = {
-    backgroundImage: `url(${medbackImage})`,
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat',
-    backgroundAttachment: 'fixed',
+  const pageStyle = {
+    backgroundColor: '#f8f9fa', // Light white color
     minHeight: '100vh',
   };
 
@@ -72,7 +67,7 @@ const LabelPage = ({ preloadedLabel }: LabelPageProps) => {
   // Show loading screen while fetching (only if no preloaded data)
   if (!isLoaded || !label) {
     return (
-      <div style={backgroundStyle} className="min-h-screen flex items-center justify-center">
+      <div style={pageStyle} className="min-h-screen flex items-center justify-center">
         <div className="bg-white bg-opacity-95 p-8 rounded-xl shadow-2xl max-w-md mx-auto">
           <div className="text-center">
             <div className="flex justify-center mb-4">
@@ -91,7 +86,7 @@ const LabelPage = ({ preloadedLabel }: LabelPageProps) => {
 
   // Render label with data
   return (
-    <div style={backgroundStyle} className="min-h-screen">
+    <div style={pageStyle} className="min-h-screen">
       <div className="max-w-4xl mx-auto p-6">
         <LabelDisplayWrapper label={label} />
       </div>
