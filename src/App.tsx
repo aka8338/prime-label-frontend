@@ -9,11 +9,12 @@ import LabelPage from './pages/LabelPage';
 export default function App() {
   const baseUrl = import.meta.env.VITE_FRONT_END;
   const marketingSite = baseUrl + '/website/index.html';
+  const mainWebsite = baseUrl + '/main-website/index.html';
 
   return (
     <Router>
       <div style={{ backgroundColor: '#f3f4f6', minHeight: '100vh' }}>
-        <Navbar marketingSite={marketingSite} />
+        <Navbar marketingSite={marketingSite} mainWebsite={mainWebsite} />
 
         <main
           style={{

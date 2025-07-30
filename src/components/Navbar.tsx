@@ -2,9 +2,10 @@ import { Link } from 'react-router-dom';
 
 interface NavbarProps {
   marketingSite: string;
+  mainWebsite: string;
 }
 
-export default function Navbar({ marketingSite }: NavbarProps) {
+export default function Navbar({ marketingSite, mainWebsite }: NavbarProps) {
   return (
     <header
       className="shadow-lg border-b border-gray-600"
@@ -28,6 +29,15 @@ export default function Navbar({ marketingSite }: NavbarProps) {
             <Link to="/demo" className="text-gray-300 hover:text-white hover:bg-gray-600 px-4 py-2 rounded-md text-base font-medium transition-all duration-200">
               Demo
             </Link>
+            <span className="text-gray-400 text-lg">|</span>
+            <a
+              href={mainWebsite}
+              className="text-gray-300 hover:text-white hover:bg-gray-600 px-4 py-2 rounded-md text-base font-medium transition-all duration-200"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Main Website
+            </a>
             <span className="text-gray-400 text-lg">|</span>
             <a
               href={marketingSite}
