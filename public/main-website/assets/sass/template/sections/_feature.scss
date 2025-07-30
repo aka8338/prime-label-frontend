@@ -1,0 +1,866 @@
+/* feature ---------------------------------- */
+.feature {
+    &-list-wrap {
+        background: #F2F5FA;
+    }
+}
+
+.feature-item {
+    position: relative;
+    border-radius: 0;
+    padding: 35px 140px;
+    transition: all 0.4s ease-in-out;
+
+    @media (max-width: 1900px) {
+        padding: 40px 100px;
+    }
+
+    @media (max-width: 1600px) {
+        padding: 40px 80px;
+    }
+
+    @include xxl {
+        padding: 40px;
+    }
+
+    @include xs {
+        padding: 20px;
+    }
+
+    &_icon {
+        width: 64px;
+        height: 64px;
+        line-height: 64px;
+        text-align: center;
+        display: block;
+        margin: auto;
+        background: $white-color;
+        border-radius: 20px;
+        margin-top: 0;
+        margin-bottom: 0;
+        margin-right: 20px;
+    }
+
+    &_text {
+        font-weight: 400;
+        line-height: 26px;
+        margin-bottom: -0.4rem;
+        transition: .4s;
+    }
+
+    .box-title {
+        font-size: 24px;
+        margin-bottom: 7px;
+        transition: .4s;
+
+        @include xl {
+            font-size: 20px;
+        }
+    }
+
+    img {
+        transition: all 0.4s ease-in-out;
+    }
+
+    &:hover {
+        background-color: $theme-color;
+
+        .feature-item {
+            &_icon {
+                background-color: $white-color;
+
+                img {
+                    transform: rotateY(180deg);
+                }
+            }
+
+            &_text {
+                color: $white-color;
+            }
+        }
+
+        .box-title {
+            color: $white-color;
+        }
+    }
+}
+
+.feature-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+
+    .feature-icon {
+        i {
+            font-size: 46px;
+            font-weight: 300;
+            line-height: 56px;
+        }
+    }
+
+    .header-info {
+        &_link {
+            font-family: $title-font;
+            font-size: 30px;
+            font-weight: 600;
+            line-height: 40px;
+            color: $title-color;
+            margin-bottom: -0.5rem;
+
+            &:hover {
+                color: $theme-color;
+            }
+
+            a {
+                color: inherit;
+            }
+        }
+
+        &_label {
+            font-family: $body-font;
+            color: $body-color;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 24px;
+            margin-bottom: 0;
+
+        }
+    }
+}
+
+
+// circle process -----------------------------
+.feature-circle {
+    &-wrap {
+        display: grid;
+        grid-template-columns: auto auto;
+        gap: 40px;
+        border-bottom: 1px solid #E4E4E4;
+        border-top: 1px solid #E4E4E4;
+        margin: 40px 0;
+        padding: 40px 0;
+
+        @include sm {
+            display: block;
+        }
+
+        &.style2 {
+            grid-template-columns: auto auto auto;
+            border: none;
+            padding: 0;
+            margin: 0;
+        }
+    }
+
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    max-width: 289px;
+
+
+    @include sm {
+        &:not(:last-child) {
+            margin-bottom: 30px;
+        }
+    }
+
+    .box-title {
+        line-height: 34px;
+        margin-bottom: 0px;
+    }
+
+    &_text {
+        margin-bottom: 0px;
+        font-size: 14px;
+    }
+
+    .progressbar {
+        position: relative;
+        max-height: 100px;
+    }
+
+    .circle-num {
+        font-size: 30px;
+        font-weight: 600;
+        color: $title-color;
+        font-family: $title-font;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100px;
+        height: 100px;
+        line-height: 100px;
+        margin: 5px;
+        text-align: center;
+        
+    }
+
+}
+
+.about-circle {
+    &:not(:last-child){
+        @include sm{
+            margin-bottom: 30px;
+        }
+    }
+    &-wrap {
+        display: grid;
+        grid-template-columns: auto auto auto;
+        gap: 40px;
+        margin-right: 50px;
+
+        @include sm {
+            margin-right: 0;
+            display: block;
+        }
+    }
+
+    .box-title {
+        color: $white-color;
+        font-weight: 500;
+        text-align: center;
+        font-size: 18px;
+        line-height: 28px;
+        margin-bottom: 0px;
+    }
+
+    &_text {
+        margin-bottom: 0px;
+        font-size: 14px;
+    }
+
+    .progressbar {
+        position: relative;
+        max-height: 160px;
+        margin-bottom: 24px;
+        @include sm {
+            text-align: center;
+        }
+    }
+
+    .circle-num {
+        font-size: 40px;
+        font-weight: 600;
+        color: $white-color;
+        font-family: $title-font;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 160px;
+        height: 160px;
+        line-height: 160px;
+        margin: 5px;
+        text-align: center;
+
+        @include sm{
+            right: 0;
+            left: 0;
+            margin: auto;
+        }
+
+    }
+
+}
+
+/* Choose ---------------------------------- */
+
+.choose-about {
+    display: flex;
+    align-items: flex-start;
+    gap: 25px;
+    max-width: 621px;
+
+    &.style2 {
+        gap: 16px;
+        align-items: center;
+        transition: all 0.4s ease-in-out;
+        background-color: transparent;
+        border-radius: 20px;
+        padding: 20px 24px;
+
+        .choose-about {
+            &_icon {
+                background-color: transparent;
+                box-shadow: none;
+                border-radius: 0;
+            }
+
+            &_text {
+                margin-bottom: 0;
+            }
+        }
+
+        .box-title {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+
+
+        &:hover {
+            background-color: $white-color;
+            box-shadow: 0px 2px 6px rgba(40, 41, 61, 0.02), 0px 16px 24px rgba(96, 97, 112, 0.12);
+
+        }
+
+        &:not(:last-child) {
+            margin-bottom: 0px;
+        }
+
+        &.item-active {
+            background-color: $white-color;
+            box-shadow: 0px 2px 6px rgba(40, 41, 61, 0.02), 0px 16px 24px rgba(96, 97, 112, 0.12);
+
+        }
+    }
+
+    &:not(:last-child) {
+        margin-bottom: 25px;
+    }
+
+    @include xs {
+        gap: 20px;
+    }
+
+    @include vxs {
+        display: block;
+    }
+
+    &_icon {
+        width: 80px;
+        height: 80px;
+        line-height: 80px;
+        text-align: center;
+        background-color: $theme-color;
+        border-radius: 24px;
+
+        @include vxs {
+            display: block;
+            margin: auto auto 20px auto;
+        }
+
+    }
+
+    &_text {
+        margin-bottom: 0;
+
+        @include vxs {
+            text-align: center;
+        }
+    }
+
+    img {
+        transition: all 0.4s ease-in-out;
+    }
+
+    .box-title {
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 3px;
+
+        @include vxs {
+            text-align: center;
+        }
+    }
+
+    &:hover {
+        .choose-about {
+            &_icon {
+                img {
+                    transform: rotateY(180deg);
+                }
+            }
+        }
+    }
+}
+
+.choose-area {
+    position: relative;
+    z-index: 2;
+    clip-path: path("M1920 0H0V597V603V647.237L162.995 713.921C283.181 763.091 411.793 788.383 541.648 788.383H1378.35C1508.21 788.383 1636.82 763.091 1757.01 713.921L1920 647.237V603V597V0Z");
+
+    @media(min-width: 1930px) {
+        clip-path: path("M0 0H3333V645.762L2852.45 764.707C2773.84 784.164 2693.16 794 2612.18 794H720.818C639.838 794 559.158 784.164 480.551 764.707L0 645.762V0Z");
+    }
+
+    @include lg {
+        clip-path: none;
+    }
+}
+
+.choose-tab-area {
+    @include lg {
+        margin: 80px 0;
+    }
+}
+
+.choose-image {
+    position: relative;
+    margin-left: -110px;
+
+    @include lg {
+        margin: 0;
+    }
+
+    .choose-text {
+        -webkit-text-fill-color: rgba(255, 255, 255, 0.06);
+        -webkit-text-stroke-color: rgba(255, 255, 255, 0.06);
+        font-family: $title-font;
+        font-weight: 900;
+        font-size: 114px;
+        line-height: 94px;
+        text-transform: uppercase;
+        transform: rotate(-90deg);
+        position: absolute;
+        top: 38%;
+        left: -58.5%;
+        margin: 0;
+    }
+}
+
+.choose-text {
+    color: #888C97;
+}
+
+.mission-content {
+    .checklist {
+        li {
+            color: $white-color;
+        }
+    }
+
+    .mission-text {
+        color: $gray-color;
+    }
+}
+
+.features-wrapper {
+    display: flex;
+    justify-content: space-between;
+
+
+    @include xl {
+        display: block;
+    }
+
+    .features-img {
+        min-width: 300px;
+
+        @include xl {
+            min-width: 100%;
+            margin-top: 20px;
+        }
+
+        img {
+            width: 100%;
+        }
+    }
+}
+
+.features-content {
+    .box-title {
+        margin-bottom: 5px;
+    }
+
+    .checklist li:not(:last-child) {
+        margin-bottom: 5px;
+    }
+}
+
+.feature-text {
+    font-size: 18px;
+    max-width: 773px;
+    display: block;
+    margin: auto;
+}
+
+/* choose-item */
+.choose-item {
+    display: flex;
+    gap: 24px;
+
+    &_wrapper {
+        display: grid;
+        grid-template-columns: auto auto auto auto auto;
+
+        @include lg {
+            grid-template-columns: auto auto auto;
+            gap: 40px 10px;
+        }
+
+        @include md {
+            grid-template-columns: auto auto;
+            gap: 40px 20px;
+        }
+
+        @include xs {
+            grid-template-columns: auto;
+        }
+    }
+
+    &.style3 {
+        display: block;
+        text-align: center;
+
+        .box-icon {
+            width: 100px;
+            height: 100px;
+            line-height: 100px;
+            border-radius: 50%;
+            display: block;
+            margin: auto auto 30px auto;
+        }
+
+        & > .box-title {
+            font-size: 18px;
+        }
+
+        .box-text {
+            max-width: 300px;
+            display: block;
+            margin: auto;
+
+            @media(max-width: 1699px) {
+                max-width: 250px;
+            }
+
+            @include ml {
+                max-width: 230px;
+            }
+
+            @include lg {
+                max-width: 100%;
+            }
+        }
+    }
+
+    .box-icon {
+        width: 80px;
+        height: 80px;
+        line-height: 80px;
+        text-align: center;
+        background: #E9F6F9;
+        border-radius: 30px;
+
+        img {
+            transform: all 0.4s ease-in-out;
+        }
+
+    }
+
+    .box-title {
+        margin-bottom: 10px;
+    }
+
+    .box-text {
+        max-width: 277px;
+        margin-bottom: 0;
+    }
+
+    &:hover {
+        .box-icon {
+            img {
+                transform: rotateY(180deg);
+            }
+        }
+    }
+}
+
+/* choose-area2 start -------------------*/
+.choose-area2 {
+    max-width: 1760px;
+    display: block;
+    margin: auto;
+    background: $title-color;
+    border-radius: 30px;
+    padding: 60px 0;
+
+    @media(max-width: 1799px) {
+        border-radius: 0;
+    }
+
+}
+
+// feartured-3 start
+.featured {
+    &-wrapp-3 {
+        position: relative;
+        padding: 40px;
+        border-radius: 100px;
+        background: $white-color;
+        border-bottom: 2px solid $theme-color;
+        margin-top: -60px;
+        z-index: 2;
+
+        @include md {
+            margin-top: -130px;
+        }
+
+        & .feature {
+            &-item {
+                padding: 0;
+
+                &:hover {
+                    background: none;
+
+                    & .box-title {
+                        color: $title-color;
+                    }
+
+                    & .feature-item_text {
+                        color: $body-color;
+                    }
+                }
+
+                &_icon {
+                    width: auto;
+                    height: auto;
+                    line-height: 1;
+                    text-align: start;
+                    display: inline-block;
+
+                    @include xs {
+                        margin-bottom: 20px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* featured-4 start -------------------*/
+.feature-item {
+    &.style-4 {
+        padding: 24px;
+        background: $smoke-color;
+        border-radius: 24px;
+        transition: .4s;
+        padding-bottom: 1px;
+
+        & .feature {
+            &_icon {
+                width: 100px;
+                height: 100px;
+                background: $white-color;
+                border-radius: 100px;
+                line-height: 100px;
+                text-align: center;
+                margin: auto;
+                margin-bottom: 24px;
+            }
+
+            &_content {
+                & .box-title {
+                    font-weight: 600;
+                    font-size: 22px;
+                    line-height: 1.2;
+                    text-transform: capitalize;
+                    text-align: center;
+                    transition: .4s;
+                    margin-bottom: 15px;
+                }
+
+                & .sec-text {
+                    transition: .4s;
+                }
+            }
+        }
+
+        &:hover {
+            background: $theme-color;
+
+            & .feature {
+                &_content {
+                    & .sec-text {
+                        color: $white-color;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.feature-4 {
+    &-titlebox {
+        & .sec-title {
+            @include xl {
+                font-size: 40px;
+            }
+
+            @include lg {
+                font-size: 35px;
+            }
+
+            @include sm {
+                font-size: 26px;
+            }
+        }
+
+        & .sec-text{
+            & br{
+                @include sm{
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+/* featured-4 end -------------------*/
+
+/* featured-5 start -------------------*/
+.feature-item{
+    &.style-5{
+        padding: 0;
+        background: none;
+
+        & .feature{
+            &_icon{
+                width: 200px;
+                height: 300px;
+                line-height: 300px;
+                background: $dark-bg-color;
+                border-radius: 200px;
+                text-align: center;
+                margin: auto;
+                margin-bottom: 24px;
+                border: 1px solid rgba($color: #fff, $alpha: .14);
+            }
+        }
+
+        & .box-title{
+            font-size: 20px;
+            margin-bottom: 13px;
+        }
+
+        & .sec-text{
+            color: $border-color;
+            margin-bottom: 0;
+        }
+    }
+}
+
+/* featured-5 end -------------------*/
+
+
+
+
+// circle process -----------------------------
+// .feature-circle {
+//     &-wrap {
+//         display: grid;
+//         grid-template-columns: auto auto;
+//         gap: 40px;
+//         border-bottom: 1px solid #E4E4E4;
+//         border-top: 1px solid #E4E4E4;
+//         margin: 40px 0;
+//         padding: 40px 0;
+
+//         @include sm {
+//             display: block;
+//         }
+
+//         &.style2 {
+//             grid-template-columns: auto auto auto;
+//             border: none;
+//             padding: 0;
+//             margin: 0;
+//         }
+//     }
+
+//     display: flex;
+//     align-items: center;
+//     gap: 15px;
+//     max-width: 289px;
+
+
+//     @include sm {
+//         &:not(:last-child) {
+//             margin-bottom: 30px;
+//         }
+//     }
+
+//     .box-title {
+//         line-height: 34px;
+//         margin-bottom: 0px;
+//     }
+
+//     &_text {
+//         margin-bottom: 0px;
+//         font-size: 14px;
+//     }
+
+//     .progressbar {
+//         position: relative;
+//         max-height: 100px;
+//     }
+
+//     .circle-num {
+//         font-size: 30px;
+//         font-weight: 600;
+//         color: $title-color;
+//         font-family: $title-font;
+//         position: absolute;
+//         top: 0;
+//         left: 0;
+//         width: 100px;
+//         height: 100px;
+//         line-height: 100px;
+//         margin: 5px;
+//         text-align: center;
+//     }
+
+// }
+
+
+// .about-circle {
+//     &-wrap {
+//         display: grid;
+//         grid-template-columns: auto auto auto;  
+//         gap: 40px;
+//         margin-right: 50px;
+
+//         @include sm {
+//             display: block;
+//         }
+//     }
+
+//     .box-title {
+//         color: $white-color;
+//         font-weight: 500;
+//         text-align: center;
+//         font-size: 18px;
+//         line-height: 28px;
+//         margin-bottom: 0px;
+//     }
+
+//     &_text {
+//         margin-bottom: 0px;
+//         font-size: 14px;
+//     }
+
+//     .progressbar {
+//         position: relative;
+//         max-height: 160px;
+//         margin-bottom: 24px;
+//     }
+
+//     .circle-num {
+//         font-size: 40px;
+//         font-weight: 600;
+//         color: $white-color;
+//         font-family: $title-font;
+//         position: absolute;
+//         top: 0;
+//         left: 0;
+//         width: 160px;
+//         height: 160px;
+//         line-height: 160px;
+//         margin: 5px;
+//         text-align: center;
+
+
+        
+//     }
+
+// }

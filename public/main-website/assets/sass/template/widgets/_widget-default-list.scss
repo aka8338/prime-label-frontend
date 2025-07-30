@@ -1,0 +1,115 @@
+.widget_nav_menu,
+.widget_meta,
+.widget_pages,
+.widget_archive,
+.widget_categories,
+.wp-block-categories {
+    
+    & ul {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 0 0;
+        & > .menu {
+            margin: -20px 0 -20px 0; 
+        }
+    }
+
+    & li {
+        display: block;
+        position: relative;
+        &:not(:last-child){
+            margin-bottom: 14px;
+        }
+
+        &>span {
+            color: $body-color;
+            text-align: center;
+            position: absolute;
+            right: 22px;
+            top: 14px;
+            transition: all ease 0.4s;
+            pointer-events: none;
+            min-width: 20px;
+            text-align: right;
+        }
+    }
+
+    a {
+        display: block;
+        margin: 0;
+        padding: 16px 25px 19px 25px;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 1.313;
+        color: var(--title-color);
+        border-radius: 10px;
+        background-color: $white-color;
+        &:hover {
+            color: $white-color;
+            background-color: $theme-color;
+            ~span {
+                color: $white-color;
+            }
+        }
+
+        img ,
+        i {
+            margin-right: 8px;
+        }
+    }
+    .children {
+        li {
+            a {
+                border-bottom: 1px solid var(--gray-color); 
+            }
+        }
+    }
+}
+
+
+.wp-block-categories {
+    list-style: none;
+    padding: 0;
+
+    >li {
+        &:last-child {
+            >a {
+                border-bottom: none;
+            }
+        }
+    }
+}
+
+.widget_nav_menu,
+.widget_meta,
+.widget_pages {
+    a {
+        padding-right: 20px;
+    }
+}
+
+.widget_nav_menu {
+    .sub-menu {
+        margin-left: 10px;
+        li {
+            a {
+                border-bottom: 1px solid var(--gray-color); 
+            }
+        }
+    }
+}
+
+.wp-block-archives {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 20px;
+
+    a:not(:hover) {
+        color: inherit;
+    }
+}
+
+.th-blog ul.wp-block-archives li {
+    margin: 5px 0;
+}

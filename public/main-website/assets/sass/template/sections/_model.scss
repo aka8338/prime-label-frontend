@@ -1,0 +1,62 @@
+.mfp-wrap {
+    transform: translateY(-65px);
+    transition: all 1s ease-out;
+
+    &.mfp-ready {
+        transform: translateY(0);
+    }
+
+}
+
+.popup-login-register {
+    position: relative;
+    max-width: 606px;
+    display: block;
+    margin: auto;
+    background: $white-color;
+    border-radius: 16px;
+    padding: 40px;
+
+    ul {
+        gap: 30px;
+        border-bottom: 3px solid $border-color;
+        margin-bottom: 28px;
+
+        li {
+            .nav-menu {
+                position: relative;
+                background: transparent;
+                font-size: 18px;
+                color: $body-color;
+                border: none;
+                font-family: $title-font;
+                font-weight: 600;
+                padding: 0;
+                padding-bottom: 20px;
+
+                &:before {
+                    content: '';
+                    height: 3px;
+                    width: 100%;
+                    position: absolute;
+                    bottom: -3px;
+                    left: 0;
+                }
+
+
+                &.active {
+                    color: $black-color2;
+
+                    &:before {
+                        background-color: $theme-color;
+                    }
+                }
+            }
+        }
+    }
+    .box-title{
+        font-size: 28px;
+        font-weight: 700;
+        
+    }
+}

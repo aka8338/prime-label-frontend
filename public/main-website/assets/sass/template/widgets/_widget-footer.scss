@@ -1,0 +1,308 @@
+.footer-widget {
+    margin-bottom: 50px;
+
+    @include md {
+        margin-bottom: 0;
+    }
+
+    &,
+    .widget {
+        padding: 0;
+        border: none;
+        padding-bottom: 0;
+        background-color: transparent;
+        box-shadow: none;
+    }
+
+    .form-group {
+        >i {
+            color: $theme-color;
+            top: 18px;
+        }
+    }
+
+    .widget_title {
+        font-size: 20px;
+        padding: 0;
+        margin: -0.12em 0 30px 0;
+        color: $white-color;
+
+        &:before,
+        &:after {
+            display: none;
+        }
+    }
+
+    &.widget_meta,
+    &.widget_pages,
+    &.widget_archive,
+    &.widget_categories,
+    &.widget_nav_menu {
+        ul {
+            margin-top: -4px;
+        }
+
+        .menu,
+        >ul {
+            margin-bottom: -4px;
+        }
+
+        a {
+            font-size: 16px;
+            font-weight: 400;
+            padding: 0;
+            margin-bottom: 21px;
+            font-family: $body-font;
+            color: #B1B8C3;
+            display: block;
+            max-width: 100%;
+            width: max-content;
+            padding: 0 0 0 25px;
+            background-color: transparent;
+            border-bottom: none;
+            position: relative;
+
+            &:before {
+                content: "\f105";
+                position: absolute;
+                font-weight: 600;
+                left: 0;
+                top: 2px;
+                font-family: $icon-font;
+                transform: translateY(0);
+                font-size: 0.9em;
+                background-color: transparent;
+                border: none;
+                color: inherit;
+            }
+
+            &:hover {
+                background-color: transparent;
+                color: $theme-color;
+                box-shadow: none;
+
+                &:before {
+                    color: $theme-color;
+                }
+            }
+        }
+
+        li {
+            >span {
+                @include equal-size(auto);
+                position: relative;
+                background-color: transparent;
+                color: $body-color;
+                line-height: 1;
+            }
+
+            &:last-child {
+                a {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+
+    .recent-post {
+        max-width: 300px;
+        margin-top: -0.4em;
+        margin-bottom: 20px;
+
+        .media-img {
+            max-width: 74px;
+
+            &:after {
+                line-height: 74px;
+            }
+        }
+
+        .post-title {
+            color: $white-color;
+            font-weight: 500;
+        }
+
+        &:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: 0;
+        }
+
+        .recent-post-meta {
+            a {
+                font-weight: 400;
+                line-height: 1.2;
+            }
+
+            i {
+                color: $theme-color;
+            }
+
+            a:hover {
+                i {
+                    color: $theme-color;
+                }
+            }
+        }
+    }
+
+    .about-text {
+        color: #B1B8C3;
+    }
+
+    .th-widget{
+        &-contact {
+            .info-box_text {
+                & a {
+                    color: #B1B8C3;
+                }
+    
+                & .details p {
+                    color: #B1B8C3;
+                }
+            }
+        }
+    }
+}
+
+.about-logo {
+    margin-bottom: 15px;
+}
+
+.th-widget {
+    &-about {
+        .about-logo {
+            margin-bottom: 33px;
+        }
+
+        .about-text {
+            margin-bottom: 20px;
+            margin-top: -0.5em;
+        }
+
+        .th-social {
+            & a {
+                color: $title-color;
+
+                &:hover {
+                    color: $white-color;
+                }
+            }
+        }
+
+        .footer-info {
+            position: relative;
+            display: flex;
+            flex: 1;
+            color: #B1B8C3;
+            line-height: 26px;
+            padding: 0 0 0 35px;
+            max-width: 277px;
+            margin-top: 0;
+
+            &:not(:last-child) {
+                margin: 0 0 35px 0;
+            }
+
+            i {
+                display: inline-block;
+                width: 26px;
+                height: 26px;
+                line-height: 26px;
+                text-align: center;
+                background-color: var(--theme-color);
+                color: $white-color;
+                position: absolute;
+                left: 0;
+                font-size: 10px;
+            }
+
+            &-title {
+                font-size: 18px;
+                font-family: $title-font;
+                font-weight: 600;
+                text-transform: capitalize;
+                color: $white-color;
+                margin-bottom: 5px;
+                margin-top: -0.2em;
+            }
+        }
+    }
+
+    &-contact {
+        .info-box_text {
+            & a {
+                color: $body-color;
+            }
+
+            & .details p {
+                color: $body-color;
+            }
+        }
+    }
+}
+
+.footer-text {
+    margin-top: -0.5em;
+    margin-bottom: 25px;
+}
+
+.social-box {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+
+    .social-title {
+        font-size: 20px;
+        color: $white-color;
+        font-weight: 600;
+        margin-right: 20px;
+        margin-bottom: 0;
+    }
+}
+
+.icon-group {
+    a {
+        color: $white-color;
+        font-size: 18px;
+        margin-right: 17px;
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+}
+
+
+@include lg {
+    .footer-widget {
+
+        &.widget_meta,
+        &.widget_pages,
+        &.widget_archive,
+        &.widget_categories,
+        &.widget_nav_menu {
+            a {
+                margin-bottom: 16px;
+            }
+
+        }
+    }
+}
+
+@include sm {
+    .footer-widget {
+        .widget_title {
+            margin-bottom: 35px;
+        }
+    }
+
+    .th-widget-about .about-text {
+        margin-bottom: 20px;
+        ;
+    }
+
+    .social-box.mb-30 {
+        margin-bottom: 25px;
+    }
+}

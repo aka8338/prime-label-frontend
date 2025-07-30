@@ -1,0 +1,187 @@
+/* Process 1 start  ---------------------------------- */
+.process {
+    &-item {
+        padding: 24px 30px;
+        border: 1px solid $border-color;
+        border-radius: 150px 150px 100px 100px;
+        background-color: $white-color;
+        @include sm {
+            border-radius: 40px;
+        }
+        &:hover {
+            & .process {
+                &-img {
+                    & img {
+                        transform: scale(1.2);
+                    }
+                }
+
+                &-icon {
+                    background: $theme-color;
+
+                    & img {
+                        filter: brightness(0) invert(1);
+                    }
+                }
+            }
+        }
+
+        &.style-2 {
+            & .box-number {
+                color: $title-color;
+            }
+        }
+    }
+
+    &-content {
+        & .box-number {
+            color: $title-color;
+            margin-bottom: 0;
+        }
+    }
+
+    &-img {
+        overflow: hidden;
+        border-radius: 200px;
+        @include sm {
+            border-radius: 32px;
+        }
+        & img {
+            overflow: hidden;
+            width: 100%;
+            border-radius: 200px;
+            transition: 1.4s;
+            @include sm {
+                border-radius: 32px;
+            }
+        }
+    }
+
+    &-text {
+        line-height: 1.5;
+        margin-bottom: 14px;
+        text-transform: capitalize;
+    }
+
+    &-icon {
+        width: 250px;
+        height: 250px;
+        line-height: 250px;
+        background: $smoke-color;
+        border-radius: 50%;
+        transition: .4s;
+
+        & img {
+            transition: .4s;
+        }
+    }
+}
+
+/* Process 1 send  ---------------------------------- */
+
+/* Process 2 send  ---------------------------------- */
+.process-item {
+    &.style-2 {
+        padding: 24px;
+
+        & .process-icon {
+            text-align: center;
+            margin: auto;
+            margin-bottom: 24px;
+        }
+    }
+}
+
+/* Process 2 end  ---------------------------------- */
+
+/* Process 3 start  ---------------------------------- */
+.process3-wrapp {
+    padding: 60px;
+    margin: 0 80px;
+    border-radius: 30px;
+    @include md{
+        margin: 0;
+    }
+    @include xs{
+        padding: 20px 10px;
+    }
+
+    & .row {
+        [class*="col-"] {
+            &:last-child{
+                & .process-card{
+                    &.card3 {
+                        &::after{
+                            display: none;
+                        }
+                    }
+                }
+            }
+            &:nth-child(2n+2){
+                @include lg{
+                    & .process-card{
+                        &.card3 {
+                            &::after{
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.process-card {
+    &.card3 {
+        position: relative;
+        &::after{
+            position: absolute;
+            top: 0;
+            right: -9.5%;
+            width: 2px;
+            height: 100%;
+            content: "";
+            background: rgba($color: #fff, $alpha: .1);
+            @include md{
+                right: -11.5%;
+            }
+            @include sm{
+                display: none;
+            }
+        }
+
+        & .process-card {
+            &_img {
+                overflow: hidden;
+                border-radius: 10px;
+                & img {
+                    width: 100%;
+                    overflow: hidden;
+                    border-radius: 10px;
+                    transition: 1.3s;
+                    &:hover{
+                        transform: scale(1.3);
+                    }
+                }
+            }
+
+            &_content {
+                padding: 0 35px;
+                @include xxl{
+                    padding: 0;
+                }
+            }
+        }
+
+        & .sec-text {
+            text-align: center;
+            max-width: 300px;
+            margin-bottom: 0;
+            margin: auto;
+            color: $border-color;
+        }
+    }
+}
+
+/* Process 3 end  ---------------------------------- */

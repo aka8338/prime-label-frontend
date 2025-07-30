@@ -1,0 +1,101 @@
+@include ml {
+    :root {
+        --main-container: 1250px;
+    }
+}
+
+
+@media only screen and (min-width: 1300px) {
+
+    .container-xxl,
+    .container-xl,
+    .container-lg,
+    .container-md,
+    .container-sm,
+    .container {
+        max-width: calc(var(--main-container) + var(--container-gutters));
+        padding-left: calc(var(--container-gutters) / 2);
+        padding-right: calc(var(--container-gutters) / 2);
+
+        &.px-0 {
+            max-width: var(--main-container);
+        }
+    }
+}
+
+@media only screen and (min-width: 1300px) {
+    .th-container {
+        --main-container: 1776px;
+    }
+}
+
+@media only screen and (min-width: 1300px) {
+    .th-container2 {
+        --main-container: 1544px;
+    }
+}
+
+@media only screen and (min-width: 1300px) {
+    .th-container3 {
+        --main-container: 1720px;
+    }
+}
+
+@media only screen and (min-width: 1300px) {
+    .th-container4 {
+        --main-container: 1800px;
+    }
+}
+
+@media only screen and (min-width: 1300px) {
+    .th-container5 {
+        --main-container: 1760px;
+    }
+}
+
+@media only screen and (max-width: 1600px) {
+    .container-fluid.px-0 {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+
+        .row {
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+        }
+    }
+}
+
+.th-container-1568 {
+    --main-container: 1568px;
+
+    @media (max-width: 992px) {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+}
+
+@media only screen and (min-width: 1300px) {
+    .th-container6 {
+        --main-container: 1680px;
+    }
+}
+
+.container-gallery {
+    max-width: 1840px;
+}
+
+.container-choose {
+    max-width: 1656px;
+
+    @include xxl {
+        max-width: 1350px;
+    }
+
+    @include xl {
+        max-width: 1150px;
+    }
+
+    @include sm {
+        max-width: 450px;
+    }
+}

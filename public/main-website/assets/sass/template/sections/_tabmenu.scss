@@ -1,0 +1,41 @@
+/* case-tabs start ----------------------------*/
+
+.case-tabs {
+    justify-content: center;
+    gap: 21px;
+    border-bottom: 0;
+    margin-top: 50px;
+    @include xxl{
+        gap: 10px;
+    }
+
+    @include lg {
+        justify-content: start;
+        border-bottom: 0;
+        margin-top: 0;
+        margin-bottom: 50px;
+    }
+
+    & .th-btn {
+        font-size: 14px;
+        padding: 6px 24px;
+        border-radius: 10px;
+        color: $black-color2;
+        background-color: #EEF1FF;
+
+        @include xl {
+            padding: 6px 12px;
+        }
+
+        &::before {
+            border-radius: 10px;
+            background-color: $theme-color;
+        }
+
+        &:hover,
+        &.active {
+            color: $white-color;
+            background: $theme-color;
+        }
+    }
+}

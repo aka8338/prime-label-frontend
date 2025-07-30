@@ -1,0 +1,2371 @@
+/* About 1 ---------------------------------- */
+.global-img {
+    position: relative;
+    overflow: hidden;
+    transition: all .5s ease-out;
+
+    &:after {
+        background: rgba(255, 255, 255, .5);
+        content: "";
+        height: 0;
+        left: 0;
+        opacity: 1;
+        pointer-events: none;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 9;
+
+    }
+
+
+    img {
+        width: 100%;
+        object-fit: cover;
+        transition: 1.3s all ease;
+    }
+
+    @include md {
+        min-width: 100%;
+        margin-bottom: 30px;
+    }
+
+    &:hover {
+        &:after {
+            height: 100%;
+            opacity: 0;
+            transition: all .4s linear;
+        }
+
+        img {
+            transform: scale(1.3);
+        }
+    }
+}
+
+/* About area 1 start -------------------------*/
+.img-box1 {
+    position: relative;
+    margin-bottom: 20px;
+
+    @include lg {
+        margin-bottom: 50px;
+    }
+
+    @include xs{
+        text-align: center;
+    }
+
+    .img1 {
+        position: relative;
+        overflow: hidden;
+
+        @include xl {
+            max-width: 280px;
+        }
+
+        @media(max-width: 480px) {
+            max-width: 100%;
+        }
+
+        img {
+            border-radius: 156px 156px 0px 156px;
+        }
+
+    }
+
+    .img2 {
+        position: absolute;
+        top: 0;
+        right: -10px;
+        overflow: hidden;
+
+        @media(max-width: 1399px) {
+            max-width: 280px;
+        }
+
+        @include xl {
+            max-width: 220px;
+        }
+
+        @include lg {
+            right: 40%;
+        }
+
+        @include md {
+            right: 20%;
+        }
+
+        @include sm {
+            right: 0%;
+        }
+
+        @media(max-width: 480px) {
+            display: none;
+        }
+
+
+        img {
+            border-radius: 156px 156px 156px 0px;
+
+
+        }
+    }
+
+    .img3 {
+        position: absolute;
+        bottom: -20px;
+        right: -10px;
+        overflow: hidden;
+
+        @media(max-width: 1399px) {
+            max-width: 280px;
+        }
+
+        @include xl {
+            max-width: 220px;
+        }
+
+        @include lg {
+            right: 40%;
+        }
+
+        @include md {
+            right: 20%;
+        }
+
+        @include sm {
+            right: 0%;
+        }
+
+        @media(max-width: 480px) {
+            display: none;
+        }
+
+        img {
+            border-radius: 0 150px 150px 150px;
+
+
+        }
+    }
+
+}
+
+/* About area 2 start --------------------------*/
+.img-box2 {
+    position: relative;
+    left: -40px;
+
+    @include lg {
+        left: 0;
+        margin-bottom: 80px;
+    }
+
+    @include sm {
+        margin-bottom: 40px;
+    }
+
+    img {
+        @include xs {
+            width: 100%;
+        }
+    }
+
+    .img1 {
+        img {
+            border-radius: 24px;
+        }
+    }
+
+    .img2 {
+        position: absolute;
+        bottom: -11.4%;
+        right: 4.5%;
+
+        @include sm {
+            position: relative;
+            right: unset;
+            bottom: 0;
+            margin-top: 30px;
+        }
+
+        @include xs {
+            position: relative;
+            margin-top: 20px;
+        }
+
+        img {
+            width: 100%;
+            border-radius: 24px;
+        }
+
+        .play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            i {
+                background-color: $theme-color;
+                color: $white-color;
+            }
+        }
+    }
+}
+
+.img-box10 {
+    position: relative;
+    z-index: 2;
+
+    .about-shape2 {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 312px;
+        height: 593px;
+        background-color: $theme-color;
+        border-radius: 156px;
+        z-index: -1;
+
+        @include sm {
+            height: 100%;
+        }
+    }
+
+    & .img1 {
+        border-radius: 30px;
+
+        & img {
+            border-radius: 30px;
+        }
+    }
+
+    & .img2 {
+        position: absolute;
+        bottom: -100px;
+        right: 0;
+        border-radius: 30px;
+
+        & img {
+            border-radius: 30px;
+        }
+    }
+}
+
+.about-item {
+    display: flex;
+    gap: 16px;
+    max-width: 400px;
+
+    &:not(:last-child) {
+        margin-bottom: 30px;
+    }
+
+    &.style2 {
+        .about-item {
+            &_img {
+                background-color: $smoke-color;
+            }
+        }
+    }
+
+    &.style4 {
+        & .about-item {
+            &_img {
+                min-width: 60px;
+                height: 60px;
+                line-height: 60px;
+                border-radius: 50%;
+                background-color: $theme-color;
+            }
+        }
+
+        & .box-title {
+            font-size: 22px;
+        }
+    }
+
+    &_img {
+        min-width: 72px;
+        height: 72px;
+        line-height: 72px;
+        border-radius: 20px;
+        text-align: center;
+        background-color: $theme-color;
+        transition: all 0.4s ease-in-out;
+
+        img {
+            transition: all 0.4s ease-in-out;
+        }
+
+        &:hover {
+            background-color: $title-color;
+
+            img {
+                transform: rotateY(180deg);
+            }
+        }
+
+        &.ab-img7 {
+            background-color: $white-color;
+            border-radius: 50%;
+        }
+    }
+
+    .box-title {
+        margin-bottom: 7px;
+
+        @include vxs {
+            font-size: 20px;
+        }
+    }
+
+    &_text {
+        margin-bottom: -0.3rem;
+    }
+}
+
+.about-shape {
+    & img {
+        border-radius: 24px;
+    }
+}
+
+.about-rating {
+    width: 62px;
+    height: 62px;
+    line-height: 62px;
+    border-radius: 50%;
+    background-color: $white-color;
+    box-shadow: 0px 20px 20px rgba(204, 204, 204, 0.25);
+    text-align: center;
+    padding: 10px;
+
+    i {
+        font-size: 16px;
+        color: #EB5757;
+        display: block;
+
+    }
+
+    span {
+        display: block;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 28px;
+        color: $black-color;
+    }
+
+}
+
+.about-emoji {
+    width: 62px;
+    height: 62px;
+    line-height: 62px;
+    border-radius: 50%;
+    background-color: $white-color;
+    box-shadow: 0px 20px 20px rgba(204, 204, 204, 0.25);
+    text-align: center;
+}
+
+.about-15 {
+    &-title-box {
+        & .title-area {
+            & .sec-title {
+                line-height: 1.3;
+
+                @include xl {
+                    font-size: 40px;
+                }
+
+                @include xs {
+                    font-size: 27px;
+                }
+            }
+        }
+    }
+}
+
+/* About area 2 end -------------------------*/
+
+/* About area 3 start --------------------------*/
+.about-3 {
+    &-titlebox {
+        & .sec-title {
+            @include xl {
+                font-size: 42px;
+            }
+
+            @include lg {
+                font-size: 36px;
+            }
+
+            @include xs {
+                font-size: 30px;
+            }
+        }
+    }
+}
+
+.img-box3 {
+    position: relative;
+    margin-left: -110px;
+
+    @media(max-width: 1599px) {
+        margin-left: 0;
+    }
+
+    @include lg {
+        margin-bottom: 40px;
+    }
+
+    img {
+        @include xs {
+            width: 100%;
+        }
+    }
+
+    .img1 {
+        img {
+            border-radius: 24px;
+        }
+    }
+
+    .img2 {
+        position: absolute;
+        top: 20%;
+        right: 6.5%;
+
+        @include sm {
+            right: 0;
+        }
+
+        @include xs {
+            position: relative;
+            margin-top: 20px;
+        }
+
+        img {
+            border-radius: 24px;
+            border: 5px solid $white-color;
+        }
+    }
+
+    .img3 {
+        position: relative;
+        margin-top: 30px;
+        z-index: 3;
+
+        @include xs {
+            margin-top: 20px;
+        }
+
+        img {
+            border-radius: 24px;
+            border: 5px solid $white-color;
+        }
+    }
+}
+
+/* About area 3 end --------------------------*/
+
+/* About area 4 start --------------------------*/
+.about4 {
+    &-titlebox {
+        & .sec-title {
+            line-height: 1.2;
+        }
+    }
+}
+
+.img-box4 {
+    position: relative;
+
+    @include lg {
+        margin-bottom: 70px;
+    }
+
+    @include vxs {
+        margin-bottom: 10px;
+    }
+
+    .img1 {
+        img {
+            border-radius: 24px;
+        }
+    }
+
+    .img2 {
+        position: absolute;
+        bottom: 0%;
+        left: -10%;
+        z-index: 2;
+
+        @include lg {
+            left: 0;
+        }
+
+        @include vxs {
+            position: relative;
+            top: 15px;
+        }
+
+        &:before {
+            content: "";
+            position: absolute;
+            inset: -5px;
+            left: 1px;
+            bottom: 1px;
+            background-color: var(--white-color);
+            border-radius: 24px;
+            z-index: -1;
+        }
+
+        &:after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(0deg, rgba(13, 13, 12, 0.3), rgba(13, 13, 12, 0.3));
+            border-radius: 24px;
+        }
+
+        .play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        img {
+            width: 100%;
+            border-radius: 24px;
+        }
+    }
+}
+
+/* About area 4 end --------------------------*/
+
+/* About area 5 start ------------------------*/
+.ab5-imgbox {
+    @include lg {
+        margin-bottom: 0;
+    }
+
+
+    & .img2 {
+        bottom: 2%;
+        left: -7%;
+
+        @include xl {
+            left: -17px;
+        }
+
+        @include lg {
+            left: 10%;
+        }
+
+        @include md {
+            left: 0;
+        }
+
+        @include sm {
+            left: 20%;
+        }
+
+        @include xs {
+            left: 0;
+        }
+    }
+}
+
+.ab5-wrapp {
+    margin-left: 85px;
+
+    @include xl {
+        margin-left: 30px;
+    }
+
+    @include lg {
+        margin-left: 0;
+    }
+
+    @include xs {
+        margin-top: 0 !important;
+    }
+}
+
+.ab5-item {
+    & .about-item {
+        &_img {
+            border-radius: 50%;
+        }
+    }
+}
+
+.about-area6 {
+    position: relative;
+    background-color: $white-color;
+    border-radius: 24px;
+    padding: 60px;
+    z-index: 4;
+    margin-right: -77%;
+
+    @include lg {
+        margin-right: 0;
+    }
+
+    @include md {
+        padding: 40px;
+    }
+
+    @include sm {
+        padding: 30px;
+    }
+
+    @include vxs {
+        padding: 30px 10px;
+    }
+
+    & .about-item {
+        max-width: 470px;
+    }
+}
+
+.title-area .sec-title {
+    line-height: 1.1;
+}
+
+.img-box5 {
+    .img1 {
+        img {
+            width: auto;
+            border-radius: 50px;
+
+            @include lg {
+                width: 100%;
+            }
+        }
+    }
+}
+
+.img-box6 {
+    position: relative;
+    min-width: 680px;
+
+    @include xl {
+        min-width: 665px;
+    }
+
+    @include lg {
+        margin-bottom: 50px;
+    }
+
+    .img1 {
+        position: relative;
+        overflow: hidden;
+
+        @include xl {
+            max-width: 280px;
+        }
+
+        @media(max-width: 480px) {
+            max-width: 100%;
+        }
+
+        img {
+            border-radius: 30px;
+
+        }
+
+    }
+
+    .img2 {
+        position: absolute;
+        top: 0;
+        right: 0px;
+        min-width: 328px;
+        overflow: hidden;
+
+        @media(max-width: 1399px) {
+            max-width: 280px;
+        }
+
+        @include xl {
+            min-width: 220px;
+            right: 13%;
+        }
+
+        @include lg {
+            right: 35%;
+        }
+
+        @include md {
+            right: 15%;
+        }
+
+        @include sm {
+            min-width: 180px;
+            max-width: 220px;
+            right: 23%;
+        }
+
+        @media(max-width: 480px) {
+            display: none;
+        }
+
+
+        img {
+            border-radius: 30px;
+
+        }
+    }
+
+    .img3 {
+        position: absolute;
+        bottom: 0px;
+        right: 0px;
+        overflow: hidden;
+        min-width: 328px;
+
+        @media(max-width: 1399px) {
+            max-width: 280px;
+        }
+
+        @include xl {
+            min-width: 220px;
+            right: 13%;
+        }
+
+        @include lg {
+            right: 35%;
+        }
+
+        @include md {
+            right: 15%;
+        }
+
+        @include sm {
+            min-width: 180px;
+            max-width: 220px;
+            right: 23%;
+        }
+
+        @media(max-width: 480px) {
+            display: none;
+        }
+
+        img {
+            border-radius: 30px;
+
+
+        }
+    }
+
+}
+
+.resort-image {
+    border-radius: 24px;
+
+    img {
+        border-radius: 24px;
+    }
+}
+
+.resort-content {
+    max-width: 530px;
+
+    .box-title {
+        font-size: 40px;
+        margin-bottom: 0;
+
+        @include lg {
+            font-size: 30px;
+        }
+    }
+
+    .resort-rating {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+
+        .star-rating {
+            font-size: 14px;
+        }
+    }
+
+    .woocommerce-review-link {
+        color: $black-color2;
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    .resort-price {
+        font-size: 16px;
+        font-weight: 500;
+        color: $body-color;
+
+        .currency {
+            font-size: 24px;
+            font-weight: 500;
+            color: $theme-color;
+        }
+    }
+
+    .resort-text {
+        font-size: 18px;
+    }
+
+    .resort-list {
+        ul {
+            padding: 0;
+
+            li {
+                display: flex;
+                gap: 16px;
+                list-style: none;
+                margin-bottom: 10px;
+
+                .title {
+                    font-weight: 500;
+                    font-size: 18px;
+                    color: $black-color2;
+                    min-width: 82px;
+                }
+            }
+        }
+    }
+
+    .th-btn {
+        padding: 10px 30px;
+    }
+}
+
+/* about area 6 start ---------------------*/
+.about {
+    &-area6 {
+        & .th-btn {
+            padding: 19px 43px;
+            border-radius: 16px;
+        }
+
+        & .sec-title {
+            @include xl {
+                font-size: 35px;
+            }
+            @include xs{
+                font-size: 24px;
+            }
+        }
+    }
+
+    &-item {
+        &.style6 {
+            align-items: center;
+
+            @include sm {
+                display: inline-block;
+            }
+
+            & .icon {
+                font-size: 32px;
+                width: 72px;
+                height: 72px;
+                line-height: 72px;
+                text-align: center;
+                display: inline-block;
+                color: $theme-color;
+                background-color: $smoke-color;
+                border-radius: 50%;
+                flex: 0 0 auto;
+                margin-bottom: 0;
+
+                @include sm {
+                    margin-bottom: 20px;
+                }
+            }
+        }
+    }
+}
+
+/* about area 6 end ---------------------*/
+
+/* about area 7 start ---------------------*/
+.about-7 {
+    &-titlebox {
+        & .sec-title {
+            @include xl {
+                font-size: 45px;
+            }
+
+            @include xs {
+                font-size: 28px;
+            }
+        }
+    }
+}
+
+/* about area 7 end ---------------------*/
+
+/* about area 8 start ---------------------*/
+.img-box7 {
+    display: flex;
+    gap: 28px;
+
+    @include md {
+        justify-content: center;
+    }
+
+    .img1,
+    .img2 {
+        border-radius: 50px;
+        overflow: hidden;
+
+        @include md {
+            min-width: auto;
+        }
+    }
+
+}
+
+.img-box8 {
+
+    .img3,
+    .img1,
+    .img2 {
+        overflow: hidden;
+        border-radius: 40px;
+        margin-bottom: 60px;
+
+        img {
+            border-radius: 40px;
+        }
+    }
+
+    & img {
+        border-radius: 40px;
+    }
+
+    .about {
+        &-item {
+            max-width: 460px;
+
+            &_img {
+                border-radius: 50%;
+            }
+        }
+    }
+
+    & .th-btn {
+        padding: 19px 43px;
+    }
+}
+
+.img-box9 {
+    margin-left: -150px;
+
+    @media(max-width: 1699px) {
+        margin-left: -100px;
+    }
+
+    @media(max-width: 1599px) {
+        margin-left: -60px;
+    }
+
+    @media(max-width: 1499px) {
+        margin-left: 0px;
+    }
+
+}
+
+.about-item2 {
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+    --space: 30px;
+
+    @include xl {
+        --space: 20px;
+    }
+
+    .img1 {
+        img {
+            width: 100%;
+        }
+    }
+
+    img {
+
+        border-radius: 24px;
+    }
+
+    .box-content {
+        position: absolute;
+        left: var(--space);
+        bottom: var(--space);
+
+        img {
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        span {
+            position: relative;
+            font-family: $title-font;
+            font-weight: 400;
+            font-size: 46px;
+            line-height: 34px;
+            color: #FFFFFF;
+        }
+
+        .deg {
+            font-size: 20px;
+            line-height: 20px;
+        }
+    }
+
+    .box-title {
+        width: 100px;
+        font-weight: 400;
+        font-size: 20px;
+        letter-spacing: 0.02em;
+        color: $white-color;
+        display: inline-flex;
+        margin-bottom: 0;
+        gap: 15px;
+
+        img {
+            min-width: 60px;
+            border-radius: 0;
+            margin-bottom: 0;
+        }
+
+    }
+
+    .icon-btn {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+        background: rgba(255, 255, 255, 0.4);
+        color: $white-color;
+        border: none;
+
+        &:hover {
+            background-color: $white-color;
+            color: $title-color;
+        }
+
+    }
+}
+
+.about-content-wrapper {
+    background: $white-color;
+    border-radius: 24px;
+    padding: 50px;
+    display: flex;
+    gap: 64px;
+
+    @include xl {
+        padding: 30px;
+    }
+
+    @include md {
+        display: block;
+    }
+
+    @include vxs {
+        padding: 20px 10px;
+    }
+
+    .about-item:not(:last-child) {
+        margin-bottom: 50px;
+    }
+}
+
+.about-item-wrap {
+    min-width: 386px;
+
+    @include xs {
+        min-width: 100%;
+    }
+}
+
+.about-image9 {
+    min-width: 525px;
+    height: 320px;
+
+    @media(max-width: 1699px) {
+        min-width: 425px;
+    }
+
+    @media(max-width: 1499px) {
+        min-width: 380px;
+        height: 100%;
+    }
+
+    @include xl {
+        min-width: 300px;
+    }
+
+    @include md {
+        margin-top: 30px;
+        min-width: 100%;
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border: 5px solid #FFFFFF;
+        border-radius: 24px;
+
+    }
+
+    .cilent-box {
+        max-width: 315px;
+        margin-top: 40px;
+
+        .review {
+            font-weight: 600;
+            font-size: 40px;
+            line-height: 56px;
+            color: #113D48;
+            font-family: $title-font;
+
+            i {
+                color: #F8BC22;
+                font-size: 30px;
+                margin-right: 5px;
+            }
+        }
+
+        .cilent-box_counter {
+            font-family: $title-font;
+            font-weight: 600;
+            font-size: 18px;
+            line-height: 28px;
+            color: $body-color;
+            margin-bottom: 0;
+        }
+    }
+}
+
+.about-client-box {
+    position: relative;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 70px;
+
+
+    @include vxs {
+        display: block;
+    }
+
+}
+
+.client-thumb-group {
+    display: flex;
+
+    @include vxs {
+        justify-content: center;
+        margin-bottom: 20px;
+
+
+    }
+
+    .thumb {
+        flex: none;
+
+        &:not(:first-child) {
+            margin-left: -20px;
+        }
+
+        img {
+            border-radius: 50%;
+            height: 60px;
+        }
+
+        &.icon {
+            background: $theme-color;
+            font-size: 16px;
+            color: var(--white-color);
+            border: 1px solid var(--white-color);
+            height: 60px;
+            width: 60px;
+            line-height: 60px;
+            border-radius: 50%;
+            text-align: center;
+            margin-left: -12px;
+        }
+
+    }
+
+}
+
+.choose-wrapp {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 24px;
+
+    .img1 {
+        overflow: hidden;
+        border-radius: 24px;
+
+        @include md {
+            margin-bottom: 0;
+        }
+
+        img {
+            width: 100%;
+            border-radius: 24px;
+        }
+    }
+
+}
+
+.newsletter-area {
+    .th-container {
+        --main-container: 1648px;
+    }
+}
+
+.newsletter-sec {
+    border-radius: 60px;
+    padding: 0px 0 0 120px;
+    overflow: hidden;
+
+    @include ml {
+        padding: 0 0 0 40px;
+    }
+
+    @include lg {
+        padding: 80px 40px 0px 40px;
+        text-align: center;
+    }
+
+    @include xs {
+        padding: 80px 20px 0px 20px;
+    }
+
+
+}
+
+.newsletter-text {
+    max-width: 484px;
+    margin-bottom: 25px;
+
+    @include lg {
+        max-width: 100%;
+        display: block;
+        margin: auto auto 25px auto;
+    }
+}
+
+.newsletter-form {
+    &.style4 {
+        max-width: 490px;
+        margin: 0;
+        display: block;
+        position: relative;
+
+        @include lg {
+            max-width: 100%;
+        }
+
+        input {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 30px;
+
+            @include inputPlaceholder {
+                color: $white-color;
+            }
+        }
+
+        .th-btn {
+            position: absolute;
+            top: 7px;
+            right: 7px;
+            min-width: 126px;
+            padding: 12px 25px;
+
+            @media(max-width: 480px) {
+                margin-top: 0;
+            }
+
+            @include vxs {
+                position: relative;
+                min-width: 100%;
+                right: 0;
+            }
+
+            &:before {
+                background-color: $white-color;
+            }
+
+            &:hover {
+                color: $title-color;
+            }
+        }
+    }
+}
+
+.newsletter-image {
+    margin-left: -50px;
+    overflow: hidden;
+
+    @include xs {
+        margin-left: 0;
+    }
+
+    img {
+        min-width: 493px;
+
+        @include xs {
+            min-width: 100%;
+        }
+    }
+
+}
+
+.img-box11 .img1 img {
+    border-radius: 24px;
+}
+
+/* img-box10 start ----------------*/
+.img-box12 {
+    position: relative;
+    z-index: 2;
+
+    .img1 {
+        max-width: 317px;
+        border-radius: 100px;
+
+        img {
+            width: auto;
+            border-radius: 100px;
+        }
+    }
+
+    .img2 {
+        position: absolute;
+        bottom: 0;
+        left: 40%;
+        max-width: 232px;
+        border-radius: 85px;
+        overflow: hidden;
+        background-color: $white-color;
+        z-index: 2;
+
+        @include sm {
+            position: relative;
+            left: 0;
+        }
+
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 85px;
+            padding: 8px;
+        }
+    }
+
+    .img3 {
+        position: absolute;
+        top: 0;
+        right: 0;
+        min-width: 208px;
+        border-radius: 85px;
+
+        @include xs {
+            position: relative;
+        }
+
+
+        img {
+            border-radius: 85px;
+        }
+
+    }
+}
+
+.company-wrapp {
+    .icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80px;
+        height: 80px;
+        line-height: 80px;
+        text-align: center;
+        border-radius: 100%;
+        background: $title-color;
+        z-index: 2;
+        & img{
+            border: 0;
+        }
+    }
+}
+
+.discount-tag {
+    position: relative;
+    display: inline-block;
+    min-height: 180px;
+    min-width: 180px;
+    border-radius: 50%;
+    z-index: 1;
+    font-size: 16px;
+    font-family: $title-font;
+    font-weight: 600;
+    color: $title-color;
+    text-align: center;
+    transform: rotate(30deg);
+    animation: spin 10s infinite alternate-reverse;
+
+    span {
+        --rotate-letter: 13deg;
+        min-height: 85px;
+        position: absolute;
+        min-width: 85px;
+        top: 2px;
+        left: 0;
+        right: 0;
+        text-align: center;
+        text-transform: uppercase;
+        margin: auto;
+        transform-origin: bottom center;
+        transform: rotate(var(--rotate-letter));
+
+        &.char2 {
+            transform: rotate(calc(var(--rotate-letter) * 2));
+        }
+
+        &.char3 {
+            transform: rotate(calc(var(--rotate-letter) * 3));
+        }
+
+        &.char4 {
+            transform: rotate(calc(var(--rotate-letter) * 4));
+        }
+
+        &.char5 {
+            transform: rotate(calc(var(--rotate-letter) * 5));
+        }
+
+        &.char6 {
+            transform: rotate(calc(var(--rotate-letter) * 6));
+        }
+
+        &.char7 {
+            transform: rotate(calc(var(--rotate-letter) * 7));
+        }
+
+        &.char8 {
+            transform: rotate(calc(var(--rotate-letter) * 8));
+        }
+
+        &.char9 {
+            transform: rotate(calc(var(--rotate-letter) * 9));
+        }
+
+        &.char10 {
+            transform: rotate(calc(var(--rotate-letter) * 10));
+        }
+
+        &.char11 {
+            transform: rotate(calc(var(--rotate-letter) * 11));
+        }
+
+        &.char12 {
+            transform: rotate(calc(var(--rotate-letter) * 12));
+        }
+
+        &.char13 {
+            transform: rotate(calc(var(--rotate-letter) * 13));
+        }
+
+        &.char14 {
+            transform: rotate(calc(var(--rotate-letter) * 14));
+        }
+
+        &.char15 {
+            transform: rotate(calc(var(--rotate-letter) * 15));
+        }
+
+        &.char16 {
+            transform: rotate(calc(var(--rotate-letter) * 16));
+        }
+
+        &.char17 {
+            transform: rotate(calc(var(--rotate-letter) * 17));
+        }
+
+        &.char18 {
+            transform: rotate(calc(var(--rotate-letter) * 18));
+        }
+
+        &.char19 {
+            transform: rotate(calc(var(--rotate-letter) * 19));
+        }
+
+        &.char20 {
+            transform: rotate(calc(var(--rotate-letter) * 20));
+        }
+
+        &.char21 {
+            transform: rotate(calc(var(--rotate-letter) * 21));
+        }
+
+        &.char22 {
+            transform: rotate(calc(var(--rotate-letter) * 22));
+        }
+
+        &.char23 {
+            transform: rotate(calc(var(--rotate-letter) * 23));
+        }
+
+        &.char24 {
+            transform: rotate(calc(var(--rotate-letter) * 24));
+        }
+
+        &.char25 {
+            transform: rotate(calc(var(--rotate-letter) * 25));
+        }
+
+        &.char26 {
+            transform: rotate(calc(var(--rotate-letter) * 26));
+        }
+
+        &.char27 {
+            transform: rotate(calc(var(--rotate-letter) * 27));
+        }
+
+        &.char28 {
+            transform: rotate(calc(var(--rotate-letter) * 28));
+        }
+
+        &.char29 {
+            transform: rotate(calc(var(--rotate-letter) * 29));
+        }
+
+        &.char30 {
+            transform: rotate(calc(var(--rotate-letter) * 30));
+        }
+
+        &.char31 {
+            transform: rotate(calc(var(--rotate-letter) * 31));
+        }
+
+        &.char32 {
+            transform: rotate(calc(var(--rotate-letter) * 32));
+        }
+
+        &.char33 {
+            transform: rotate(calc(var(--rotate-letter) * 33));
+        }
+
+        &.char34 {
+            transform: rotate(calc(var(--rotate-letter) * 34));
+        }
+
+        &.char35 {
+            transform: rotate(calc(var(--rotate-letter) * 35));
+        }
+
+        &.char36 {
+            transform: rotate(calc(var(--rotate-letter) * 36));
+        }
+
+        &.char37 {
+            transform: rotate(calc(var(--rotate-letter) * 37));
+        }
+
+        &.char38 {
+            transform: rotate(calc(var(--rotate-letter) * 38));
+        }
+
+        &.char39 {
+            transform: rotate(calc(var(--rotate-letter) * 39));
+        }
+
+        &.char40 {
+            transform: rotate(calc(var(--rotate-letter) * 40));
+        }
+
+        &.char41 {
+            transform: rotate(calc(var(--rotate-letter) * 41));
+        }
+
+        &.char42 {
+            transform: rotate(calc(var(--rotate-letter) * 42));
+        }
+
+        &.char43 {
+            transform: rotate(calc(var(--rotate-letter) * 43));
+        }
+
+        &.char44 {
+            transform: rotate(calc(var(--rotate-letter) * 44));
+        }
+    }
+}
+
+.about-item-wrap.style2 {
+    display: flex;
+    gap: 30px;
+
+    @include xl {
+        display: block;
+    }
+}
+
+
+/* about-area10 start ----------------------*/
+.about-area10 {
+    background-color: #E9F6F9;
+
+    .shadow-title {
+        font-weight: 700;
+        font-size: 180px;
+        line-height: 150px;
+        text-transform: capitalize;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.6) 67.5%, rgba(255, 255, 255, 0) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-fill-color: transparent;
+        position: absolute;
+        top: 120px;
+        left: 75px;
+
+        @include xl {
+            font-size: 150px;
+        }
+
+        @include lg {
+            font-size: 130px;
+        }
+
+        @include md {
+            font-size: 120px;
+        }
+
+        @include sm {
+            .shadow-title {
+                font-size: 80px;
+            }
+        }
+
+    }
+}
+
+.about10 {
+    &.img-box10 {
+        @include xl {
+            margin: 0;
+            margin-bottom: 100px;
+        }
+
+        @include lg {
+            margin: 0 80px;
+            margin-bottom: 100px;
+        }
+
+        @include sm {
+            margin: 0;
+            .img2 {
+                img {
+                    width: 100%;
+                }
+            }
+        }
+        @include xs {
+            margin-bottom: auto;
+        }
+
+        & .img2 {
+            @include xs {
+                position: static;
+                margin-top: 20px;
+            }
+        }
+    }
+
+    &-titlebox {
+        & .sec-title {
+            @media (min-width: 1200px) and (max-width: 1399px) {
+                font-size: 45px;
+            }
+        }
+    }
+
+    &-item-wrap {
+        & .about-item {
+            max-width: 425px;
+
+            &_img {
+                border-radius: 50%;
+            }
+        }
+    }
+}
+
+.img-box13 {
+    min-width: 688px;
+
+    @include xl {
+        min-width: 100%;
+    }
+
+    .img1 {
+        margin-left: -300px;
+        margin-right: 0px;
+        height: 700px;
+
+        @include xxl {
+            margin-left: -160px;
+        }
+
+        @include xl {
+            margin-left: -80px;
+            margin-right: -30px;
+            height: 100%;
+        }
+
+        @include lg {
+            margin: 0;
+            height: 640px;
+        }
+
+        @include sm {
+            height: 100%;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+}
+
+.about-item-wrap.style3 {
+
+    display: flex;
+    gap: 30px;
+
+    @include xl {
+        display: block;
+    }
+}
+
+.about-item.style3 {
+    .about-item_img {
+        background-color: $white-color;
+    }
+}
+
+/* about-area10 end ----------------------*/
+
+/* about-card2 start */
+
+.about-card2 {
+    border: 1px solid #BBCFD3;
+    border-radius: 20px;
+    padding: 24px;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    z-index: 2;
+    transition: all 0.4s ease;
+    background: $white-color;
+
+    &:not(:last-child) {
+        margin-bottom: 24px;
+    }
+
+    &:before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 200px;
+        height: 200px;
+        background-image: url("../img/shape/about-shape.png");
+        background-repeat: no-repeat;
+        background-size: auto;
+        background-position: bottom right;
+        z-index: -1;
+        transform: all 0.4s ease;
+        opacity: 0;
+    }
+
+    .box-title {
+        margin-bottom: 5px;
+    }
+
+    .box-text {
+        color: $body-color;
+        max-width: 340px;
+        margin-bottom: 10px;
+    }
+
+    .line-btn {
+        font-size: 16px;
+        text-transform: capitalize;
+        color: $title-color;
+        transform: all 0.4s ease;
+
+        &:before {
+            position: static;
+        }
+
+        & i {
+            font-size: 22px;
+            transform: all 0.4s ease;
+        }
+
+    }
+
+    .box-img {
+        position: relative;
+        z-index: 2;
+
+        &:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -20px;
+            width: 43px;
+            height: 43px;
+            border-radius: 50%;
+            background: #113D48;
+            opacity: 0.1;
+
+        }
+
+        img {
+            filter: brightness(9) invert(1);
+        }
+    }
+
+    &:hover {
+        background-color: $theme-color;
+        border-color: $theme-color;
+
+        &:before {
+            opacity: 1;
+        }
+
+        .box-title {
+            color: $white-color;
+        }
+
+        .box-text {
+            color: #E1E4E5;
+        }
+
+        .line-btn {
+            color: $white-color;
+        }
+
+        .box-img {
+            &:before {
+                background: #1CA8CB;
+                opacity: 0.3;
+            }
+
+            img {
+                filter: brightness(0) invert(1);
+            }
+        }
+
+    }
+}
+
+.img-box14 {
+    position: relative;
+    z-index: 2;
+
+    .about-img-wrapp {
+        display: flex;
+        justify-content: flex-end;
+        gap: 24px;
+
+        @include lg {
+            justify-content: center;
+        }
+    }
+
+    .img1,
+    .img2 {
+        position: relative;
+        overflow: hidden;
+
+        img {
+            border-radius: 200px;
+        }
+    }
+}
+
+.about-circle {
+    position: absolute;
+    left: 0;
+    z-index: 2;
+    right: 0;
+    text-align: center;
+    margin: auto;
+    top: 50%;
+    transform: translateY(-50%);
+
+    &>.icon {
+        cursor: none;
+    }
+}
+
+.about-wrapp.style2 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    bottom: unset;
+    right: unset;
+    transform: translate(-50%, -50%);
+    background-color: #E9F6F9;
+    border-radius: 50%;
+    width: 190px;
+    height: 190px;
+
+    .icon {
+        background-color: transparent;
+        border: 1px solid $title-color;
+    }
+
+    .discount-tag span {
+        text-transform: lowercase;
+        --rotate-letter: 9deg;
+    }
+}
+
+.img-box15 {
+    .img1 {
+        border-radius: 30px;
+
+        img {
+            border-radius: 30px;
+        }
+    }
+}
+
+.about13-wrapp {
+    display: flex;
+    gap: 30px;
+
+    .about13-img {
+        min-width: 220px;
+
+        @include xl {
+            display: none;
+        }
+    }
+}
+
+.sec-text2 {
+    border-bottom: 1px solid #E1E4E5;
+    padding-bottom: 30px;
+    margin-bottom: 40px;
+}
+
+.img-box14 {
+    display: -webkit-box;
+    align-items: center;
+    right: 50px;
+
+    @include lg {
+        right: 0;
+        display: flex;
+        justify-content: center;
+    }
+
+    @include md {
+        margin: 0;
+    }
+
+    img {
+        max-width: auto;
+        border: 10px solid $white-color;
+        border-radius: 200px;
+
+    }
+
+    .img1,
+    .img3 {
+        position: relative;
+        z-index: 1;
+        right: 8%;
+    }
+
+    .img1 {
+        right: auto;
+        left: 8%;
+    }
+
+    .img2 {
+        position: relative;
+        z-index: 2;
+    }
+
+    &.img-box19{
+        & .img1 {
+            left: 0;
+        }
+        & img{
+            border: 0;
+        }
+    }
+}
+
+/* About-12 area start -------------------*/
+.about-imgbox12 {
+    margin-left: 0;
+
+    & .img1,
+    & .img2,
+    & .img3 {
+        img {
+            border: 0;
+        }
+
+        &:not(:last-child) {
+            @include sm {
+                margin-bottom: 24px;
+            }
+        }
+    }
+
+    & .img3 {
+        position: relative;
+        margin-top: 24px;
+        z-index: 3;
+        left: 68px;
+
+        @include lg {
+            left: 0;
+        }
+
+        @include sm {
+            position: static;
+            text-align: center;
+        }
+    }
+
+    & .img2 {
+        position: absolute;
+        top: 20%;
+        left: 0;
+        z-index: -1;
+
+        @include sm {
+            position: static;
+            text-align: center;
+        }
+    }
+}
+
+.about-12 {
+    &-item-wrap {
+        margin-left: 140px;
+
+        @include xl {
+            margin-left: 65px;
+        }
+
+        @include lg {
+            margin-left: 0;
+        }
+
+        & .about-item_img {
+            border-radius: 50%;
+        }
+
+        & .th-btn {
+            border-radius: 50px;
+
+            &:hover {
+                color: $white-color;
+
+                &::before {
+                    background: $theme-color;
+                }
+            }
+        }
+    }
+}
+
+/* About-12 area end -------------------*/
+
+/* About-13 area start -------------------*/
+.about13{
+    &-titlebox{
+        & .sec-text{
+            color: $border-color;
+        }
+    }
+
+    &-item-wrap{
+        & .about-item{
+            max-width: 440px;
+            &_img{
+                background-color: $brand-color;
+                border-radius: 50%;
+                & img{
+                    filter: brightness(0) contrast(1);
+                }
+                &:hover img {
+                    transform: rotateY(180deg);
+                }
+            }
+        }
+    }
+}
+/* About-13 area end -------------------*/
+
+/* About-14 area start -------------------*/
+.about-circle {
+    &-wrap {
+        &.style14 {
+            & .about-circle {
+                position: static;
+                text-align: start;
+                transform: translateY(0);
+            }
+        }
+    }
+}
+
+/* About-14 area end -------------------*/
+
+/* About area 15 start --------------------------*/
+.img-box15 {
+    margin-right: 35px;
+    transform: rotate(5deg);
+    @include xs{
+        margin-right: 0;
+    }
+
+    @include sm {
+        transform: rotate(0deg);
+        margin-bottom: 40px;
+    }
+
+    & .img1 {
+        margin-top: 30px;
+        flex: 0 0 auto;
+
+        & img {
+            margin-bottom: 26px;
+            display: flex;
+            justify-content: end;
+            margin-bottom: 26px;
+            border-radius: 16px;
+
+            &:first-child {
+                margin-left: 59px;
+            }
+        }
+    }
+
+    & .img2 {
+        flex: 0 0 auto;
+        margin-left: 27px;
+
+        & img {
+            border-radius: 16px;
+        }
+
+        @include sm {
+            margin-left: 0;
+        }
+    }
+}
+
+.about-feature {
+    &-list {
+        & ul {
+            padding: 0;
+
+            & li {
+                position: relative;
+                font-size: 18px;
+                display: block;
+                padding-left: 32px;
+                color: $title-color;
+
+                & .about-feature-icon {
+                    position: absolute;
+                    left: 0;
+                }
+
+                &:not(:last-child) {
+                    margin-bottom: 16px;
+                }
+            }
+        }
+    }
+}
+
+/* About area 15 end --------------------------*/
+
+/* About area 16 start --------------------------*/
+.img-box16 {
+    .img1 {
+        min-width: 708px;
+        margin-left: -50px;
+
+        @include xl {
+            min-width: 100%;
+            margin-left: 0;
+        }
+    }
+}
+
+.about-item {
+    &.style-16 {
+        max-width: 100%;
+
+        & .box-title {
+            font-weight: 600;
+            font-size: 40px;
+            text-transform: capitalize;
+            color: $title-color;
+            margin-bottom: 20px;
+
+            @include xs {
+                font-size: 30px;
+            }
+        }
+
+        & .about {
+            &-text{
+                margin: 0 45px 30px 0;
+                text-transform: capitalize;
+            }
+            
+            &-feature {
+                & ul {
+                    margin: 0;
+                    padding: 0;
+                    list-style: none;
+
+                    & li {
+                        font-size: 18px;
+                        font-weight: 400;
+                        display: flex;
+                        color: $title-color;
+                        align-items: center;
+                        margin-bottom: 19px;
+
+                        & .icon {
+                            margin-right: 12px;
+                        }
+                    }
+                }
+            }
+        }
+
+        & .th-btn{
+            background-color: $title-color;
+            border-radius: 16px;
+            &:hover{
+                color: $white-color;
+                &::before{
+                    background-color: $theme-color;
+                }
+            }
+        }
+    }
+}
+
+.ab-img16 {
+    border-radius: 24px;
+
+    & img {
+        border-radius: 24px;
+    }
+}
+
+/* About area 16 end --------------------------*/
+
+/* About area 17 start --------------------------*/
+.img-box17 {
+    .img1 {
+        border-radius: 30px;
+        max-width: 576px;
+
+        & img {
+            border-radius: 30px;
+            overflow: hidden;
+        }
+
+        @include xl {
+            min-width: 100%;
+            margin-left: 0;
+        }
+    }
+}
+
+.img-box18 {
+    width: 100%;
+    padding: 0 50px;
+    height: 100%;
+    background: $light-bg-color;
+    border-radius: 20px;
+    @include xs{
+        padding: 0 10px;
+    }
+
+    & .img1,
+    & .img2 {
+        position: absolute;
+        left: 50px;
+        bottom: 0;
+        display: inline-block;
+
+        @include lg{
+            left: 0;
+        }
+
+        @include md{
+            position: static;
+            margin-top: 100px;
+            margin-left: 0;
+            @include xs{
+                margin-top: 30px;
+            }
+        }
+    }
+
+    & .img1{
+        top: 0;
+        right: 50px;
+        left: auto;
+        @include lg{
+            right: 0;
+        }
+        
+        @include md{
+            margin-top: 0;
+            margin-left: 30px;
+        }
+        @include xs{
+            margin-left: 0;
+        }
+    }
+}
+
+/* About area 17 end --------------------------*/

@@ -1,0 +1,336 @@
+.shape-mockup-wrap {
+    z-index: 2;
+    position: relative;
+}
+
+.shape-mockup {
+    position: absolute;
+    z-index: -1;
+    pointer-events: none;
+
+    // @media(max-width: 1600px) {
+    //     display: none !important;
+    // }
+
+    &.z-index-3 {
+        z-index: 3;
+        pointer-events: none;
+    }
+
+    &.z-index-1 {
+        z-index: 1;
+        pointer-events: none;
+    }
+
+    .svg-img {
+        height: 110px;
+        width: 110px;
+    }
+
+    &.hero_wrap {
+        z-index: 1;
+
+        @media(max-width: 1599px) {
+            display: none !important;
+        }
+    }
+
+    &.shape1 {
+        animation: cloudAni 10s linear infinite;
+
+        @media(max-width: 1599px) {
+            display: none !important;
+        }
+    }
+
+    &.shape2 {
+        animation: cloudAni 15s linear infinite;
+
+        @media(max-width: 1599px) {
+            display: none !important;
+        }
+    }
+
+    &.shape3 {
+        animation: cloudAni 20s linear infinite;
+
+        @media(max-width: 1599px) {
+            display: none !important;
+        }
+    }
+
+    &.about-shape3 {
+        @media(max-width: 1599px) {
+            display: block !important;
+        }
+    }
+}
+
+.z-index-step1 {
+    position: relative;
+    z-index: 4 !important;
+}
+
+.z-index-common {
+    position: relative;
+    z-index: 3;
+}
+
+.z-index-3 {
+    z-index: 3;
+}
+
+.z-index-n1 {
+    z-index: -1;
+}
+
+.media-body {
+    flex: 1;
+}
+
+.badge {
+    position: absolute;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    display: inline-block;
+    text-align: center;
+    background-color: $theme-color;
+    color: $white-color;
+    padding: 0.25em 0.45em;
+    font-size: 0.7em;
+    border-radius: 50%;
+    top: 8px;
+    right: 8px;
+    font-weight: 400;
+    transition: 0.3s ease-in-out;
+}
+
+.th-social {
+    a {
+        display: inline-block;
+        @include equal-size(var(--icon-size, 32px));
+        border: 1px solid $border-color;
+        line-height: var(--icon-size, 32px);
+        background: none;
+        color: $white-color;
+        font-size: 16px;
+        border-radius: 50%;
+        text-align: center;
+        margin-right: 10px;
+        transition: all 0.4s ease;
+
+        &:last-child {
+            margin-right: 0;
+        }
+
+        &:hover {
+            color: $white-color;
+            background-color: $theme-color;
+            border: 1px solid $theme-color;
+
+            i {
+                animation: slideTop 0.5s;
+            }
+        }
+    }
+
+    &.color-theme {
+        a {
+            color: $body-color;
+            border-color: $theme-color;
+        }
+    }
+}
+
+.bg-mask {
+    mask-size: 100% 100%;
+    mask-repeat: no-repeat;
+}
+
+.box-icon {
+    img {
+        transition: 0.4s ease-in-out;
+    }
+}
+
+.box-text {
+    margin-bottom: -0.5em;
+}
+
+.btn-group {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 30px;
+
+    &.style1 {
+        gap: 40px;
+
+        @include vxs {
+            justify-content: flex-start;
+        }
+    }
+
+    &.style2 {
+        gap: 20px 70px;
+
+        @include sm {
+            gap: 20px 30px;
+        }
+    }
+
+    @include sm {
+        gap: 20px;
+    }
+
+    @include vxs {
+        justify-content: center;
+    }
+
+}
+
+.th-bg-img {
+    position: absolute;
+    inset: 0;
+
+    img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+}
+
+
+.mfp-zoom-in .mfp-content {
+    opacity: 0;
+    transition: all 0.4s ease;
+    transform: scale(0.5);
+}
+
+.mfp-zoom-in.mfp-bg {
+    opacity: 0;
+    transition: all 0.4s ease;
+}
+
+.mfp-zoom-in.mfp-ready .mfp-content {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.mfp-zoom-in.mfp-ready.mfp-bg {
+    opacity: 0.7;
+}
+
+.mfp-zoom-in.mfp-removing .mfp-content {
+    transform: scale(0.7);
+    opacity: 0;
+}
+
+.mfp-zoom-in.mfp-removing.mfp-bg {
+    opacity: 0;
+}
+
+/* cursor area start ---------------------------*/
+// .magic-cursor.relative {
+//     z-index: 999999;
+// }
+
+// .cursor {
+//     position: absolute;
+//     background: transparent;
+//     cursor: pointer;
+//     width: 16px;
+//     height: 16px;
+//     line-height: 16px;
+//     border-radius: 100%;
+//     z-index: 9999999;
+//     transition: 0.5s cubic-bezier(0.75, -1.27, 0.3, 2.33) transform,
+//         0.5s cubic-bezier(0.75, -1.27, 0.3, 2.33) opacity;
+//     user-select: none;
+//     pointer-events: none;
+//     transform: scale(0.8);
+
+//     &:before {
+//         content: "DRAG"" ""\f105";
+//         font-family: $icon-font;
+//         width: 100%;
+//         height: 100%;
+//         line-height: 100%;
+//         position: absolute;
+//         font-size: 2px;
+//         top: 6.5px;
+//         left: 5px;
+//         display: block;
+//         border-radius: 100%;
+//         opacity: 0;
+//         color: $white-color;
+//         letter-spacing: 0.02em;
+
+//     }
+
+//     &:after {
+//         position: absolute;
+//         content: "\f104";
+//         font-family: $icon-font;
+//         font-size: 2px;
+//         color: $white-color;
+//         top: 6.5px;
+//         left: 3px;
+//         width: 100%;
+//         height: 100%;
+//         line-height: 100%;
+//         opacity: 0;
+//     }
+
+//     &.active {
+//         opacity: 1;
+//         transform: scale(8);
+//         background: rgba(11, 89, 219, 0.7);
+//         backdrop-filter: blur(12px);
+//         transition: 0.5s cubic-bezier(0.75, -1.27, 0.3, 2.33) transform,
+//             0.5s cubic-bezier(0.75, -1.27, 0.3, 2.33) opacity;
+
+//         &:before,
+//         &:after {
+//             opacity: 1;
+//         }
+//     }
+// }
+
+// .cursor-follower {
+//     position: absolute;
+//     width: 14px;
+//     height: 14px;
+//     border-radius: 100%;
+//     z-index: 99999999;
+//     background-color: $theme-color;
+//     transition: 0.5s cubic-bezier(0.75, -1.27, 0.3, 2.33) transform,
+//         0.5s cubic-bezier(0.75, -1.27, 0.3, 2.33) opacity,
+//         0.5s cubic-bezier(0.75, -1.27, 0.3, 2.33) background;
+//     user-select: none;
+//     pointer-events: none;
+//     transform: translate(8px, 8px);
+// }
+
+// .cursor-follower.active {
+//     opacity: 1;
+//     transform: scale(0);
+// }
+
+/* cursor area end ---------------------------*/
+
+.md-mb15{
+    @include md{
+        margin-bottom: 15px;
+    }
+}
+.sm-mb15{
+    @include sm{
+        margin-bottom: 15px;
+    }
+}
+
+.gx-70{
+    --bs-gutter-x: 70px;
+}

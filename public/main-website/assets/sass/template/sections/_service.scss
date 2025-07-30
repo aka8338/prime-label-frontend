@@ -1,0 +1,1279 @@
+.service-inner-img {
+    border-radius: 10px;
+
+    img {
+        border-radius: 10px;
+    }
+}
+
+.service-img {
+    border-radius: 8px;
+
+    img {
+        border-radius: 8px;
+    }
+}
+
+.resort-grid-list {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    border: 1px solid #E1E4E5;
+    border-radius: 8px;
+    padding: 40px 20px;
+    list-style: none;
+    margin: 0;
+    gap: 20px;
+
+    @include ml {
+        grid-template-columns: auto auto auto auto;
+    }
+
+    @include lg {
+        grid-template-columns: auto auto auto;
+    }
+
+    @include sm {
+        grid-template-columns: auto auto;
+    }
+
+    @include xs {
+        grid-template-columns: auto;
+    }
+
+
+
+    li {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+
+        .resort-grid-list-icon {
+            flex: none;
+            width: 50px;
+            height: 50px;
+            line-height: 45px;
+            border-radius: 4px;
+            border: 1px solid #E1E4E5;
+            text-align: center;
+        }
+
+        .resort-grid-list-title {
+            font-size: 16px;
+            font-weight: 500;
+            color: $black-color2;
+            margin-bottom: 0;
+        }
+
+        .resort-grid-list-text {
+            font-size: 14px;
+            font-weight: 400;
+            color: $gray-color;
+            margin-bottom: -0.3em;
+        }
+    }
+}
+
+.service {
+    &-title-box {
+        & .sec-title {
+            margin-bottom: 15px;
+
+            @include xl {
+                font-size: 40px;
+            }
+
+            @include lg {
+                font-size: 35px;
+            }
+
+            @include sm {
+                font-size: 28px;
+            }
+        }
+
+        & .sec-text {
+            margin: 0 70px;
+
+            @include md {
+                margin: 0 20px;
+            }
+
+            @include sm {
+                br {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    &-style-1 {
+        & .service {
+            &-img {
+                overflow: hidden;
+                border-radius: 16px 16px 0 0;
+
+                & a {
+                    display: block;
+
+                    & img {
+                        width: 100%;
+                        transition: 1.4s;
+                        border-radius: 16px 16px 0 0;
+                    }
+                }
+            }
+
+            &-content {
+                border-top: 0;
+                padding: 30px 27px;
+                border-radius: 0 0 16px 16px;
+                background-color: $white-color;
+                border: 1px solid $border-color;
+                transition: .4s;
+
+                & .th-btn {
+                    font-size: 14px;
+                    padding: 10px 24.5px;
+                }
+            }
+        }
+
+        & .th-btn {
+            border: 1px solid $border-color;
+
+            & i {
+                transform: rotate(-45deg);
+                transition: .4s;
+            }
+
+            &:hover {
+                & i {
+                    transform: rotate(0);
+                }
+            }
+        }
+
+        &:hover {
+            & .service {
+                &-img {
+                    & a {
+                        & img {
+                            transform: scale(1.2);
+                        }
+                    }
+                }
+
+                &-content {
+                    box-shadow: 0 20px 20px 0 rgba(204, 204, 204, 0.25);
+                }
+            }
+        }
+    }
+}
+
+/* service 1 end  ---------------------------------- */
+
+/* service 2 start  ---------------------------------- */
+.service-list {
+    position: relative;
+    height: 636px;
+    border-radius: 24px;
+    z-index: 2;
+    transition: 0.7s ease-in-out;
+    cursor: pointer;
+    overflow: hidden;
+
+    @include md {
+        display: flex;
+        max-height: 160px;
+    }
+
+    &:before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(11, 20, 34, 0) 0%, #0b1422 100%);
+        border-radius: 24px;
+        z-index: -1;
+
+    }
+
+    &-area {
+        display: flex;
+        gap: 24px;
+
+        @include md {
+            flex-direction: column;
+        }
+
+    }
+
+    & .service-content {
+        @include lg {
+            bottom: 18%;
+            left: 20px;
+        }
+
+        @include md {
+            left: 20px;
+            bottom: 25%;
+        }
+
+        &.g4-content {
+            width: 88%;
+            opacity: 0;
+            visibility: hidden;
+            bottom: 40px;
+            left: -100px;
+            right: 40px;
+            transform: rotate(0deg);
+
+            @include xs {
+                left: 20px;
+                right: 20px;
+            }
+        }
+    }
+
+    &-wrap {
+        flex: 100%;
+        box-sizing: border-box;
+        transition: all 0.3s linear;
+
+        &.style2 {
+            &.active {
+                flex: 205%;
+            }
+        }
+
+        &.style3 {
+            .service-list {
+                &:before {
+                    content: "";
+                    position: absolute;
+                    inset: 0;
+                    background: linear-gradient(180deg, rgba(17, 61, 72, 0) 0%, rgba(3, 12, 14, 0.480252) 54.5%, rgba(0, 0, 0, 0.6) 79.33%);
+
+                    border-radius: 24px;
+                    z-index: -1;
+
+                }
+            }
+
+            .service-content {
+                opacity: 0;
+                transform: none;
+                bottom: -30px;
+                left: 40px;
+
+                @include md {
+                    left: 20px;
+                    bottom: -20px;
+                }
+            }
+
+            .service-subtitle {
+                font-weight: 500;
+                font-size: 14px;
+                letter-spacing: 0.02em;
+                text-transform: uppercase;
+                color: #F8BC22;
+                display: block;
+                margin-bottom: 10px;
+
+            }
+
+            .icon-btn {
+                background-color: transparent;
+                border: none;
+                font-size: 18px;
+                width: 50px;
+                height: 50px;
+                line-height: 50px;
+                border: 1px solid var(--white-color);
+                border-radius: 50%;
+                color: var(--white-color);
+                position: absolute;
+                right: 24px;
+                top: 24px;
+                z-index: 2;
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease-in-out;
+
+                &:hover {
+                    background-color: $theme-color;
+                    border-color: $theme-color;
+                }
+            }
+
+            &.active {
+                .service-content {
+                    opacity: 1;
+                }
+
+                .icon-btn {
+                    opacity: 1;
+                    visibility: visible;
+                }
+            }
+        }
+
+        &.active {
+            flex: 324%;
+
+            @include lg {
+                max-width: 100%
+            }
+
+            .service-list {
+                @include md {
+                    max-height: 345px;
+                }
+            }
+
+            .th-btn {
+                opacity: 1;
+                visibility: visible;
+            }
+
+            & .case-action {
+                &.g4-bgn {
+                    opacity: 1;
+                    visibility: visible;
+                    transform: scale(1);
+                }
+            }
+
+            .box-content {
+                visibility: visible;
+                opacity: 1;
+                width: 100%;
+                max-height: 325px;
+            }
+
+            .service-icon {
+                top: 61%;
+
+                @include lg {
+                    top: 50%;
+                }
+
+                @include md {
+                    top: 10%;
+                    opacity: 1;
+                    visibility: visible;
+                }
+            }
+
+            .service-content {
+                left: 40px;
+                bottom: 40px;
+                transform: none;
+            }
+
+            & .g4-content {
+                opacity: 1;
+                visibility: visible;
+                left: 40px;
+                @include xs{
+                    left: 20px;
+                }
+            }
+        }
+
+        &.sv-list2 {
+            &.active {
+                .service-content {
+                    @include md {
+                        left: 20px;
+                        bottom: 90px;
+                    }
+                }
+            }
+        }
+    }
+
+    & .service-icon {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        top: 24px;
+        left: 35px;
+        text-align: center;
+        line-height: 100px;
+        display: inline-block;
+        background-color: $white-color;
+        border-radius: 50%;
+        transition: all 0.8s ease-in-out;
+
+        @include lg {
+            left: 20px;
+        }
+
+        @include md {
+            opacity: 0;
+            visibility: hidden;
+        }
+    }
+
+    .service-content {
+        position: absolute;
+        width: 335px;
+        right: -50px;
+        left: auto;
+        bottom: 157px;
+        transform: rotate(-90deg);
+        transition: all 0.8s ease-in-out;
+
+        @include xl {
+            width: 290px;
+        }
+
+        @include lg {
+            right: -53%;
+        }
+
+        @include md {
+            transform: rotate(0);
+            bottom: 20px;
+            left: 20px;
+        }
+
+    }
+
+    .box-title {
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 40px;
+        letter-spacing: 0.02em;
+        color: $white-color;
+        margin-bottom: 0;
+
+        @include vxs {
+            font-size: 18px;
+            line-height: 28px;
+        }
+
+    }
+
+    .service-subtitle {
+        color: $white-color;
+    }
+
+    .th-btn {
+        position: absolute;
+        right: 40px;
+        bottom: 40px;
+        padding: 10px 30px;
+        opacity: 0;
+        visibility: hidden;
+
+        @include lg {
+            bottom: 8%;
+            left: 20px;
+            right: auto;
+        }
+
+        @include md {
+            right: auto;
+            bottom: 20px;
+        }
+
+        @include xs {
+            bottom: 7%;
+        }
+    }
+
+    .box-icon {
+        padding: 30px 40px;
+        border-bottom: 3px solid var(--white-color)
+    }
+
+    .box-content {
+        visibility: hidden;
+        opacity: 0;
+        width: 100%;
+        max-height: 0;
+        padding: 30px 30px 40px 40px;
+        overflow: hidden
+    }
+}
+
+.service-title {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 28px;
+    letter-spacing: 0.02em;
+    color: $theme-color;
+
+}
+
+.service-item {
+    background-color: $smoke-color;
+    border-radius: 16px;
+    text-align: center;
+
+
+    &_img {
+        border-radius: 16px 16px 0px 0px;
+
+        @include md {
+            margin-bottom: 0;
+        }
+
+    }
+
+    .service-content {
+        padding: 30px 0 24px 0;
+    }
+
+    .box-title {
+        color: $black-color2;
+        margin-bottom: 30px;
+    }
+
+    .service-text {
+        color: $black-color2;
+        margin-bottom: 20px;
+    }
+
+    .th-btn {
+        padding: 10px 25px;
+        border: 1px solid $theme-color;
+        font-weight: 500;
+
+        &:after {
+            mask-image: url("../img/icon/arrow-right2.svg");
+            width: 15px;
+            height: 15px;
+        }
+    }
+
+    & img {
+        width: 100%;
+    }
+}
+
+.service-item2 {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+
+    .box-img {
+        position: relative;
+        border: 10px solid rgba(255, 255, 255, 0.5);
+        border-radius: 24px;
+        overflow: hidden;
+        transition: all 0.4s ease-in-out;
+
+        @include md {
+            margin-bottom: 0;
+        }
+
+        &:before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(4, 4, 4, 0) 44.5%, rgba(13, 13, 12, 0.6) 100%);
+            border-radius: 24px;
+            z-index: 10;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    .box-content {
+        position: absolute;
+        left: 34px;
+        bottom: 34px;
+        z-index: 11;
+
+    }
+
+    .box-title {
+        color: $white-color;
+        font-size: 28px;
+        font-weight: 600;
+        margin-bottom: 5px;
+
+        @include md {
+            font-size: 22px;
+        }
+    }
+
+    .box-text {
+        color: $white-color;
+        display: block;
+    }
+
+    &:hover {
+        .box-img {
+            border-color: $white-color;
+        }
+    }
+}
+
+.service-btn{
+    & .th-btn{
+        padding: 19px 30px;
+    }
+}
+
+/* service 2 end  ---------------------------------- */
+
+/* service area 3 start ---------------------*/
+.service-title {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 28px;
+    letter-spacing: 0.02em;
+    color: $theme-color;
+
+}
+
+.service-3 {
+    &-text {
+        margin-left: 40px;
+        margin-top: -25px;
+
+        @include lg {
+            margin-left: 0;
+            margin-top: -10px;
+        }
+    }
+
+    &-titlebox {
+        @include lg {
+            margin-bottom: 0;
+        }
+    }
+
+    &-btn {
+        & .th-btn {
+            padding: 19px 30px;
+        }
+    }
+}
+
+.service-item {
+    background-color: $smoke-color;
+    border-radius: 16px;
+    text-align: center;
+
+    &.style3 {
+        & .service {
+            &-content {
+                padding: 24px 25px;
+            }
+
+            &-text {
+                color: $body-color;
+            }
+        }
+
+        & .box-title {
+            margin-bottom: 10px;
+        }
+
+        & .th-btn {
+            border-color: $body-color;
+        }
+    }
+
+
+    &_img {
+        border-radius: 16px 16px 0px 0px;
+
+        @include md {
+            margin-bottom: 0;
+        }
+
+    }
+
+    .service-content {
+        padding: 30px 0 24px 0;
+    }
+
+    .box-title {
+        color: $black-color2;
+        margin-bottom: 0;
+    }
+
+    .service-text {
+        color: $black-color2;
+        margin-bottom: 20px;
+    }
+
+    .th-btn {
+        padding: 10px 25px;
+        border: 1px solid $theme-color;
+        font-weight: 500;
+
+        &:after {
+            mask-image: url("../img/icon/arrow-right2.svg");
+            width: 15px;
+            height: 15px;
+        }
+    }
+}
+
+.service-item2 {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+
+    .box-img {
+        position: relative;
+        border: 10px solid rgba(255, 255, 255, 0.5);
+        border-radius: 24px;
+        overflow: hidden;
+        transition: all 0.4s ease-in-out;
+
+        @include md {
+            margin-bottom: 0;
+        }
+
+        &:before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(4, 4, 4, 0) 44.5%, rgba(13, 13, 12, 0.6) 100%);
+            border-radius: 24px;
+            z-index: 10;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    .box-content {
+        position: absolute;
+        left: 34px;
+        bottom: 34px;
+        z-index: 11;
+
+    }
+
+    .box-title {
+        color: $white-color;
+        font-size: 28px;
+        font-weight: 600;
+        margin-bottom: 5px;
+
+        @include md {
+            font-size: 22px;
+        }
+    }
+
+    .box-text {
+        color: $white-color;
+        display: block;
+    }
+
+    &:hover {
+        .box-img {
+            border-color: $white-color;
+        }
+    }
+}
+
+/* service area 3 end ---------------------*/
+
+/* service area 4 start ---------------------*/
+.service-item {
+    &.style4 {
+        padding: 20px;
+        background: $white-color;
+        border-radius: 30px;
+
+        & .service {
+            &-item {
+                &:hover {
+                    & .service {
+                        &-img {
+                            & a {
+                                & img {
+                                    transform: scale(1.2);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            &-img {
+                & a {
+                    & img {
+                        width: 100%;
+                        overflow: hidden;
+                        border-radius: 20px;
+                        transition: 1.3s;
+                    }
+                }
+            }
+
+            &-icon {
+                position: absolute;
+                width: 100px;
+                height: 100px;
+                bottom: -50px;
+                right: 20px;
+                line-height: 75px;
+                border-radius: 100px;
+                border: 10px solid $white-color;
+                background: $theme-color;
+
+                @include md {
+                    bottom: -30px;
+                }
+
+                @include sm {
+                    bottom: -50px;
+                }
+
+                @include xs {
+                    bottom: -30px;
+                }
+
+                & img {
+                    width: auto;
+                }
+            }
+
+            &-content {
+                padding: 30px 10px;
+                padding-bottom: 10px;
+            }
+
+            &-text {
+                color: $body-color;
+                line-height: 1.6;
+                margin-bottom: 30px;
+            }
+        }
+
+        & .box-title {
+            margin-bottom: 8px;
+        }
+
+        & .th-btn {
+            border: 1px solid $border-color;
+            border-radius: 50px;
+        }
+    }
+}
+
+.service-4 {
+    &-title-box {
+        & .sec-title {
+            text-transform: capitalize;
+        }
+    }
+}
+
+/* service area 4 end ---------------------*/
+
+/* service area 5 start ---------------------*/
+.service-card {
+    &.style5 {
+        height: 476px;
+
+        .box-img {
+            height: 416px;
+            transition: all 0.6s ease;
+            margin-bottom: 30px;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+
+        .box-content {
+            text-align: left;
+
+        }
+
+        .box-wrapp {
+            display: flex;
+            justify-content: space-between;
+            transition: all 0.6s ease;
+            height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+
+        .box-title {
+            margin-bottom: 7px;
+        }
+
+        .box-text {
+            max-width: 235px;
+        }
+
+        &:hover {
+            .box-img {
+                height: 312px;
+            }
+
+            .box-wrapp {
+                height: 100%;
+                opacity: 1;
+                overflow: visible;
+            }
+        }
+    }
+}
+
+/* service area 5 end ---------------------*/
+
+/* service area 6 start ---------------------*/
+.service {
+    &-content {
+        &.sv-content6 {
+            & .th-btn {
+                border-radius: 50px;
+            }
+        }
+    }
+}
+
+.service-card {
+    &.style6 {
+        .box-img {
+            border-radius: 200px;
+            width: 200px;
+            height: 300px;
+            margin-bottom: 24px;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 200px;
+            }
+        }
+
+        .icon {
+            position: relative;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            margin: auto;
+            border-radius: 50%;
+            background: $theme-color;
+            margin-top: -50px;
+            transition: .4s;
+            opacity: 0;
+            visibility: hidden;
+
+            & a {
+                display: block;
+                color: $white-color;
+            }
+
+            &:hover {
+                background: $title-color;
+                color: $white-color;
+            }
+        }
+
+        & .service-content {
+            transition: .4s;
+        }
+
+        .box-title {
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        &:hover {
+            & .icon {
+                opacity: 1;
+                visibility: visible;
+            }
+
+            & .service-content {
+                margin-top: 24px;
+            }
+        }
+    }
+}
+
+/* service area 6 end ---------------------*/
+
+/* service area 7 start ---------------------*/
+.service7 {
+    &-list {
+        &.active {
+            flex: 208%;
+        }
+
+        & .service-list {
+            & .service-content {
+                right: 65px;
+
+                @include xl {
+                    right: 50px;
+                    bottom: 130px;
+                }
+
+                @include lg {
+                    width: 330px;
+                    right: -20px;
+                    bottom: 170px;
+                }
+
+                @include xs {
+                    width: 300px;
+                }
+            }
+        }
+    }
+}
+
+.sv-card7 {
+    padding: 16px;
+    border: 1px solid $border-color;
+    border-radius: 16px;
+    transition: .4s;
+    padding-bottom: 27px;
+
+    & .service-img {
+        border-radius: 10px;
+        margin-bottom: 30px;
+    }
+
+    & .sv-content6 {
+        padding: 0 14px;
+        border: 0;
+    }
+
+    & .th-btn {
+        border-color: $border-color;
+    }
+
+    &:hover {
+        box-shadow: 0 20px 20px 0 rgba(204, 204, 204, 0.25);
+
+        & .sv-content6 {
+            background: none;
+            box-shadow: none;
+        }
+    }
+}
+
+/* service area 7 end ---------------------*/
+
+/* service area 8 start ---------------------*/
+.sv-card8 {
+    background: $white-color;
+    & .box-title{
+        margin-bottom: 15px;
+    }
+
+    & .th-btn{
+        font-size: 14px;
+        padding: 9px 16.5px;
+    }
+}
+
+/* service area 8 end ---------------------*/
+
+/* service area 9 start ------------------*/
+.service-style9 {
+    margin-bottom: 30px;
+    border: 1px solid var(--th-border-color);
+    border-radius: 16px;
+
+    & .service-img {
+        padding: 16px;
+        padding-bottom: 0;
+
+        & a {
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        & img {
+            border-radius: 10px;
+        }
+    }
+
+    & .service-content {
+        border: 0;
+    }
+}
+
+/* service area 9 end ------------------*/
+
+/* service area 10 start ------------------*/
+.sv-card10 {
+    & .service-content {
+        padding: 30px;
+        transition: .4s;
+        background: $dark-bg-color;
+    }
+
+    & .icon {
+
+        & img {
+            transition: .4s;
+        }
+
+        & .number {
+            font-weight: 700;
+            font-size: 34px;
+            text-transform: capitalize;
+            color: $light-bg-color;
+            transition: .4s;
+        }
+    }
+
+
+    & .box-title {
+        color: $white-color;
+    }
+
+    & .sec-text {
+        color: $border-color;
+        transition: .4s;
+    }
+
+    & .service-btn {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+    }
+
+    & .icon-btn {
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+        color: $white-color;
+        border: 1px solid $body-color;
+        transform: rotate(-45deg);
+
+        &:hover {
+            color: $title-color;
+            background: $brand-color;
+            border-color: $brand-color;
+        }
+    }
+
+    &:hover {
+        & .service {
+            &-content {
+                background: $brand-color;
+
+                & .icon {
+                    & img {
+                        filter: contrast(0) brightness(0);
+                    }
+
+                    & .number {
+                        color: $white-color;
+                    }
+                }
+            }
+        }
+
+        & .box-title {
+            color: $title-color;
+        }
+
+        & .sec-text {
+            color: $title-color;
+        }
+    }
+}
+
+.serviceSlider10 {
+    padding-top: 60px;
+
+    & .swiper-slide {
+        transition: .4s;
+
+        &-active {
+            ~.swiper-slide {
+                transform: translateY(-15%);
+
+                ~.swiper-slide {
+                    transform: translateY(-15%);
+
+                    ~.swiper-slide {
+                        transform: translateY(0);
+                    }
+                }
+            }
+        }
+    }
+}
+
+.service10{
+    &-style{
+        margin-top: -100px;
+    }
+    &-titlebox{
+        margin-top: 100px;
+        @include sm{
+            margin-bottom: 0;
+        }
+    }
+}
+/* service area 10 end ------------------*/
+
+/* service details area start----------------*/
+.sv-details-img {
+    & img {
+        border-radius: 20px 20px 0 0;
+    }
+}
+
+.sv-details-list {
+    & ul {
+        & li {
+            display: flex;
+            padding-left: 0;
+
+            & .icon {
+                margin-right: 8px;
+            }
+        }
+    }
+}
+
+.sv-sm-img {
+    & img {
+        border-radius: 20px;
+    }
+}
+
+.sv-content {
+    padding: 40px;
+    border: 1px solid $border-color;
+    border-top: 0;
+    border-radius: 0 0 20px 20px;
+    @include xs{
+        padding: 20px;
+    }
+
+    & .box-title {
+        font-size: 34px;
+        @include xs{
+            font-size: 24px;
+        }
+    }
+}
+
+/* service details area end----------------*/

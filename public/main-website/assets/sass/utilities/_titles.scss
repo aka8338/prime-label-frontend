@@ -1,0 +1,284 @@
+.sec-title {
+    line-height: 1.2;
+    text-transform: capitalize;
+    margin-bottom: calc(var(--section-title-space) - 11px);
+    @include xs{
+        font-size: 26px;
+    }
+}
+
+.sub-title {
+    display: block;
+    font-weight: 500;
+    font-size: 20px;
+    letter-spacing: 0.02em;
+    color: $theme-color;
+    font-family: $style-font;
+    position: relative;
+    margin-top: -0.2em;
+    margin-bottom: 5px;
+
+    @media(max-width: 480px) {
+        font-size: 30px;
+        line-height: 30px;
+    }
+
+    @include vxs {
+        font-size: 25px;
+        line-height: 25px;
+    }
+
+    &.extra-sub {
+        color: $brand-color;
+        margin-bottom: 10px;
+    }
+
+}
+
+
+.box-title {
+    font-size: 24px;
+    line-height: 1.4;
+    font-weight: 600;
+    margin-top: -0.32em;
+
+    a {
+        color: inherit;
+
+        &:hover {
+            color: $theme-color;
+        }
+    }
+}
+
+.box-subtitle {
+    margin-bottom: 8px;
+}
+
+.box-title2 {
+    font-size: 20px;
+    line-height: 1.5;
+    font-weight: 700;
+    margin-top: -0.35em;
+
+    a {
+        color: inherit;
+
+        &:hover {
+            color: $theme-color;
+        }
+    }
+}
+
+.sec-text {
+    font-size: 16px;
+    line-height: 26px;
+
+    &.style2 {
+        max-width: 776px;
+
+        @include md {
+            display: block;
+            margin: auto auto 50px auto;
+            text-align: center;
+        }
+    }
+}
+
+.title-area {
+    margin-bottom: calc(var(--section-title-space) - 11px);
+    position: relative;
+    z-index: 2;
+
+
+    .sec-title {
+        line-height: 1.2;
+        margin-bottom: 22px;
+    }
+
+    &.mb-0 {
+        .sec-title {
+            margin-bottom: -0.24em;
+        }
+    }
+
+    .th-btn {
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+}
+
+.mb-32 {
+    margin-bottom: 32px;
+}
+
+hr.title-line {
+    margin-top: 0;
+    background-color: $border-color;
+    opacity: 1;
+}
+
+.sec-btn {
+    text-align: center;
+}
+
+.sec-btn,
+.title-line {
+    margin-bottom: var(--section-title-space);
+}
+
+.shadow-title {
+    font-family: $title-font;
+    font-weight: 800;
+    font-size: 250px;
+    line-height: 250px;
+    text-transform: capitalize;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.7) 28.89%, rgba(255, 255, 255, 0) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    margin: -0.45em 0 -0.45em -0.25em;
+
+    &.color2 {
+        background-image: linear-gradient(180deg, #232C47 0%, rgba(20, 29, 56, 0) 91.15%);
+    }
+
+    &.color3 {
+        background-image: linear-gradient(180deg, #E0E0E0 0%, rgba(220, 214, 214, 0) 93.75%);
+    }
+}
+
+.title-area2 {
+    padding: 50px 100px;
+
+    .subtitle {
+        color: $white-color;
+        text-transform: uppercase;
+        margin-top: -0.4em;
+        margin-bottom: 5px;
+        display: block;
+    }
+
+    .title {
+        color: $white-color;
+        max-width: 430px;
+        margin-bottom: -0.26em;
+    }
+}
+
+@media (max-width: 1700px) {
+    .title-area2 {
+        padding: 50px 50px;
+    }
+}
+
+
+@include lg {
+
+
+    .shadow-title {
+        font-size: 180px;
+    }
+
+    .title-area,
+    .sec-title {
+        --section-title-space: 60px;
+
+        &.mb-45 {
+            margin-bottom: 36px;
+        }
+
+        &.mb-50 {
+            margin-bottom: 40px;
+        }
+    }
+
+    .sec-btn,
+    .title-line {
+        --section-title-space: 55px;
+    }
+
+    .title-area2 .title {
+        max-width: 300px;
+    }
+}
+
+@include md {
+
+
+    .title-area,
+    .sec-title {
+        --section-title-space: 50px;
+
+        &.mb-45 {
+            margin-bottom: 35px;
+        }
+    }
+
+    .sec-btn,
+    .title-line {
+        --section-title-space: 50px;
+    }
+
+    .sub-title {
+        &.h4 {
+            font-size: 22px;
+        }
+    }
+}
+
+@include sm {
+
+    .sub-title {
+        margin-bottom: 10px;
+    }
+
+    .title-area2 {
+        text-align: center;
+
+        .title {
+            max-width: 100%;
+        }
+    }
+}
+
+@include xs {
+    .shadow-title {
+        font-size: 100px;
+        line-height: 150px;
+    }
+}
+
+@include vxs {
+
+    .title-area2 {
+        padding: 40px 20px;
+    }
+}
+
+.tx-split-text .split-line {
+    overflow: hidden
+}
+
+.title-ani,
+.text-ani {
+    text-align: inherit !important
+}
+
+.title-ani>*,
+.text-ani>* {
+    text-align: inherit !important
+}
+
+#smooth-wrapper {
+    padding-top: var(--headerHeight)
+}
+
+.sec-note {
+    font-family: $title-font;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 1.2;
+    color: $title-color;
+}

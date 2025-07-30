@@ -1,0 +1,218 @@
+/* project 1 start  ---------------------------------- */
+.project-item {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+
+    .box-img {
+        position: relative;
+        border: 10px solid rgba(255, 255, 255, 0.5);
+        border-radius: 34px;
+        overflow: hidden;
+        transition: all 0.4s ease-in-out;
+
+        @include md {
+            margin-bottom: 0;
+        }
+
+        &:before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(11, 20, 34, 0) 0%, #0b1422 100%);
+            border-radius: 24px;
+            z-index: 10;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    .box-content {
+        position: absolute;
+        left: 34px;
+        right: 34px;
+        bottom: 34px;
+        z-index: 11;
+
+    }
+
+    .box-title {
+        color: $white-color;
+        font-size: 28px;
+        font-weight: 600;
+        margin-bottom: 5px;
+
+        @include md {
+            font-size: 22px;
+        }
+        @include xs {
+            font-size: 18px;
+        }
+    }
+
+    .box-text {
+        color: $white-color;
+        display: block;
+    }
+
+    &:hover {
+        .box-img {
+            border-color: $white-color;
+        }
+    }
+}
+
+.project-overlay {
+    &::before {
+        position: absolute;
+        width: 100%;
+        height: 59%;
+        top: 0;
+        left: 0;
+        content: "";
+        background: $title-color;
+        opacity: 0.7;
+    }
+}
+
+/* project 1 end  ---------------------------------- */
+
+/* project 2 start  ---------------------------------- */
+.project-item2 {
+    position: relative;
+    z-index: 2;
+
+    &_img {
+        position: relative;
+        &::before{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            content: "";
+            background: linear-gradient(180deg, #0B1422 0%, rgba(11, 20, 34, 0) 50.5%);
+            z-index: 2;
+            transition: .4s;
+        }
+
+    }
+
+    .project-content {
+        position: absolute;
+        top: 30px;
+        left: 30px;
+        border-radius: 30px;
+
+        .box-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin: 0;
+            color: $white-color;
+            margin-bottom: 5px;
+
+            img {
+                margin-right: 6px;
+            }
+        }
+
+        & .sub-title {
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: capitalize;
+            color: $white-color;
+        }
+    }
+
+    .icon-btn {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        --btn-size: 50px;
+        line-height: 50px;
+        transform: rotate(-45deg);
+
+        &:hover {
+            img {
+                filter: brightness(0) invert(1);
+            }
+        }
+    }
+
+    &.style2{
+        & .project{
+            &-img{
+                border-radius: 24px;
+                transition: .4s;
+
+                & img{
+                    border-radius: 24px;
+                }
+
+                &::before{
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    left: 0;
+                    bottom: 0;
+                    content: "";
+                    background: linear-gradient(180deg, rgba(11, 20, 34, 0) 0%, #0b1422 100%);
+                    border-radius: 24px;
+
+                }
+            }
+            &-content{
+                top: auto;
+                bottom: 30px;
+            }
+        }
+
+        & .sub-title{
+            font-size: 16px;
+            color: $border-color  ;
+        }
+
+        &:hover{
+            & .project{
+                &-img{
+                    // mask-image: conic-gradient !important;
+                }
+            }
+        }
+    }
+}
+
+.project2{
+    &-btn{
+        & .th-btn{
+            padding: 19px 40px;
+        }
+    }
+}
+
+/* project 2 end  ---------------------------------- */
+
+/* project details start area -----------------------*/
+.project-dsc{
+    &-img{
+        & img{
+            border-radius: 24px;
+        }
+    }
+}
+/* project details end area -----------------------*/
+
+.project-area{
+    & .slider-arrow{
+        top: 52%;
+        left: var(--pos-x, -40px);
+        &.slider-next {
+            right: var(--pos-x, -40px);
+            left: unset;
+        }
+    }
+}

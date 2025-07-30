@@ -1,0 +1,117 @@
+.wp-block-query-pagination-numbers,
+.th-pagination {
+    margin-bottom: 30px;
+
+    ul {
+        margin: 0;
+        padding: 0;
+    }
+
+    li {
+        display: inline-block;
+        margin: 0 3px;
+        list-style-type: none;
+
+        &:last-child {
+            margin-right: 0;
+        }
+
+        &:first-child {
+            margin-left: 0;
+        }
+    }
+
+    span,
+    a {
+        display: inline-block;
+        text-align: center;
+        gap: 8px;
+        position: relative;
+        color: $title-color;
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+        border-radius: 50%;
+        z-index: 1;
+        font-size: 16px;
+        font-weight: 400;
+        transition: all 0.4s ease-in-out;
+        background: $smoke-color;
+
+        @include vxs {
+            font-size: 14px;
+            width: 35px;
+            height: 35px;
+            line-height: 35px;
+        }
+
+        img {
+            transition: all 0.4s ease-in-out;
+        }
+
+        &.active,
+        &:hover {
+            color: $white-color;
+            background-color: $theme-color;
+
+            img {
+                filter: brightness(0) invert(1);
+            }
+        }
+    }
+}
+
+.wp-block-query-pagination-next {
+    display: inline-block;
+    text-align: center;
+    position: relative;
+    border: none;
+    color: $title-color;
+    background-color: $smoke-color2;
+    min-width: 56px;
+    height: 56px;
+    line-height: 56px;
+    z-index: 1;
+    font-size: 16px;
+    padding: 0 20px;
+    font-weight: 500;
+    border-radius: 12px;
+    transition: 0.4s ease-in-out;
+
+    @include vxs {
+        font-size: 14px;
+        padding: 0 15px;
+    }
+
+    &.active,
+    &:hover {
+        color: $white-color;
+        background-color: $theme-color;
+        border-color: $theme-color;
+    }
+}
+
+.pagination-title{
+    width: auto;
+    height: auto;
+    display: inline-block;
+    margin: 0 15px;
+}
+
+.pagination-box2{
+    border: 1px solid $border-color;
+    border-right: 0;
+    border-left: 0;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    & .pagination-icon{
+        width: 55px;
+        height: 55px;
+        line-height: 55px;
+        background: none;
+        border: 1px solid $border-color;
+        &:hover{
+            border-color: $theme-color;
+        }
+    }
+}

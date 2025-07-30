@@ -1,0 +1,60 @@
+/* color scheme ---------------------------------- */
+.color-scheme-wrap {
+    position: fixed;
+    right: 0;
+    top: 50%;
+    z-index: 99;
+    background: $white-color;
+    padding: 20px 30px;
+    border-radius: 10px 0 0 10px;
+    display: inline-block;
+    text-align: center;
+    transition: 0.4s;
+    box-shadow: 0px 0px 4px 0px rgba(51, 51, 51, 0.2);
+
+    .switchIcon {
+        position: absolute;
+        left: 0;
+        top: 10px;
+        border: 0;
+        background: $theme-color;
+        color: $white-color;
+        height: 45px;
+        width: 45px;
+        border-radius: 5px 0 0 5px;
+        transform: translate(-100%, 0);
+    }
+
+    .color-scheme-wrap-title {
+        font-size: 22px;
+        border-bottom: 1px solid $border-color;
+        padding-bottom: 6px;
+        color: $title-color;
+        margin-bottom: 30px;
+
+        i {
+            font-size: 18px;
+            margin-right: 3px;
+        }
+    }
+
+    .color-switch-btns {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 18px;
+        margin-bottom: 25px;
+
+        button {
+            padding: 0;
+            border: 0;
+            background: transparent;
+            font-size: 34px;
+            color: $theme-color;
+            text-align: left;
+        }
+    }
+
+    &.active {
+        transform: translate(100%, 0);
+    }
+}

@@ -1,0 +1,110 @@
+@each $bgcolorMap,
+$value in $bgcolorMap {
+    .bg-#{$bgcolorMap} {
+        background-color: #{$value} !important;
+    }
+}
+
+.gradient-body {
+    background-image: linear-gradient(180deg, rgba(237, 240, 244, 0.50) 2.66%, rgba(237, 240, 244, 0.36) 90.4%);
+}
+.black-bg{
+    background-color: $title-color !important;
+}
+
+.light-bg{
+    background-color: $light-bg-color !important;
+}
+.light-blue-bg{
+    background-color: $light-blue-color;
+}
+.dark-bg{
+    background-color: $dark-bg-color !important;
+}
+
+.brand-bg{
+    background-color: $brand-color !important;
+}
+.gr-bg1 {
+    background: linear-gradient(180deg, rgba(237, 240, 244, 0.00) 0%, rgba(237, 240, 244, 0.85) 100%);
+}
+
+.gr-bg2 {
+    background-image: linear-gradient(100.62deg, rgba(249, 215, 175, 0.3) 0%, rgba(214, 202, 245, 0.3) 24.03%, rgba(198, 241, 255, 0.3) 45.73%, rgba(248, 242, 222, 0.3) 69.05%, rgba(212, 179, 253, 0.3) 100.44%);
+}
+
+.gr-bg3 {
+    background-image: linear-gradient(110.59deg, rgba(236, 207, 254, 0.4) 0%, rgba(255, 221, 221, 0.5) 46.79%, rgba(247, 255, 229, 0.7) 100%);
+    backdrop-filter: blur(10px);
+}
+
+.gr-bg4 {
+    background-image: linear-gradient(105.44deg, rgba(255, 229, 133, 0.4) 0%, rgba(189, 255, 199, 0.4) 48.48%, rgba(223, 109, 223, 0.4) 100%);
+    backdrop-filter: blur(15px);
+}
+
+.gray-body {
+    background-color: #F8FAFF;
+}
+
+.background-image,
+[data-bg-src] {
+    @include background-content(no-repeat, cover, center center);
+}
+
+.bg-fluid {
+    @include background-content(no-repeat, 100% 100%, center center);
+}
+
+.bg-auto {
+    background-size: auto auto;
+}
+
+.bg-top-center {
+    background-size: auto;
+    background-position: top center;
+}
+.bg-bottom-center {
+    background-size: auto;
+    background-position: bottom center; 
+}
+
+.bg-repeat {
+    background-size: auto;
+    background-repeat: repeat;
+}
+
+.bg-bottom-right {
+    background-size: auto;
+    background-position: bottom right;
+}
+
+.bg-top-right {
+    background-size: auto;
+    background-position: top right;
+}
+
+.bg-top-left {
+    background-size: auto;
+    background-position: top left;
+}
+
+.th-radius {
+    border-radius: 20px; 
+}
+
+.theme-bg{
+    background-color: $theme-color;
+}
+
+.smoke-bg{
+    background-color: $smoke-color;
+}
+
+.white-bg{
+    background: $white-color;
+}
+
+.bg-theme-dark{
+    background: #001C49;
+}

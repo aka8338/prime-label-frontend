@@ -1,0 +1,566 @@
+.footer-wrapper {
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+}
+
+.widget-area {
+    padding-bottom: 70px;
+}
+
+.footer-widget {
+    @include lg {
+        margin-bottom: 40px;
+    }
+
+    &.mb-lg-0 {
+        @include lg {
+            margin-bottom: 0;
+        }
+    }
+    & .th-social{
+        & a{
+            color: $white-color;
+        }
+    }
+}
+
+.sticky-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+.copyright-wrap {
+    padding: 22px 0;
+    background-color: #3d4859;
+
+
+    .copyright-text {
+        color: $white-color;
+
+        a {
+            transition: all 0.4s ease-in-out;
+
+            &:hover {
+                color: $theme-color;
+            }
+        }
+    }
+
+    &.bg-title {
+        .copyright-text {
+            a {
+                &:hover {
+                    color: $theme-color;
+                }
+            }
+        }
+    }
+}
+
+.newsletter-top {
+    border-bottom: 1px solid rgba($color: #fff, $alpha: .3);
+    margin-bottom: 70px;
+    padding-bottom: 60px;
+
+    .newsletter-title {
+        font-size: 40px;
+        font-weight: 600;
+
+        @include lg {
+            font-size: 30px;
+        }
+
+        @include md {
+            text-align: center;
+        }
+
+    }
+}
+
+.newsletter-form {
+    display: flex;
+    gap: 16px;
+    max-width: 660px;
+    margin-left: auto;
+
+    @media(max-width: 480px) {
+        display: block;
+    }
+
+    &.style2 {
+        input {
+            background-color: transparent;
+            @include inputPlaceholder {
+                color: $white-color;
+            }
+
+            &:focus {
+                color: $white-color;
+            }
+        }
+    }
+
+    input {
+        border: 1px solid rgba($color: #fff, $alpha: .3);
+        backdrop-filter: blur(5px);
+        height: 64px;
+        border-radius: 32px;
+        background: none;
+
+        &:focus {
+            color: $white-color;
+            background: none;
+        }
+
+        &::placeholder {
+            color: $border-color;
+        }
+    }
+
+    .th-btn {
+        min-width: 220px;
+
+        @media(max-width: 480px) {
+            min-width: 100%;
+            margin-top: 20px;
+        }
+
+        & img {
+            filter: contrast(0) brightness(2);
+            transition: .9s;
+        }
+
+        &:hover {
+            & img {
+                filter: contrast(1) brightness(1);
+            }
+        }
+    }
+
+    &.style6 {
+        & .th-btn {
+            color: $title-color;
+            background: $brand-color;
+
+            &::before {
+                background-color: $white-color;
+            }
+
+            &>img {
+                filter: contrast(1) brightness(0);
+            }
+
+            &:hover {
+                & img {
+                    filter: contrast(1) brightness(1);
+                }
+            }
+        }
+
+        & input:focus {
+            border-color: $brand-color;
+        }
+    }
+}
+
+.th-widget-contact {
+    max-width: 260px;
+    margin-bottom: -0.4em;
+}
+
+.info-box_text {
+    line-height: 1.75em;
+    margin-top: 0;
+    display: flex;
+    gap: 16px;
+
+    .icon {
+        color: $body-color;
+        flex: none;
+        width: 40px;
+        height: 40px;
+        line-height: 37px;
+        background-color: $white-color;
+        border-radius: 50%;
+        text-align: center;
+        transition: all 0.4s ease-in-out;
+
+        img {
+            transition: all 0.4s ease-in-out;
+        }
+
+        &:hover {
+            background-color: $theme-color;
+
+            img {
+                filter: contrast(0) brightness(2);
+            }
+        }
+    }
+
+    .details {
+        margin-top: -0.3em;
+
+        p {
+            color: #B1B8C3;
+            margin-bottom: 0;
+        }
+    }
+
+    a {
+        color: #B1B8C3;
+
+        &:hover {
+            color: $theme-color;
+        }
+    }
+
+    &:not(:last-child) {
+        margin-bottom: 18px;
+    }
+}
+
+.footer-card {
+    .title {
+        font-weight: 400;
+        font-size: 16px;
+        color: $white-color;
+        margin-right: 16px;
+    }
+}
+
+.footer-layout1 {
+    .th-social a {
+        margin-right: 10px;
+    }
+
+    .copyright-wrap {
+
+        .copyright-text {
+            font-size: 14px;
+            font-weight: 400;
+
+            a {
+                color: inherit;
+            }
+        }
+    }
+
+}
+
+.copyright-text {
+    margin: 0;
+
+    @include md {
+        text-align: center;
+    }
+
+    a {
+        color: $theme-color;
+
+        &:hover {
+            color: $white-color;
+        }
+    }
+}
+
+.footer-links {
+    & ul {
+        margin: 0;
+        padding: 0;
+
+        & li {
+            display: inline-block;
+
+            &:not(:last-child) {
+                margin-right: 40px;
+                @include lg{
+                    margin-right: 10px;
+                }
+            }
+
+            & a {
+                color: #F8F8F8;
+            }
+        }
+    }
+}
+
+/* footer layout  2 start --------------------------*/
+.footer-layout2 {
+    --body-color: #E9F6F9;
+
+    .newsletter-top {
+        border-bottom: 1px solid rgba(233, 246, 249, 0.2);
+    }
+
+    .widget-area {
+        padding-bottom: 93px;
+
+        @include lg {
+            padding-bottom: 80px;
+        }
+
+        @include md {
+            padding-bottom: 30px;
+        }
+    }
+
+    .footer-widget {
+        .widget_title {
+            color: $white-color;
+        }
+
+        &.widget_nav_menu {
+            a {
+                font-weight: 300;
+            }
+        }
+    }
+
+    .about-text {
+        color: #B1B8C3;
+        font-weight: 300;
+        margin-bottom: 22px;
+    }
+
+    .copyright-wrap {
+        background-color: transparent;
+        border-top: 1px solid rgba(233, 246, 249, 0.2);
+        padding: 18px 0;
+
+        .copyright-text {
+            a {
+                color: $white-color;
+            }
+
+            &.copy-text8 {
+                & a {
+                    color: $brand-color;
+                }
+            }
+        }
+    }
+
+    & .th-btn {
+        & img {
+            filter: contrast(1) brightness(1);
+            transition: .9s;
+        }
+
+        &:hover {
+            & img {
+                filter: contrast(0) brightness(0);
+            }
+        }
+    }
+
+    &.light-blue-bg{
+        
+        .about-text {
+            color: $white-color;
+        }
+
+        & .widget_nav_menu {
+            a {
+                color: $white-color;
+            }
+        }
+
+        & .info-box_text a {
+            color: $white-color;
+        }
+    }
+}
+
+/* footer layout  2 end --------------------------*/
+
+/* footer layout 4 start ---------------------------*/
+.footer-layout4 {
+    .widget_title {
+        color: $white-color;
+    }
+
+    .newsletter-top {
+        border-color: rgba(233, 246, 249, 0.3);
+    }
+
+    .newsletter-form.style4 {
+        margin-left: auto;
+    }
+
+    .newsletter-form {
+        margin-left: auto;
+
+        input {
+            border: 1px solid $white-color;
+            background-color: transparent;
+            backdrop-filter: none;
+            height: 64px;
+            border-radius: 32px;
+
+            @include inputPlaceholder {
+                color: $white-color;
+            }
+
+            &:focus {
+                color: $white-color;
+            }
+        }
+    }
+
+    .about-text {
+        color: #E9F6F9;
+    }
+
+    .footer-widget.widget_nav_menu {
+        a {
+            color: $white-color;
+
+            &:before {
+                color: $white-color;
+            }
+
+            &:hover {
+                color: #113D48;
+
+                &:before {
+                    color: #113D48;
+                }
+            }
+        }
+    }
+
+    .info-box {
+        &_text {
+            --body-color: #fff;
+
+            &_link {
+                &:hover {
+                    color: #113D48;
+                }
+            }
+
+            .icon {
+                color: $theme-color;
+                background-color: $white-color;
+
+                img {
+                    filter: brightness(1) invert(0)
+                }
+            }
+
+            & .details {
+                & p {
+                    color: $white-color;
+                }
+            }
+        }
+    }
+
+    .sidebar-gallery {
+        .gallery-thumb {
+            &:before {
+                background-color: #113D48;
+            }
+        }
+    }
+
+    .info-box_text a:hover {
+        color: $title-color;
+    }
+
+    .th-social {
+        a {
+            --icon-size: 40px;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: $white-color;
+            margin-right: 10px;
+
+            @include xl {
+                margin-right: 5px;
+            }
+        }
+    }
+
+    .copyright-wrap {
+        background-color: transparent;
+        border-top: 1px solid rgba(233, 246, 249, 0.3);
+    }
+
+    .copyright-text {
+        font-size: 14px;
+
+        a {
+            color: var(--white-color);
+
+            &:hover {
+                color: $title-color;
+            }
+        }
+    }
+
+}
+
+/* footer layout 5 start -----------------*/
+.footer-layout5 {
+    .widget-area {
+        padding-top: 0;
+        padding-bottom: 90px;
+        margin-top: 0;
+        @include md {
+            padding-bottom: 30px;
+        }
+    }
+
+}
+
+.footer-layout6 {
+    .widget-area {
+        padding-top: 120px;
+    }
+
+    & .footer-btn {
+        & img {
+            filter: contrast(1) brightness(1);
+            transition: .9s;
+        }
+
+        &:hover {
+            & img {
+                filter: contrast(1) brightness(1);
+            }
+        }
+    }
+}
+.footer-btn{
+    & .th-btn{
+        font-size: 18px;
+    }
+}
+.footer-layout7 {
+    background-color: #405749;
+}
+
+/* footer layout 8 start -----------------*/
+.footer8 {
+    &-titlebox {
+        & .sec-title {
+            font-weight: 600;
+            font-size: 40px;
+        }
+    }
+}
+
+.widget-area.f-widget8 {
+    padding-top: 100px;
+    @include md{
+        padding-top: 80px;
+        padding-bottom: 80px;
+    }
+}
+
+/* footer layout 8 end -----------------*/

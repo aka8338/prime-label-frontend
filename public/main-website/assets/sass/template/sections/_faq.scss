@@ -1,0 +1,645 @@
+/* Faq 1 ---------------------------------- */
+.accordion-card {
+    transition: 0.4s ease-in-out;
+    border-radius: 4px;
+    border: 1px solid $title-color;
+    overflow: hidden;
+    background-color: transparent;
+    text-align: left;
+    position: relative;
+    z-index: 3;
+
+    &:not(:last-child) {
+        margin-bottom: 24px;
+    }
+
+    .accordion-button {
+        font-size: 24px;
+        font-weight: 600;
+        font-family: $title-font;
+        border: 0;
+        color: $title-color;
+        background-color: transparent;
+        border-radius: 0;
+        padding: 12px 45px 12px 30px;
+        min-height: 75px;
+        gap: 10px;
+        margin-bottom: 0;
+        text-align: left;
+        transition: 0.3s;
+        position: relative;
+
+        &:after {
+            content: "\f107";
+            height: 100%;
+            width: auto;
+            line-height: 1;
+            background-color: transparent;
+            background-image: none;
+            font-family: $icon-font;
+            color: $white-color;
+            font-weight: 500;
+            font-size: 18px;
+            display: grid;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: absolute;
+            top: 0;
+            right: 30px;
+            transition: 0.3s ease-in-out;
+        }
+
+        &:focus {
+            outline: none;
+            box-shadow: none;
+        }
+
+        &:not(.collapsed) {
+            box-shadow: none;
+
+            &:after {
+                transform: rotateX(180deg);
+                color: $brand-color;
+            }
+        }
+    }
+
+    .accordion-collapse {
+        border: none;
+    }
+
+    .accordion-body {
+        border-radius: 0;
+        border: none;
+        padding: 0px 30px 30px;
+    }
+
+    .faq-text {
+        color: $border-color;
+        margin-bottom: -0.48em;
+        margin-top: -0.48em;
+    }
+
+    &.style3 {
+        border-radius: 20px;
+        border: 0;
+
+        .accordion-button {
+            font-size: 18px;
+            font-weight: 500;
+            border-radius: 20px;
+
+            &:after {
+                content: "\2b";
+            }
+
+            &:not(.collapsed) {
+                &:after {
+                    content: "\f068";
+                }
+            }
+        }
+    }
+}
+
+@include md {
+    .accordion-card .accordion-button {
+        font-size: 20px;
+        min-height: 70px;
+    }
+}
+
+@include xs {
+    .accordion-card .accordion-button {
+        padding: 12px 45px 12px 20px;
+    }
+
+    .accordion-card .accordion-body {
+        padding: 0px 20px 30px;
+    }
+}
+
+.faq-img1 {
+    margin-left: -180px;
+    width: 817px;
+    height: 617px;
+
+    &.style2 {
+        margin-left: -280px;
+
+        @media(max-width: 1399px) {
+            margin-left: 0;
+            width: 100%;
+            height: 100%;
+
+        }
+    }
+
+    @media(max-width: 1399px) {
+        margin-left: 0;
+        width: 100%;
+        height: 100%;
+
+    }
+
+    @include lg {
+        margin-bottom: 30px;
+    }
+}
+
+@include xs {
+    .accordion-card .accordion-button {
+        font-size: 16px;
+    }
+}
+
+.faq-bg-image {
+    position: absolute;
+    top: 0;
+    right: -30px;
+    width: 737px;
+    height: 100%;
+    z-index: 1;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    @include xl {
+        display: none;
+    }
+}
+
+.faq-area {
+    position: relative;
+    overflow: hidden;
+}
+
+/*  faq area ---------------------------------------- */
+.faq-area2 {
+    max-width: 1720px;
+    display: block;
+    margin: auto;
+    background-color: #F8F8F8;
+}
+
+.faq-img2 {
+    position: relative;
+    z-index: 2;
+    margin-left: -80px;
+
+    @include xxl {
+        margin-left: 0;
+        margin-right: 40px;
+    }
+
+    @include lg {
+        margin: 0 0 50px 0;
+    }
+
+    .img1 {
+        clip-path: polygon(55% 0px, 100% 38%, 100% 100%, 0px 100%, 0% 38%);
+    }
+
+}
+
+/* faq3 area start --------------------------------------- */
+.faq-img3 {
+    position: relative;
+
+    &::before {
+        position: absolute;
+        width: 100%;
+        height: 507px;
+        bottom: 0;
+        left: 0;
+        content: "";
+        background: $brand-color;
+        border-radius: 30px;
+    }
+
+    & .img1 {
+        position: relative;
+        top: -22px;
+
+        @include lg {
+            top: -8px;
+            left: 0;
+            right: 0;
+            text-align: center;
+        }
+
+        & .faq-card {
+            position: absolute;
+            bottom: 40px;
+            border-radius: 16px;
+            right: 30px;
+        }
+    }
+
+}
+
+/* faq3 area end --------------------------------------- */
+
+/* accordion area start home 2 */
+.offer-deals-wrapp {
+    position: relative;
+    display: flex;
+    gap: 40px;
+
+    @include lg {
+        margin-bottom: 60px;
+    }
+
+    @include sm {
+        display: block;
+    }
+
+}
+
+.accordion-item {
+    transition: 0.4s ease-in-out;
+    background: transparent;
+    overflow: hidden;
+    min-width: 336px;
+
+    @include sm {
+        min-width: 100%;
+    }
+
+    &_info {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &_wrapp {
+        display: flex;
+        gap: 40px;
+
+        @include xs {
+            display: block;
+        }
+    }
+
+    &_number {
+        border: 1px solid $gray-color;
+        width: 69px;
+        height: 32px;
+        padding: 2px 24.5px;
+        border-radius: 30px;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 27px;
+        color: $gray-color;
+    }
+
+    &_content {
+        color: #fff;
+        padding: 0 30px 0px 110px;
+        max-height: 0;
+        overflow: hidden;
+        will-change: max-height;
+        transition: all 1s ease;
+        opacity: 0;
+
+        @include xs {
+            padding: 0 30px 0px 0px;
+        }
+    }
+
+    .box-title {
+        margin-bottom: 0;
+    }
+
+    i {
+        font-size: 20px;
+        font-weight: 400;
+        color: $title-color;
+        transform: rotate(-180deg);
+
+        @include xs {
+            font-size: 24px;
+        }
+    }
+
+    .accordion-button {
+        font-size: 30px;
+        font-weight: 600;
+        font-family: $title-font;
+        border: 0;
+        color: $title-color;
+        background: transparent;
+        padding: 20px 0 20px 0;
+        gap: 10px;
+        margin-bottom: 0;
+        text-align: left;
+        display: block;
+        transition: 0.3s;
+        position: relative;
+        border-radius: 0 !important;
+
+        &:after {
+            display: none;
+        }
+
+        &:focus {
+            outline: none;
+            box-shadow: none;
+        }
+
+        &:not(.collapsed) {
+            box-shadow: none;
+            border-bottom: none;
+            background-color: transparent;
+            padding: 20px 0 0px 0;
+
+            .accordion-item {
+                &_number {
+                    border-color: $theme-color;
+                    color: $theme-color;
+                }
+            }
+
+            i {
+                color: $theme-color;
+                transform: rotate(0deg);
+            }
+
+            &:after {
+                content: '\f068';
+                // transform: rotate(0);
+            }
+        }
+
+        &.collapsed {
+            border-bottom: 1px solid $gray-color;
+            // i {
+            //     transform: rotate(-180deg); 
+            // }
+        }
+    }
+
+    .accordion-collapse {
+        border: none;
+
+        .accordion-body {
+            border-color: $theme-color;
+        }
+
+
+    }
+
+    .accordion-body {
+        background-color: transparent;
+        border: none;
+        padding: 0px;
+        border-bottom: 1px solid $gray-color;
+
+
+    }
+
+    .faq-img {
+        height: 100%;
+
+        img {
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+
+}
+
+.accordion-item-wrapp {
+    padding: 0;
+
+    li {
+        list-style: none;
+    }
+}
+
+.according-img-tab {
+    position: absolute;
+    right: 40px;
+    top: 20px;
+    transition: all 0.6s ease-in-out;
+
+    @media(max-width: 1399px) {
+        right: 20px;
+    }
+
+    @include xl {
+        top: 0;
+        max-width: 250px;
+    }
+
+    @include lg {
+        max-width: 100%;
+    }
+
+    @include md {
+        right: 0;
+    }
+
+    @include sm {
+        position: relative;
+        margin-top: 50px;
+    }
+
+    img {
+        border-radius: 16px;
+        transform: rotate(5deg);
+        transition: all 1.3s ease;
+    }
+}
+
+.faq-price {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 28px;
+    letter-spacing: 0.02em;
+    text-transform: capitalize;
+    color: $theme-color;
+    display: block;
+    margin-bottom: 10px;
+
+}
+
+.th-accordion_images {
+    position: absolute;
+    right: 40px;
+    top: 10px;
+    margin-top: 35px;
+
+    img {
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.4s ease-in-out;
+
+        &.active {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+
+    img {
+        border-radius: 16px;
+        transform: rotate(5deg);
+
+        opacity: 0;
+        transition: all 1.3s ease;
+
+        &:not(:first-child) {
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        &.active {
+            opacity: 1;
+        }
+    }
+}
+
+.offer-deals-counter {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    padding: 0;
+
+    @include xl {
+        grid-template-columns: auto auto;
+        gap: 20px;
+    }
+
+    @include lg {
+        grid-template-columns: auto auto auto auto;
+    }
+
+    @media(max-width: 480px) {
+        grid-template-columns: auto auto;
+    }
+
+    @include vxs {
+        grid-template-columns: auto;
+    }
+
+    li {
+        position: relative;
+        text-align: center;
+        border-radius: 50%;
+        border: 1px solid $theme-color;
+        list-style: none;
+        padding: 30px 20px;
+        width: 114px;
+
+        &:not(:last-child) {
+            &:before {
+                content: ":";
+                position: absolute;
+                right: -16%;
+                top: 35%;
+                font-size: 35px;
+                color: var(--title-color);
+                font-weight: 700;
+
+                @media(max-width: 1399px) {
+                    right: -11%;
+
+                }
+
+                @include xl {
+                    display: none;
+                }
+
+            }
+        }
+
+        .count-number {
+            font-weight: 600;
+            font-size: 24px;
+            letter-spacing: 0.02em;
+            color: $title-color;
+        }
+
+        .count-name {
+            font-weight: 400;
+            color: $title-color;
+
+        }
+    }
+}
+
+// loader 
+.th-loader {
+    position: relative;
+}
+
+.loadcontent {
+    display: none;
+}
+
+/* Faq4 inner Area ----------------------------*/
+.faq4-form {
+    & .sec-title {
+        font-size: 24px;
+        width: 600px;
+    }
+
+    & .contact-form {
+        background-color: $smoke-color;
+        box-shadow: none;
+    }
+
+    & .form-group {
+        margin-bottom: 14px;
+    }
+
+    & .form-btn {
+        & .th-btn {
+            width: 100%;
+            padding: 15px 42px;
+            border-radius: 10px;
+
+            &:hover {
+                background-color: $white-color;
+            }
+        }
+    }
+
+    & input.form-control {
+        height: 56px;
+    }
+    & textarea.form-control {
+        min-height: 115px;
+    }
+}
+
+.accordion-card {
+    &.style4 {
+        border: 0;
+        background: $smoke-color;
+        border-radius: 20px;
+
+        & .faq-text {
+            color: $body-color;
+        }
+
+        & .accordion-button {
+            font-weight: 600;
+            font-size: 18px;
+            min-height: 73px;
+
+            &:after {
+                color: $theme-color;
+                content: "\2b";
+            }
+
+            &:not(.collapsed):after {
+                content: "\f068";
+            }
+        }
+    }
+}

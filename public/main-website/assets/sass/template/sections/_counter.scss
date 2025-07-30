@@ -1,0 +1,398 @@
+/* counter-card start -----------------------*/
+.counter-wrap1 {
+    @include lg {
+        margin-bottom: -30px;
+    }
+}
+.counter-wrap2 {
+    @include lg {
+        padding: 80px 0 0;
+    }
+}
+.counter-card {
+    position: relative;
+    background-color: #F2F5FA;
+    padding: 88px 28px;
+    width: 264px;
+    height: 264px;
+    display: block;
+    margin: auto;
+    text-align: center;
+    border-radius: 50%;
+    z-index: 2;
+    margin-top: 158px;
+
+    &.style2 {
+        margin-top: 25px;
+
+        @include lg {
+            margin: 30px auto 30px auto;
+        }
+
+        & .counter-title {
+            font-size: 22px;
+        }
+    }
+
+    &.style3 {
+        margin: 25px auto 25px auto;
+        @include md {
+        }
+
+        @include sm {
+            display: block;
+            margin: 25px auto 25px auto;
+        }
+    }
+
+    &_wrapp {
+        @include sm {
+            &:not(:first-child) {
+                margin: 0px auto 0px auto;
+            }
+        }
+    }
+
+    @include lg {
+        margin-top: 24px;
+        margin-bottom: calc(24px + 30px);
+    }
+
+    @include sm {
+        width: 250px;
+        height: 250px;
+        padding: 81px 28px;
+    }
+
+    @include xs {
+        margin-top: 20px;
+    }
+
+    .counter-shape {
+        position: absolute;
+        inset: -24px;
+        width: 312px;
+        height: 312px;
+        border-radius: 50%;
+        border: 1px solid $theme-color;
+        transition: all 0.4s ease-in-out;
+
+        @include sm {
+            width: 290px;
+            height: 290px;
+            inset: -20px;
+        }
+
+        span {
+            position: absolute;
+            top: unset;
+            bottom: 55px;
+            right: 15px;
+            width: 24px;
+            height: 24px;
+            display: block;
+            border-radius: 50%;
+            background-color: rgba(28, 168, 203, 0.2);
+            z-index: 2;
+
+            @include sm {
+                bottom: 51px;
+                right: 13px;
+            }
+
+        }
+
+        &:after,
+        &:before {
+            content: "";
+            position: absolute;
+            bottom: 20%;
+            right: 7%;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            box-sizing: content-box;
+            background-color: $theme-color;
+
+        }
+
+        &:after {
+            background-color: $theme-color;
+            @extend .ripple-animation3;
+        }
+
+    }
+
+    &-wrap {
+        margin: 50px 0 25px 0;
+
+        @include lg {
+            margin: 0;
+        }
+
+        &:nth-child(even) {
+            .counter-card {
+                margin-top: 0px;
+                @include lg {
+                    margin-top: 24px;
+                }
+                .counter-shape {
+                    span {
+                        top: 24px;
+                        right: 43px;
+
+                        @include sm {
+                            top: 22px;
+                            right: 39px;
+                        }
+                    }
+
+                    &:before,
+                    &:after {
+                        bottom: unset;
+                        top: 10%;
+                        right: 16%;
+                    }
+                }
+            }
+        }
+    }
+
+    .box-number {
+        font-weight: 700;
+        font-size: 48px;
+        line-height: 48px;
+        text-transform: capitalize;
+        color: $black-color2;
+        margin-bottom: 7px;
+    }
+
+    .counter-title {
+        font-weight: 500;
+        font-size: 22px;
+        line-height: 36px;
+        color: $black-color2;
+
+        @include xs {
+            font-size: 20px;
+        }
+    }
+
+    &:hover {
+        .counter-shape {
+            animation: spin 10s linear infinite;
+        }
+    }
+}
+
+.counter-card-wrap.style2 {
+    margin: 25px 0 25px 0;
+}
+
+.counter-sec2 {
+    position: relative;
+    z-index: 1;
+}
+
+/* counter-card end -----------------------*/
+
+/* counter-box start -----------------------*/
+.counter-box {
+    border: 1px solid #E1E4E6;
+    border-radius: 8px;
+    text-align: center;
+    padding: 60px 20px;
+
+    &-wrap {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 40px;
+        max-width: 782px;
+
+        @include xl {
+            max-width: 100%;
+            gap: 20px;
+        }
+
+        @include sm {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @media(max-width: 320px) {
+            grid-template-columns: repeat(1, 1fr);
+        }
+    }
+
+    &_number {
+        font-family: $body-font;
+        font-weight: 600;
+        font-size: 28px;
+        line-height: 30px;
+        letter-spacing: 0.02em;
+        color: $black-color2;
+        margin-bottom: 0;
+    }
+
+    &_title {
+        font-size: 18px;
+        font-weight: 400;
+        color: $black-color2;
+        margin-bottom: -0.4rem;
+
+        @include xl {
+            font-size: 16px;
+        }
+
+    }
+}
+
+/* counter-box end -----------------------*/
+
+.counter-sec7 {
+    background-color: $white-color;
+    box-shadow: 0px 50px 50px rgba(83, 83, 85, 0.05);
+    border-radius: 30px;
+    padding: 60px;
+    position: relative;
+    z-index: 3;
+    margin-top: -130px;
+
+    @include xl {
+        margin-top: -60px;
+    }
+
+}
+
+.counter-item {
+    position: relative;
+    text-align: center;
+    z-index: 2;
+
+    .box-number {
+        font-size: 48px;
+        line-height: 48px;
+        letter-spacing: 0.02em;
+        text-transform: capitalize;
+        color: #113D48;
+    }
+
+    .counter-title {
+        font-weight: 500;
+        font-size: 24px;
+        margin-bottom: 0;
+    }
+
+    .counter-shape {
+        position: absolute;
+        top: -55%;
+        left: 50%;
+        transition: all 0.4s ease-in-out;
+
+        @include lg {
+            top: -20%;
+        }
+
+        &:after,
+        &:before {
+            content: "";
+            position: absolute;
+            bottom: 20%;
+            right: 7%;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            box-sizing: content-box;
+            background-color: $theme-color;
+
+        }
+
+        &:after {
+            background-color: $theme-color;
+            @extend .ripple-animation3;
+        }
+
+    }
+}
+
+/* counter-box 4 start -----------------------*/
+.counter-card {
+
+    &-wrap {
+        position: relative;
+        border-radius: 30px;
+        margin: 0;
+        &.box4 {
+            padding: 50px;
+            top: 0;
+            background: $brand-color;
+        }
+    }
+
+    &.style4 {
+        width: auto;
+        padding: 0;
+        margin-top: 0;
+        height: auto;
+        display: inline-block;
+        background: none;
+
+        & .counter-card {
+            &_number {
+                margin-bottom: 0;
+            }
+
+            &_text {
+                font-weight: 400;
+                font-size: 24px;
+                color: $title-color;
+                margin-bottom: 0;
+
+                @include xl {
+                    font-size: 20px;
+                }
+            }
+        }
+
+        & .counter-content {
+            margin-right: 55px;
+
+            @include xl {
+                margin-right: 35px;
+            }
+
+            @include lg {
+                margin-right: 15px;
+            }
+        }
+
+        &:last-child {
+            & .counter-icon {
+                display: none;
+
+                @include sm {
+                    display: block;
+                }
+            }
+
+            & .counter-content {
+                margin-right: 0;
+            }
+        }
+
+        &:not(:last-child) {
+            @include sm {
+                margin-bottom: 30px;
+            }
+        }
+    }
+
+    &.inner-style {
+        background: $theme-color;
+        
+        & .counter-shape {
+            border: 1px solid #CDCFD2;
+        }
+    }
+}
+
+/* counter-box 4 end -----------------------*/

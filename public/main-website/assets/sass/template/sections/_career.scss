@@ -1,0 +1,341 @@
+/* career 1 start here ------------------------*/
+
+.job-author {
+    flex: 0 0 auto;
+    margin-right: 15px;
+
+    @include xs {
+        margin-right: 0;
+    }
+
+    & img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+    }
+}
+
+.author-info {
+    & .company-name {
+        font-weight: 500;
+        font-size: 14px;
+        color: $theme-color;
+        display: block;
+    }
+
+    & .job-title {
+        font-weight: 600;
+        font-size: 22px;
+        color: $title-color;
+        display: block;
+        margin-bottom: 9px;
+    }
+
+    & .location {
+        &>i {
+            color: $theme-color;
+        }
+    }
+}
+
+.job-content {
+    border-radius: 10px;
+    margin-bottom: 24px;
+}
+
+.job-post {
+    padding: 24px;
+    box-shadow: 0 10px 65px 0 rgba(0, 0, 0, 0.09);
+    border-radius: 20px;
+
+    &_author {
+        padding: 20px 24px;
+    }
+
+    &_date {
+        padding: 24px;
+        padding-bottom: 0;
+
+        & .date {
+            font-size: 14px;
+            font-weight: 500;
+            padding: 7px 20px;
+            border-radius: 100px;
+            color: $title-color;
+            background-color: var(--white-color);
+
+        }
+
+        & .icon {
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            color: $title-color;
+            border: 1px solid $border-color;
+            background-color: $white-color;
+            border-radius: 100px;
+            display: inline-block;
+
+            @include sm {
+                display: block;
+            }
+        }
+    }
+
+    & .price {
+        font-size: 18px;
+        font-weight: 600;
+        color: $title-color;
+
+        &>i {
+            color: $theme-color
+        }
+    }
+
+    & .th-btn {
+        padding: 10px 24px;
+        background-color: transparent;
+        color: $title-color;
+        border: 1px solid $border-color;
+
+        @include xs {
+            margin-top: 10px;
+        }
+
+        &:hover {
+            color: $white-color;
+            border-color: $theme-color;
+
+            &::before {
+                background-color: $theme-color;
+            }
+        }
+    }
+}
+
+.job-category {
+    padding: 24px;
+    text-align: center;
+    border-top: 1px solid $border-color;
+
+    @include md {
+        text-align: start;
+    }
+
+    @include sm {
+        text-align: center;
+    }
+
+    & a {
+        font-size: 14px;
+        padding: 7px 12px;
+        border-radius: 100px;
+        display: inline-block;
+        color: $title-color;
+        text-align: center;
+        margin: auto;
+        background-color: $white-color;
+        transition: .4s;
+
+        &:not(:last-child) {
+            margin-right: 6px;
+
+            @include xs {
+                margin-bottom: 6px;
+            }
+        }
+
+        &:hover {
+            color: $white-color;
+            background-color: $theme-color;
+        }
+    }
+}
+
+
+.job-post {
+    &.style2 {
+        padding: 0;
+        box-shadow: none;
+
+        & .date {
+            font-weight: 500;
+            color: $body-color;
+            font-size: 14px;
+            background: $white-color;
+            display: inline-block;
+            padding: 7px 20.5px;
+            border-radius: 50px;
+            margin-bottom: 22px;
+
+            & .deadline {
+                font-weight: 700;
+                color: $title-color !important;
+            }
+        }
+
+        & .job-post_date {
+            padding: 0;
+
+            & .icon {
+                width: 46px;
+                height: 46px;
+                line-height: 46px;
+
+                @include sm {
+                    text-align: center;
+                    margin: auto;
+                    flex: 0 0 auto;
+                }
+            }
+        }
+
+        & .job-post_author {
+            padding: 0;
+            margin-bottom: 0;
+        }
+
+        & .job-content {
+            margin-bottom: 0;
+            padding: 24px;
+        }
+
+        & .job-category {
+            padding: 0;
+            border: 0;
+
+            & a {
+                padding: 3px 15.5px;
+            }
+
+            &_wrapper {
+                border-top: 1px solid $border-color;
+                padding: 24px;
+
+                & .star {
+                    & i {
+                        font-size: 14px;
+                        color: $title-color;
+
+                        &:not(:last-child) {
+                            color: #FFB321;
+                        }
+                    }
+                }
+            }
+        }
+
+        & .th-btn {
+            padding: 9px 30.5px;
+
+            @include sm {
+                flex: 0 0 auto;
+            }
+        }
+    }
+}
+
+/* job-responsibilities start ---------------------*/
+.job-responsibilities,
+.job-skill,
+.job-education,
+.job-benefits {
+    & .checklist {
+        margin-left: 20px;
+
+        & ul {
+            list-style: disc;
+
+            & li {
+                padding-left: 0;
+
+                &::marker {
+                    color: $theme-color;
+                }
+            }
+        }
+    }
+}
+
+.job-sidebar {
+    & ul {
+        padding: 0;
+        margin: 0;
+
+        & li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: $title-color;
+
+            &:not(:last-child) {
+                padding-bottom: 10px;
+                margin-bottom: 10px;
+                border-bottom: 1px solid $border-color;
+            }
+
+            & strong {
+                font-weight: 400;
+                color: $body-color;
+            }
+        }
+    }
+}
+
+.recent-post {
+    &.style3 {
+        padding-top: 30px;
+        border-top: 1px solid $border-color;
+
+        & .recent-post-meta {
+            &:not(:last-child) {
+                margin-bottom: 10px;
+            }
+
+            & a {
+                &:not(:last-child) {
+                    margin-right: 10px;
+                }
+            }
+        }
+
+        & .media-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+
+            @include xs {
+                margin-bottom: 10px;
+            }
+
+            &::after {
+                display: none;
+            }
+
+            & a {
+                & img {
+                    width: 60px;
+                    height: 60px;
+                    border-radius: 50%;
+                }
+            }
+        }
+
+        & .post-title {
+            margin-bottom: 0;
+        }
+
+        @include xs {
+            display: block;
+
+        }
+    }
+}
+
+.recent-post-meta {
+    & .time {
+        font-weight: 700;
+        color: $title-color;
+    }
+}
