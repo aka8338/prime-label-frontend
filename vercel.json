@@ -17,6 +17,7 @@
     { "source": "/api/:path*", "destination": "/api/:path*" },
     { "source": "/assets/:path*", "destination": "/assets/:path*" },
     { "source": "/website/:path*", "destination": "/website/:path*" },
+    { "source": "/main-website/:path*", "destination": "/main-website/:path*" },
     {
       "source": "/:sponsorName/:trialIdentifier/batch/:batchNumber",
       "destination": "/index"
