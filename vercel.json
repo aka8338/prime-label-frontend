@@ -17,6 +17,8 @@
     { "source": "/api/:path*", "destination": "/api/:path*" },
     { "source": "/assets/:path*", "destination": "/assets/:path*" },
     { "source": "/website/:path*", "destination": "/website/:path*" },
+    { "source": "/main-website", "destination": "/main-website/index.html" },
+    { "source": "/main-website/", "destination": "/main-website/index.html" },
     { "source": "/main-website/:path*", "destination": "/main-website/:path*" },
     {
       "source": "/:sponsorName/:trialIdentifier/batch/:batchNumber",
@@ -30,7 +32,7 @@
       "source": "/:identifierCode",
       "destination": "/index"
     },
-    { "source": "/(.*)", "destination": "/website/index" }
+    { "source": "/(.*)", "destination": "/index" }
   ],
   "headers": [
     {
