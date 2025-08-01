@@ -32,29 +32,66 @@
     <meta name="theme-color" content="#ffffff" />
 
     <!--==============================
-	  Google Fonts
+	  Google Fonts - Preload for performance
 	============================== -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet" />
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet" /></noscript>
 
     <!--==============================
-	    All CSS File
+	    Critical CSS Files - Load synchronously
 	============================== -->
     <!-- Bootstrap -->
     <link rel="stylesheet" href="/main-website/assets/css/bootstrap.min.css" />
-    <!-- Fontawesome Icon -->
-    <link rel="stylesheet" href="/main-website/assets/css/fontawesome.min.css" />
-    <!-- Magnific Popup -->
-    <link rel="stylesheet" href="/main-website/assets/css/magnific-popup.min.css" />
-
-    <!-- Swiper css -->
-    <link rel="stylesheet" href="/main-website/assets/css/swiper-bundle.min.css" />
-
     <!-- Theme Custom CSS -->
     <link rel="stylesheet" href="/main-website/assets/css/style.css" />
+    
+    <!--==============================
+	    Non-Critical CSS Files - Load asynchronously
+	============================== -->
+    <!-- Fontawesome Icon -->
+    <link rel="preload" href="/main-website/assets/css/fontawesome.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="/main-website/assets/css/fontawesome.min.css" /></noscript>
+    
+    <!-- Magnific Popup -->
+    <link rel="preload" href="/main-website/assets/css/magnific-popup.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="/main-website/assets/css/magnific-popup.min.css" /></noscript>
+
+    <!-- Swiper css -->
+    <link rel="preload" href="/main-website/assets/css/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="/main-website/assets/css/swiper-bundle.min.css" /></noscript>
+
+    <!-- Performance optimization script -->
+    <script>
+      // Optimize preloader timeout
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          const preloader = document.querySelector('.preloader');
+          if (preloader) {
+            preloader.style.display = 'none';
+          }
+        }, 1000); // Reduced from default timeout
+      });
+      
+      // Preload critical images
+      const criticalImages = [
+        '/main-website/assets/img/CL_logo3.png',
+        '/main-website/assets/img/CL_logo1.png',
+        '/main-website/assets/img/CL_logo2.png'
+      ];
+      
+      criticalImages.forEach(src => {
+        const link = document.createElement('link');
+        link.rel = 'preload';
+        link.as = 'image';
+        link.href = src;
+        document.head.appendChild(link);
+      });
+    </script>
+    
+    <!-- Performance monitoring script -->
+    <script src="/main-website/assets/js/performance-monitor.js"></script>
   </head>
 
   <body>
@@ -70,17 +107,17 @@
 
     <!-- slider drag cursor -->
     <div class="slider-drag-cursor d-flex align-items-center justify-content-between">
-      <span class="drag-icon-left"><img src="/main-website/assets/img/icon/drag-arrow-left.svg" alt="" /></span>
+      <span class="drag-icon-left"><img src="/main-website/assets/img/icon/drag-arrow-left.svg" alt="" loading="lazy" /></span>
       DRAG
       <span class="drag-icon-right">
-        <img src="/main-website/assets/img/icon/drag-arrow-right.svg" alt="" />
+        <img src="/main-website/assets/img/icon/drag-arrow-right.svg" alt="" loading="lazy" />
       </span>
     </div>
 
     <!--==============================
-     Preloader
+     Optimized Preloader
   ==============================-->
-    <div class="preloader">
+    <div class="preloader" style="display: none;">
       <button class="th-btn preloaderCls">Cancel Preloader</button>
       <div class="preloader-inner">
         <img src="/main-website/assets/img/CL_logo3.png" alt="img" />
@@ -553,8 +590,8 @@ About Area
 
                 <p class="sec-text mb-30">
                   Clinical eLabels are the digital evolution of traditional medication labels — accessible through a simple QR code. They deliver clear, multilingual, real-time information directly to
-                  patients’ smartphones, going far beyond the limitations of printed labels. Whether it’s updated expiry dates, text-to-speech features, or links to educational content, eLabels ensure
-                  every patient can understand and trust their medication. If you’re responsible for patient safety, regulatory compliance, or trial efficiency — this matters. Discover how a smarter
+                  patients' smartphones, going far beyond the limitations of printed labels. Whether it's updated expiry dates, text-to-speech features, or links to educational content, eLabels ensure
+                  every patient can understand and trust their medication. If you're responsible for patient safety, regulatory compliance, or trial efficiency — this matters. Discover how a smarter
                   label transforms the clinical experience. [Try the demo] and see it in action.
                 </p>
               </div>
@@ -623,7 +660,7 @@ Category Area
                 <h3 class="box-title">
                   <a href="/main-website/cat_patient_empowerment.html">Patient Empowerment</a>
                 </h3>
-                <p class="sec-text">Put clear, usable label information directly in patients’ hands.</p>
+                <p class="sec-text">Put clear, usable label information directly in patients' hands.</p>
               </div>
             </div>
             <!--=
@@ -1384,7 +1421,7 @@ Testimonial Area
 
               <div class="testi-box hover-item">
                 <div class="testi-box_content feature-card-active-wrap">
-                  <p class="testi-box_text">“Quote 5”</p>
+                  <p class="testi-box_text">"Quote 5"</p>
                   <div class="testi-box_review">
                     <i class="fa-solid fa-star"></i>
                     <i class="fa-solid fa-star"></i>
@@ -1407,7 +1444,7 @@ Testimonial Area
 
               <div class="testi-box hover-item">
                 <div class="testi-box_content feature-card-active-wrap">
-                  <p class="testi-box_text">“Quote 6”</p>
+                  <p class="testi-box_text">"Quote 6"</p>
                   <div class="testi-box_review">
                     <i class="fa-solid fa-star"></i>
                     <i class="fa-solid fa-star"></i>
@@ -1811,38 +1848,52 @@ Blog Area
     </div>
 
     <!--==============================
-    All Js File
+    Optimized JavaScript Loading
 ============================== -->
-    <!-- Jquery -->
-    <!-- Jquery -->
+    <!-- Critical JS - Load synchronously -->
     <script src="/main-website/assets/js/vendor/jquery-3.7.1.min.js"></script>
-    <!-- Swiper Js -->
-    <script src="/main-website/assets/js/swiper-bundle.min.js"></script>
-    <!-- Bootstrap -->
-    <script src="/main-website/assets/js/bootstrap.min.js"></script>
-    <!-- Magnific Popup -->
-    <script src="/main-website/assets/js/jquery.magnific-popup.min.js"></script>
-    <!-- Counter Up -->
-    <script src="/main-website/assets/js/jquery.counterup.min.js"></script>
-    <!-- Range Slider -->
-    <script src="/main-website/assets/js/jquery-ui.min.js"></script>
-    <!-- imagesloaded -->
-    <script src="/main-website/assets/js/imagesloaded.pkgd.min.js"></script>
-    <!-- isotope -->
-    <script src="/main-website/assets/js/isotope.pkgd.min.js"></script>
-    <!-- gsap -->
-    <script src="/main-website/assets/js/gsap.min.js"></script>
+    
+    <!-- Non-critical JS - Load asynchronously -->
+    <script>
+      // Function to load scripts asynchronously
+      function loadScript(src) {
+        return new Promise((resolve, reject) => {
+          const script = document.createElement('script');
+          script.src = src;
+          script.onload = resolve;
+          script.onerror = reject;
+          document.body.appendChild(script);
+        });
+      }
+      
+      // Load non-critical scripts after page load
+      window.addEventListener('load', function() {
+        const scripts = [
+          '/main-website/assets/js/swiper-bundle.min.js',
+          '/main-website/assets/js/bootstrap.min.js',
+          '/main-website/assets/js/jquery.magnific-popup.min.js',
+          '/main-website/assets/js/jquery.counterup.min.js',
+          '/main-website/assets/js/jquery-ui.min.js',
+          '/main-website/assets/js/imagesloaded.pkgd.min.js',
+          '/main-website/assets/js/isotope.pkgd.min.js',
+          '/main-website/assets/js/gsap.min.js',
+          '/main-website/assets/js/circle-progress.js',
+          '/main-website/assets/js/matter.min.js',
+          '/main-website/assets/js/matterjs-custom.js',
+          '/main-website/assets/js/nice-select.min.js',
+          '/main-website/assets/js/main.js'
+        ];
+        
+        // Load scripts in parallel with a small delay to prevent blocking
+        scripts.forEach((src, index) => {
+          setTimeout(() => {
+            loadScript(src).catch(err => console.warn('Failed to load:', src, err));
+          }, index * 50); // 50ms delay between each script
+        });
+      });
+    </script>
+  </body>
+</html>
 
-    <!-- circle-progress -->
-    <script src="/main-website/assets/js/circle-progress.js"></script>
-
-    <script src="/main-website/assets/js/matter.min.js"></script>
-    <script src="/main-website/assets/js/matterjs-custom.js"></script>
-
-    <!-- nice select -->
-    <script src="/main-website/assets/js/nice-select.min.js"></script>
-
-    <!-- Main Js File -->
-    <script src="/main-website/assets/js/main.js"></script>
   </body>
 </html>
