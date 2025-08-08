@@ -22,6 +22,10 @@ export default function Navbar({ marketingSite, mainWebsite }: NavbarProps) {
         <div className="flex justify-center items-center h-16">
           {/* Navigation Links - centered */}
           <div className="flex items-center space-x-12">
+            <a href={mainWebsite} className="text-gray-300 hover:text-white hover:bg-gray-600 px-4 py-2 rounded-md text-base font-medium transition-all duration-200">
+              Home
+            </a>
+            <span className="text-gray-400 text-lg">|</span>
             <Link to="/lookup" className="text-gray-300 hover:text-white hover:bg-gray-600 px-4 py-2 rounded-md text-base font-medium transition-all duration-200">
               Label Finder
             </Link>
@@ -29,15 +33,6 @@ export default function Navbar({ marketingSite, mainWebsite }: NavbarProps) {
             <Link to="/demo" className="text-gray-300 hover:text-white hover:bg-gray-600 px-4 py-2 rounded-md text-base font-medium transition-all duration-200">
               Demo
             </Link>
-            <span className="text-gray-400 text-lg">|</span>
-            <a
-              href={mainWebsite}
-              className="text-gray-300 hover:text-white hover:bg-gray-600 px-4 py-2 rounded-md text-base font-medium transition-all duration-200"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Main Website
-            </a>
             <span className="text-gray-400 text-lg">|</span>
             <a
               href={marketingSite}
